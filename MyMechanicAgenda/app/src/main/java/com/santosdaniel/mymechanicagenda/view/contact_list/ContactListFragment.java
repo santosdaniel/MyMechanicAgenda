@@ -1,19 +1,31 @@
-package com.santosdaniel.mymechanicagenda;
+package com.santosdaniel.mymechanicagenda.view.contact_list;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.santosdaniel.mymechanicagenda.R;
+
 /**
  * A placeholder fragment containing a simple view.
  */
-public class ContactsActivityFragment extends Fragment {
+public class ContactListFragment extends Fragment {
 
-    public ContactsActivityFragment() {
+    /**
+     * Default constructor to the fragment
+     */
+    public ContactListFragment() {
     }
 
+    /**
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
