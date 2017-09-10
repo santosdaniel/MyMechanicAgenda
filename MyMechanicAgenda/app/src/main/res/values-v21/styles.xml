@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="item_thumbnail" parent="generic_item_thumbnail">
+        <item name="android:layout_alignParentStart">true</item>
+        <item name="android:elevation">1dp</item>
+    </style>
+
+    <style name="list_item" parent="generic_list_item">
+        <item name="android:elevation">3dp</item>
+        <item name="android:transitionName">@string/toolbar_transition</item>
+    </style>
+</resources>

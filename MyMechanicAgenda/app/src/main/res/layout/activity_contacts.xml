@@ -8,4 +8,5 @@
     <include layout="@layout/application_bar" />
 
     <include layout="@layout/content_contacts" />
+
 </android.support.design.widget.CoordinatorLayout>

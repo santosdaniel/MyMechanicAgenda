@@ -1,38 +1,36 @@
 package com.santosdaniel.mymechanicagenda.view.contact_list;
 
 import android.os.Bundle;
-
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.santosdaniel.mymechanicagenda.R;
-import com.santosdaniel.mymechanicagenda.view.GenericRecycleViewActivity;
+import com.santosdaniel.mymechanicagenda.view.GenericActivity;
 
 /**
  * Activity used to show contacts to the user
  */
-public class ContactListActivity extends GenericRecycleViewActivity {
+public class ContactListActivity extends GenericActivity {
+
 
     /**
      * Called on create of the view
      *
-     * @param savedInstanceState    the bundle of the instance saved
+     * @param savedInstanceState the bundle of the instance saved
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setToolbarWithTitle(R.string.phonebook);
     }
 
 
     /**
      * Inflate the menu; this adds items to the action bar if it is present.
      *
-     * @param menu
-     * @return
+     * @param menu the reference to the menu to inflate
+     * @return if the menu was inflated or not
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,4 +52,6 @@ public class ContactListActivity extends GenericRecycleViewActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

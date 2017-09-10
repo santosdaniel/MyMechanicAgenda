@@ -1,12 +1,14 @@
 package com.santosdaniel.mymechanicagenda.view;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ProgressBar;
 
+
 /**
- * Show be extended by all the activities made to provide search to the user
+ * Show be extended by all the fragment made to provide a recyclerView to the user
  */
-public abstract class GenericRecycleViewActivity<T extends RecyclerView.Adapter> extends GenericActivity {
+public abstract class GenericRecycleViewFragment<T extends RecyclerView.Adapter> extends Fragment {
 
     /**
      * Reference to the recycle view where the items will be show
