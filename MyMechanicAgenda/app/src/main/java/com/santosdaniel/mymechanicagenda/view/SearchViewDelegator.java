@@ -34,19 +34,14 @@ public class SearchViewDelegator implements SearchView.OnQueryTextListener {
         this.fragmentList = fragmentList;
     }
 
-    /**
-     * Called when the user submits the query. This could be due to a key press on the
-     * keyboard or due to pressing a submit button.
-     * The listener can override the standard behavior by returning true
-     * to indicate that it has handled the submit request. Otherwise return false to
-     * let the SearchView handle the submission by launching any associated intent.
+    /***
+     * Submit a query to the fragments that implement the loaderCalls
      *
-     * @param query the query text that is to be submitted
-     * @return true if the query has been handled by the listener, false to let the
-     * SearchView perform the default action.
+     * @param query The query submit by the user
+     *
+     * @return  If handle the query or not
      */
-    @Override
-    public boolean onQueryTextSubmit(String query) {
+    private boolean submitQuery(String query) {
         if(ContainerHelper.isNotEmpty(fragmentList)) {
             try {
                 LoaderManager loaderManager = activityRef.get().getSupportLoaderManager();
@@ -63,14 +58,31 @@ public class SearchViewDelegator implements SearchView.OnQueryTextListener {
                         }
                     } catch (Exception e) {
                         Log.e(TAG, "Something went wrong: " + e.getMessage());
+                        return true;
                     }
                 }
             } catch (Exception e) {
                 Log.e(TAG, "Something went wrong: " + e.getMessage());
+                return true;
             }
         }
-
         return false;
+    }
+
+    /**
+     * Called when the user submits the query. This could be due to a key press on the
+     * keyboard or due to pressing a submit button.
+     * The listener can override the standard behavior by returning true
+     * to indicate that it has handled the submit request. Otherwise return false to
+     * let the SearchView handle the submission by launching any associated intent.
+     *
+     * @param query the query text that is to be submitted
+     * @return true if the query has been handled by the listener, false to let the
+     * SearchView perform the default action.
+     */
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return submitQuery(query);
     }
 
     /**
@@ -82,29 +94,6 @@ public class SearchViewDelegator implements SearchView.OnQueryTextListener {
      */
     @Override
     public boolean onQueryTextChange(String newText) {
-        if(ContainerHelper.isNotEmpty(fragmentList)) {
-            try {
-                LoaderManager loaderManager = activityRef.get().getSupportLoaderManager();
-                for (WeakReference<Fragment> fragmentWeakReference : fragmentList) {
-
-                    try {
-                        Fragment fragment = fragmentWeakReference.get();
-                        if (fragment instanceof LoaderManager.LoaderCallbacks) {
-                            LoaderManager.LoaderCallbacks callback = (LoaderManager.LoaderCallbacks) fragment;
-                            // Starts the query
-                            Bundle args = new Bundle();
-                            args.putString(ContactsCursorLoader.NAME_ATTR, newText);
-                            loaderManager.restartLoader(QueryEnum.ListContacts.ordinal(), args, callback);
-                        }
-                    } catch (Exception e) {
-                        Log.e(TAG, "Something went wrong: " + e.getMessage());
-                    }
-                }
-            } catch (Exception e) {
-                Log.e(TAG, "Something went wrong: " + e.getMessage());
-            }
-        }
-
-        return false;
+        return submitQuery(newText);
     }
 }

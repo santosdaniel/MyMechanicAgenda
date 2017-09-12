@@ -6,20 +6,23 @@
     <ImageView
         android:id="@+id/thumbnail"
         style="@style/item_thumbnail"
+        android:padding="5dp"
         app:srcCompat="@android:drawable/ic_popup_sync" />
 
     <TextView
         android:id="@+id/title"
+        style="@style/textStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
-        android:textAlignment="center"
-        android:text="@string/title" />
+        android:text="@string/title"
+        android:textAlignment="center" />
 
     <TextView
         android:id="@+id/description"
+        style="@style/textStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/thumbnail"

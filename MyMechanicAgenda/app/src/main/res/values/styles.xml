@@ -29,9 +29,13 @@
         <item name="android:layout_width">100dp</item>
         <item name="android:layout_height">100dp</item>
         <item name="android:layout_alignParentLeft">true</item>
-
+        <item name="android:background">@drawable/round_outline</item>
     </style>
 
     <style name="item_thumbnail" parent="generic_item_thumbnail" />
+
+    <style name="textStyle" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:textColor">@color/textColor</item>
+    </style>
 
 </resources>
