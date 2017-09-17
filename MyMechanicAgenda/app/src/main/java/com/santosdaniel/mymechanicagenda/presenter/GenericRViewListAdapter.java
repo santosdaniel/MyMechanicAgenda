@@ -48,13 +48,13 @@ public abstract class GenericRViewListAdapter extends GenericRecyclerViewAdapter
         if (ContainerHelper.INSTANCE.isNotEmpty(dataSet) && (position < dataSet.size())) {
             GenericListItem item = dataSet.get(position);
 
-            if (TextUtils.isEmpty(item.imageUri)) {
-                holder.thumbnail.setImageBitmap(null);
+            if (TextUtils.isEmpty(item.getImageUri())) {
+                holder.getThumbnail().setImageBitmap(null);
             } else {
-                ImageLoader imageLoader = NetworkRequestsSingleton.getInstance(activity.getApplicationContext()).getNetworkImageLoader();
+                ImageLoader imageLoader = NetworkRequestsSingleton.Companion.getInstance(getActivity().getApplicationContext()).getNetworkImageLoader();
             }
-            holder.title.setText(item.title);
-            holder.description.setText(item.description);
+            holder.getTitle().setText(item.getTitle());
+            holder.getDescription().setText(item.getDescription());
         }
     }
 
@@ -63,7 +63,7 @@ public abstract class GenericRViewListAdapter extends GenericRecyclerViewAdapter
      */
     @Override
     public int getItemCount() {
-        return ContainerHelper.INSTANCE.isEmpty(dataSet) ? NO_ELEMENTS : dataSet.size();
+        return ContainerHelper.INSTANCE.isEmpty(dataSet) ? Companion.getNO_ELEMENTS() : dataSet.size();
     }
 
     /**
@@ -74,7 +74,7 @@ public abstract class GenericRViewListAdapter extends GenericRecyclerViewAdapter
      */
     @Override
     protected GenericListItem getItemByView(View v) {
-        int itemPosition = recyclerView.getChildLayoutPosition(v);
+        int itemPosition = getRecyclerView().getChildLayoutPosition(v);
         return dataSet.get(itemPosition);
     }
 

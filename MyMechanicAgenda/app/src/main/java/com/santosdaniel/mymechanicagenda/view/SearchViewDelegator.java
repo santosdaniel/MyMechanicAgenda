@@ -53,7 +53,7 @@ public class SearchViewDelegator implements SearchView.OnQueryTextListener {
                             LoaderManager.LoaderCallbacks callback = (LoaderManager.LoaderCallbacks) fragment;
                             // Starts the query
                             Bundle args = new Bundle();
-                            args.putString(ContactsCursorLoader.NAME_ATTR, query);
+                            args.putString(ContactsCursorLoader.Companion.getNAME_ATTR(), query);
                             loaderManager.restartLoader(QueryEnum.ListContacts.ordinal(), args, callback);
                         }
                     } catch (Exception e) {

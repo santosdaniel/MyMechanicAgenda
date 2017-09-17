@@ -52,17 +52,17 @@ public abstract class GenericRViewCursorAdapter extends GenericRecyclerViewAdapt
 
             GenericListItem item = getGenericListItem(holder, cursor);
 
-            if (TextUtils.isEmpty(item.imageUri)) {
+            if (TextUtils.isEmpty(item.getImageUri())) {
                 //Reset the content of the thumbnail
-                Drawable unknown = UIHelper.INSTANCE.getDrawable(activity, R.mipmap.person);
-                holder.thumbnail.setImageDrawable(unknown);
+                Drawable unknown = UIHelper.INSTANCE.getDrawable(getActivity(), R.mipmap.person);
+                holder.getThumbnail().setImageDrawable(unknown);
             } else {
-                LocalImageLoader imageLoader = NetworkRequestsSingleton.getInstance(activity.getApplicationContext()).getLocalImageLoader();
-                imageLoader.load(item.imageUri, holder.thumbnail);
+                LocalImageLoader imageLoader = NetworkRequestsSingleton.Companion.getInstance(getActivity().getApplicationContext()).getLocalImageLoader();
+                imageLoader.load(item.getImageUri(), holder.getThumbnail());
             }
-            holder.title.setText(item.title);
+            holder.getTitle().setText(item.getTitle());
             //TODO: If has a car show the model here
-            holder.description.setText(item.description);
+            holder.getDescription().setText(item.getDescription());
         }
     }
 
@@ -71,7 +71,7 @@ public abstract class GenericRViewCursorAdapter extends GenericRecyclerViewAdapt
      */
     @Override
     public int getItemCount() {
-        return ContainerHelper.INSTANCE.isEmpty(cursor) ? NO_ELEMENTS : cursor.getCount();
+        return ContainerHelper.INSTANCE.isEmpty(cursor) ? Companion.getNO_ELEMENTS() : cursor.getCount();
     }
 
     /**
@@ -82,7 +82,7 @@ public abstract class GenericRViewCursorAdapter extends GenericRecyclerViewAdapt
      */
     @Override
     protected GenericListItem getItemByView(View v) {
-        int itemPosition = recyclerView.getChildLayoutPosition(v);
+        int itemPosition = getRecyclerView().getChildLayoutPosition(v);
         cursor.moveToPosition(itemPosition);
         //TODO:
         return null;
