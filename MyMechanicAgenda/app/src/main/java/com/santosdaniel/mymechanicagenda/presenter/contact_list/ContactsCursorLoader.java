@@ -1,12 +1,12 @@
 package com.santosdaniel.mymechanicagenda.presenter.contact_list;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v4.content.CursorLoader;
 import android.text.TextUtils;
+import static android.provider.ContactsContract.Contacts;
 
 import static android.provider.ContactsContract.CommonDataKinds.Phone;
 
@@ -17,27 +17,26 @@ public class ContactsCursorLoader extends CursorLoader {
     public static final String NAME_ATTR = "name";
 
 
-    // Defines a variable for the search string
-    private static String mSearchString;
-    // Defines the array to hold values that replace the ?
-    private static String[] mSelectionArgs = { mSearchString };
-
     public static final String DISPLAY_NAME = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ?
-            ContactsContract.Contacts.DISPLAY_NAME_PRIMARY :
-            ContactsContract.Contacts.DISPLAY_NAME;
+            Contacts.DISPLAY_NAME_PRIMARY :
+            Contacts.DISPLAY_NAME;
 
 
     //Define a constant that contains the columns you want to return from your query
     private static final String[] PROJECTION =
             {
-                    Phone._ID,
-                    Phone.LOOKUP_KEY,
-                    Phone.CONTACT_ID,
+                    Contacts._ID,
+                    Contacts.LOOKUP_KEY,
                     DISPLAY_NAME,
-                    Phone.HAS_PHONE_NUMBER,
-                    Phone.PHOTO_URI
+                    Contacts.HAS_PHONE_NUMBER,
+                    Contacts.PHOTO_URI
             };
 
+    /**
+     *
+     * @param bundle
+     * @return
+     */
     private static String getSelectionString(Bundle bundle) {
         if ((bundle == null) || (TextUtils.isEmpty(bundle.getString(NAME_ATTR)))) {
             return null;
@@ -46,6 +45,11 @@ public class ContactsCursorLoader extends CursorLoader {
         }
     }
 
+    /**
+     *
+     * @param bundle
+     * @return
+     */
     private static String[] getSelectionArgs(Bundle bundle) {
         if ((bundle == null) || (TextUtils.isEmpty(bundle.getString(NAME_ATTR)))) {
             return null;
@@ -55,18 +59,19 @@ public class ContactsCursorLoader extends CursorLoader {
         }
     }
 
+    /**
+     * Makes the contacts to be sorted by name
+     */
     private static final String SORT_ORDER = DISPLAY_NAME + " ASC";
 
     /**
-     * Creates an empty unspecified CursorLoader.  You must follow this with
-     * calls to {@link #setUri(Uri)}, {@link #setSelection(String)}, etc
-     * to specify the query to perform.
+     * Creates an empty unspecified CursorLoader.
      *
      * @param context   Reference to the context where the data is going to be loaded
      */
     public ContactsCursorLoader(Context context, Bundle bundle) {
         super(  context,
-                Phone.CONTENT_URI,
+                Contacts.CONTENT_URI,
                 PROJECTION,
                 getSelectionString(bundle),
                 getSelectionArgs(bundle),

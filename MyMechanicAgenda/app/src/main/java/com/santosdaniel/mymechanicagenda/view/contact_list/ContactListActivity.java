@@ -46,7 +46,6 @@ public class ContactListActivity extends GenericActivity<ContactListModel> {
     @Override
     protected void onResume() {
         super.onResume();
-        //TODO: if a model is selected launch the contact details activity
     }
 
     /**

@@ -45,6 +45,11 @@ public abstract class GenericActivity<T> extends AppCompatActivity {
     private GenericActivityModel genericModel;
 
     /**
+     * Indicates if supports search or not
+     */
+    private boolean withSearch;
+
+    /**
      * Model defined by the child class
      */
     private T model;
@@ -61,12 +66,12 @@ public abstract class GenericActivity<T> extends AppCompatActivity {
     /**
      * Initializes the model that is going to use in the activity
      *
-     * @param savedInstanceState Has the bundle previous passed
      */
-    private void setModel(Bundle savedInstanceState) {
-        if (savedInstanceState == null) {
+    private void setModel() {
+        if (genericModel == null) {
             GenericActivityModel genericModel = new GenericActivityModel();
-            genericModel.isSearching = false;
+            genericModel.setWithSearch(this.withSearch);
+            genericModel.setSearching(false);
             this.genericModel = genericModel;
         }
     }
@@ -79,7 +84,6 @@ public abstract class GenericActivity<T> extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setModel(savedInstanceState);
         this.fragmentList = new ArrayList<>();
     }
 
@@ -107,12 +111,51 @@ public abstract class GenericActivity<T> extends AppCompatActivity {
     }
 
     /**
+     * Bind the events of the search view
+     */
+    private void bindSearchView() {
+        this.searchView = (SearchView) findViewById(R.id.search_view);
+        if (searchView != null) {
+            SearchViewDelegator searchViewDelegator = new SearchViewDelegator(this, this.fragmentList);
+            searchView.setOnQueryTextListener(searchViewDelegator);
+            if(this.genericModel.isSearching()) {
+
+                searchView.setQuery(searchView.getQuery(), true);
+            }
+        }
+    }
+
+    /**
+     * Associates the search views with search actions
+     */
+    private void bindToolbarViews() {
+        this.searchSection = findViewById(R.id.search_section);
+        if (this.searchSection != null) {
+            if (this.genericModel.getWithSearch()) {
+                //Set the search view
+                bindSearchView();
+                //Quits the search mode of the view
+                SearchQuitOnClickListener searchQuitOnClickListener = new SearchQuitOnClickListener(this.toolbar, this.searchSection, this.searchView, this.genericModel);
+                this.searchQuit = (ImageView) findViewById(R.id.search_quit);
+                this.searchQuit.setOnClickListener(searchQuitOnClickListener);
+            } else {
+                //If is to not search is going to hide the search section
+                UIHelper.setVisibility(View.GONE, this.searchSection);
+            }
+        }
+    }
+
+
+
+    /**
      * Called the the activity is resumed
      */
     @Override
     protected void onResume() {
+        setModel();
         super.onResume();
-        ToolbarSearchViewHelper.showHideSearchView(this.genericModel.isSearching, this.toolbar, this.searchSection);
+        bindToolbarViews();
+        ToolbarSearchViewHelper.showHideSearchView(this.genericModel.isSearching(), this.toolbar, this.searchSection);
     }
 
     /**
@@ -135,25 +178,7 @@ public abstract class GenericActivity<T> extends AppCompatActivity {
         if (this.toolbar != null) {
             setSupportActionBar(toolbar);
         }
-        this.searchSection = findViewById(R.id.search_section);
-        if (this.searchSection != null) {
-            if (withSearch) {
-                //Quits the search mode of the view
-                SearchQuitOnClickListener searchQuitOnClickListener = new SearchQuitOnClickListener(this.toolbar, this.searchSection, this.genericModel);
-                this.searchQuit = (ImageView) findViewById(R.id.search_quit);
-                this.searchQuit.setOnClickListener(searchQuitOnClickListener);
-                //TODO: search quit
-                //Set the search view
-                this.searchView = (SearchView) findViewById(R.id.search_view);
-                if (searchView != null) {
-                    SearchViewDelegator searchViewDelegator = new SearchViewDelegator(this, this.fragmentList);
-                    searchView.setOnQueryTextListener(searchViewDelegator);
-                }
-            } else {
-                //If is to not search is going to hide the search section
-                UIHelper.setVisibility(View.GONE, this.searchSection);
-            }
-        }
+        this.withSearch = withSearch;
         setTitle(titleId);
     }
 
@@ -172,8 +197,11 @@ public abstract class GenericActivity<T> extends AppCompatActivity {
 
         switch (id) {
             case R.id.action_search:
-                this.genericModel.isSearching = true;
-                ToolbarSearchViewHelper.showHideSearchView(this.genericModel.isSearching, this.toolbar, this.searchSection);
+                this.genericModel.setSearching(true);
+                ToolbarSearchViewHelper.showHideSearchView(this.genericModel.isSearching(), this.toolbar, this.searchSection);
+                searchView.setFocusable(true);
+                searchView.setIconified(false);
+                searchView.requestFocusFromTouch();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

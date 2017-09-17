@@ -5,4 +5,5 @@
     <string name="title">Title</string>
     <string name="reason">Reason</string>
     <string name="search" />
+    <string name="find_contacts">Find contacts</string>
 </resources>
