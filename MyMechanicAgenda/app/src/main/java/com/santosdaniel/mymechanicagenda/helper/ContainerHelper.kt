@@ -1,13 +1,11 @@
-package com.santosdaniel.mymechanicagenda.helper;
+package com.santosdaniel.mymechanicagenda.helper
 
-import android.database.Cursor;
-
-import java.util.List;
+import android.database.Cursor
 
 /**
  * Helper to the containers of the application
  */
-public class ContainerHelper {
+object ContainerHelper {
 
     /**
      * Checks if an array is null or empty
@@ -16,10 +14,8 @@ public class ContainerHelper {
      * @param <T>   Type of the elements tha compose the array
      * @return False the array is not empty
      * True the array is null or empty
-     */
-    public static <T> boolean isEmpty(T[] array) {
-        return (array == null) || (array.length == 0);
-    }
+    </T> */
+    fun <T> isEmpty(array: Array<T>?): Boolean = array == null || array.isEmpty()
 
     /**
      * Checks if an array is not empty
@@ -28,10 +24,8 @@ public class ContainerHelper {
      * @param <T>   Type of the elements tha compose the array
      * @return False the array is null or empty
      * True the array is not empty
-     */
-    public static <T> boolean isNotEmpty(T[] array) {
-        return !isEmpty(array);
-    }
+    </T> */
+    fun <T> isNotEmpty(array: Array<T>): Boolean = !isEmpty(array)
 
     /**
      * Checks if a list is null or empty
@@ -40,10 +34,8 @@ public class ContainerHelper {
      * @param <T>  Type of the elements tha compose the list
      * @return False the list is not empty
      * True the list is null or empty
-     */
-    public static <T> boolean isEmpty(List<T> list) {
-        return (list == null) || (list.isEmpty());
-    }
+    </T> */
+    fun <T> isEmpty(list: List<T>?): Boolean = list == null || list.isEmpty()
 
     /**
      * Checks if a list is not empty
@@ -52,10 +44,8 @@ public class ContainerHelper {
      * @param <T>  Type of the elements tha compose the list
      * @return False the list is null or empty
      * True the list is not empty
-     */
-    public static <T> boolean isNotEmpty(List<T> list) {
-        return !isEmpty(list);
-    }
+    </T> */
+    fun <T> isNotEmpty(list: List<T>): Boolean = !isEmpty(list)
 
     /**
      * Checks if a cursor is null or empty
@@ -64,9 +54,7 @@ public class ContainerHelper {
      * @return False the cursor is not empty
      * True the cursor is null or empty
      */
-    public static boolean isEmpty(Cursor cursor) {
-        return (cursor == null) || (cursor.getCount() == 0);
-    }
+    fun isEmpty(cursor: Cursor?): Boolean = cursor == null || cursor.count == 0
 
     /**
      * Checks if a list is not empty
@@ -75,7 +63,5 @@ public class ContainerHelper {
      * @return False the cursor is null or empty
      * True the cursor is not empty
      */
-    public static boolean isNotEmpty(Cursor cursor) {
-        return !isEmpty(cursor);
-    }
+    fun isNotEmpty(cursor: Cursor): Boolean = !isEmpty(cursor)
 }

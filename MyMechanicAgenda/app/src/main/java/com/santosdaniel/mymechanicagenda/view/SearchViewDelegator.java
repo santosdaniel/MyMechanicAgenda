@@ -42,7 +42,7 @@ public class SearchViewDelegator implements SearchView.OnQueryTextListener {
      * @return  If handle the query or not
      */
     private boolean submitQuery(String query) {
-        if(ContainerHelper.isNotEmpty(fragmentList)) {
+        if(ContainerHelper.INSTANCE.isNotEmpty(fragmentList)) {
             try {
                 LoaderManager loaderManager = activityRef.get().getSupportLoaderManager();
                 for (WeakReference<Fragment> fragmentWeakReference : fragmentList) {

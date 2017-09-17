@@ -47,14 +47,14 @@ public abstract class GenericRViewCursorAdapter extends GenericRecyclerViewAdapt
      */
     @Override
     public void onBindViewHolder(ListItemViewHolder holder, int position) {
-        if (ContainerHelper.isNotEmpty(cursor) && (position < cursor.getCount())) {
+        if (ContainerHelper.INSTANCE.isNotEmpty(cursor) && (position < cursor.getCount())) {
             cursor.moveToPosition(position);
 
             GenericListItem item = getGenericListItem(holder, cursor);
 
             if (TextUtils.isEmpty(item.imageUri)) {
                 //Reset the content of the thumbnail
-                Drawable unknown = UIHelper.getDrawable(activity, R.mipmap.person);
+                Drawable unknown = UIHelper.INSTANCE.getDrawable(activity, R.mipmap.person);
                 holder.thumbnail.setImageDrawable(unknown);
             } else {
                 LocalImageLoader imageLoader = NetworkRequestsSingleton.getInstance(activity.getApplicationContext()).getLocalImageLoader();
@@ -71,7 +71,7 @@ public abstract class GenericRViewCursorAdapter extends GenericRecyclerViewAdapt
      */
     @Override
     public int getItemCount() {
-        return ContainerHelper.isEmpty(cursor) ? NO_ELEMENTS : cursor.getCount();
+        return ContainerHelper.INSTANCE.isEmpty(cursor) ? NO_ELEMENTS : cursor.getCount();
     }
 
     /**

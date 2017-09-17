@@ -93,7 +93,7 @@ public class ContactListFragment extends GenericRecycleViewFragment<ContactsAdap
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         this.lstAdapter.setIsLoading(true);
         if(id == QueryEnum.ListContacts.ordinal()) {
-            if (PermissionsRequestHelper.requestPermission(getActivity(), Manifest.permission.READ_CONTACTS, PermissionEnum.ReadContacts.ordinal())) {
+            if (PermissionsRequestHelper.INSTANCE.requestPermission(getActivity(), Manifest.permission.READ_CONTACTS, PermissionEnum.ReadContacts.ordinal())) {
                 return new ContactsCursorLoader(getContext(), args);
             } else {
                 //Does not has enough permissions to get the contacts from the user

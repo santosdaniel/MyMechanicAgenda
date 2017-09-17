@@ -45,7 +45,7 @@ public abstract class GenericRViewListAdapter extends GenericRecyclerViewAdapter
      */
     @Override
     public void onBindViewHolder(ListItemViewHolder holder, int position) {
-        if (ContainerHelper.isNotEmpty(dataSet) && (position < dataSet.size())) {
+        if (ContainerHelper.INSTANCE.isNotEmpty(dataSet) && (position < dataSet.size())) {
             GenericListItem item = dataSet.get(position);
 
             if (TextUtils.isEmpty(item.imageUri)) {
@@ -63,7 +63,7 @@ public abstract class GenericRViewListAdapter extends GenericRecyclerViewAdapter
      */
     @Override
     public int getItemCount() {
-        return ContainerHelper.isEmpty(dataSet) ? NO_ELEMENTS : dataSet.size();
+        return ContainerHelper.INSTANCE.isEmpty(dataSet) ? NO_ELEMENTS : dataSet.size();
     }
 
     /**

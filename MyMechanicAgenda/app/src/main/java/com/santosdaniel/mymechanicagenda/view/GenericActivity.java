@@ -140,7 +140,7 @@ public abstract class GenericActivity<T> extends AppCompatActivity {
                 this.searchQuit.setOnClickListener(searchQuitOnClickListener);
             } else {
                 //If is to not search is going to hide the search section
-                UIHelper.setVisibility(View.GONE, this.searchSection);
+                UIHelper.INSTANCE.setVisibility(View.GONE, this.searchSection);
             }
         }
     }
@@ -155,7 +155,7 @@ public abstract class GenericActivity<T> extends AppCompatActivity {
         setModel();
         super.onResume();
         bindToolbarViews();
-        ToolbarSearchViewHelper.showHideSearchView(this.genericModel.isSearching(), this.toolbar, this.searchSection);
+        ToolbarSearchViewHelper.INSTANCE.showHideSearchView(this.genericModel.isSearching(), this.toolbar, this.searchSection);
     }
 
     /**
@@ -198,7 +198,7 @@ public abstract class GenericActivity<T> extends AppCompatActivity {
         switch (id) {
             case R.id.action_search:
                 this.genericModel.setSearching(true);
-                ToolbarSearchViewHelper.showHideSearchView(this.genericModel.isSearching(), this.toolbar, this.searchSection);
+                ToolbarSearchViewHelper.INSTANCE.showHideSearchView(this.genericModel.isSearching(), this.toolbar, this.searchSection);
                 searchView.setFocusable(true);
                 searchView.setIconified(false);
                 searchView.requestFocusFromTouch();

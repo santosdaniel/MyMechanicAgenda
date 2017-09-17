@@ -1,8 +1,8 @@
-package com.santosdaniel.mymechanicagenda.enumerations;
+package com.santosdaniel.mymechanicagenda.enumerations
 
 /**
  * Represents the queries supported by the application
  */
-public enum  QueryEnum {
+enum class QueryEnum {
     ListContacts
 }

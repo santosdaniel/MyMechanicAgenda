@@ -8,8 +8,6 @@ import android.support.v4.content.CursorLoader;
 import android.text.TextUtils;
 import static android.provider.ContactsContract.Contacts;
 
-import static android.provider.ContactsContract.CommonDataKinds.Phone;
-
 /**
  * Loader for contacts of the user
  */
@@ -17,9 +15,6 @@ public class ContactsCursorLoader extends CursorLoader {
     public static final String NAME_ATTR = "name";
 
 
-    public static final String DISPLAY_NAME = Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB ?
-            Contacts.DISPLAY_NAME_PRIMARY :
-            Contacts.DISPLAY_NAME;
 
 
     //Define a constant that contains the columns you want to return from your query
@@ -27,9 +22,9 @@ public class ContactsCursorLoader extends CursorLoader {
             {
                     Contacts._ID,
                     Contacts.LOOKUP_KEY,
-                    DISPLAY_NAME,
+                    Contacts.DISPLAY_NAME_PRIMARY,
                     Contacts.HAS_PHONE_NUMBER,
-                    Contacts.PHOTO_URI
+                    Contacts.PHOTO_THUMBNAIL_URI
             };
 
     /**
@@ -41,7 +36,7 @@ public class ContactsCursorLoader extends CursorLoader {
         if ((bundle == null) || (TextUtils.isEmpty(bundle.getString(NAME_ATTR)))) {
             return null;
         } else {
-            return DISPLAY_NAME + " LIKE ?";
+            return Contacts.DISPLAY_NAME_PRIMARY + " LIKE ?";
         }
     }
 
@@ -62,7 +57,7 @@ public class ContactsCursorLoader extends CursorLoader {
     /**
      * Makes the contacts to be sorted by name
      */
-    private static final String SORT_ORDER = DISPLAY_NAME + " ASC";
+    private static final String SORT_ORDER = Contacts.DISPLAY_NAME_PRIMARY + " ASC";
 
     /**
      * Creates an empty unspecified CursorLoader.

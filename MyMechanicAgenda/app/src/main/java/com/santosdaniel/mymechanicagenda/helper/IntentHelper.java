@@ -12,7 +12,6 @@ import com.santosdaniel.mymechanicagenda.R;
 /**
  * Helper to manage intents of the application
  */
-
 public class IntentHelper {
     /**
      * Start a new activity if possible with material design transition

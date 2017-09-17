@@ -2,6 +2,7 @@ package com.santosdaniel.mymechanicagenda.presenter.contact_list;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -12,7 +13,7 @@ import com.santosdaniel.mymechanicagenda.presenter.GenericRViewCursorAdapter;
 import com.santosdaniel.mymechanicagenda.presenter.ListItemViewHolder;
 import com.santosdaniel.mymechanicagenda.view.GenericListItem;
 
-import static android.provider.ContactsContract.CommonDataKinds.Phone;
+import static android.provider.ContactsContract.Contacts;
 
 /**
  * Adapter of the list of elements
@@ -44,20 +45,22 @@ public class ContactsAdapter extends GenericRViewCursorAdapter {
         GenericListItem data = viewHolder.data;
 
         //Read indexes
-        int idIndex = cursor.getColumnIndex(Phone._ID);
-        int lookupKeyIndex = cursor.getColumnIndex(Phone.LOOKUP_KEY);
-        int displayNameIndex = cursor.getColumnIndex(Phone.DISPLAY_NAME);
-        int hasPhoneNumberIndex = cursor.getColumnIndex(Phone.HAS_PHONE_NUMBER);
-        int photoUriIndex = cursor.getColumnIndex(Phone.PHOTO_URI);
+        int idIndex = cursor.getColumnIndex(Contacts._ID);
+        int lookupKeyIndex = cursor.getColumnIndex(Contacts.LOOKUP_KEY);
+        int displayNameIndex = cursor.getColumnIndex(Contacts.DISPLAY_NAME_PRIMARY);
+        int hasPhoneNumberIndex = cursor.getColumnIndex(Contacts.HAS_PHONE_NUMBER);
+        int thumbnailUriIndex = cursor.getColumnIndex(Contacts.PHOTO_THUMBNAIL_URI);
+        int sourceIdIndex = cursor.getColumnIndex(ContactsContract.RawContacts.SOURCE_ID );
+
         //Read data
         long id = cursor.getLong(idIndex);
         String lookupKey = cursor.getString(lookupKeyIndex);
         String displayName = cursor.getString(displayNameIndex);
         boolean hasPhoneNumber = cursor.getInt(hasPhoneNumberIndex) == 1;
-        String photoUri = cursor.getString(photoUriIndex);
+        String thumbnailUri = cursor.getString(thumbnailUriIndex);
 
-        data.title = displayName;
-        data.imageUri = photoUri;
+        data.title = id + "";
+        data.imageUri = thumbnailUri;
 
 
         return data;
