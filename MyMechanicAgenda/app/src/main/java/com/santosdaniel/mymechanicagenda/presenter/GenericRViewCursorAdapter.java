@@ -2,13 +2,16 @@ package com.santosdaniel.mymechanicagenda.presenter;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.santosdaniel.mymechanicagenda.R;
 import com.santosdaniel.mymechanicagenda.helper.ContainerHelper;
+import com.santosdaniel.mymechanicagenda.helper.UIHelper;
 import com.santosdaniel.mymechanicagenda.presenter.network.LocalImageLoader;
 import com.santosdaniel.mymechanicagenda.presenter.network.NetworkRequestsSingleton;
 import com.santosdaniel.mymechanicagenda.view.GenericListItem;
@@ -51,7 +54,8 @@ public abstract class GenericRViewCursorAdapter extends GenericRecyclerViewAdapt
 
             if (TextUtils.isEmpty(item.imageUri)) {
                 //Reset the content of the thumbnail
-                holder.thumbnail.setImageBitmap(null);
+                Drawable unknown = UIHelper.getDrawable(activity, R.mipmap.person);
+                holder.thumbnail.setImageDrawable(unknown);
             } else {
                 LocalImageLoader imageLoader = NetworkRequestsSingleton.getInstance(activity.getApplicationContext()).getLocalImageLoader();
                 imageLoader.load(item.imageUri, holder.thumbnail);

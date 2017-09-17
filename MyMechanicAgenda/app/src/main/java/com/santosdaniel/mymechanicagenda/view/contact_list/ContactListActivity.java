@@ -3,6 +3,7 @@ package com.santosdaniel.mymechanicagenda.view.contact_list;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.santosdaniel.mymechanicagenda.R;
 import com.santosdaniel.mymechanicagenda.view.GenericActivity;
@@ -10,21 +11,43 @@ import com.santosdaniel.mymechanicagenda.view.GenericActivity;
 /**
  * Activity used to show contacts to the user
  */
-public class ContactListActivity extends GenericActivity {
-
+public class ContactListActivity extends GenericActivity<ContactListModel> {
 
     /**
-     * Called on create of the view
+     * Initializes the model that is going to use in the activity
      *
-     * @param savedInstanceState the bundle of the instance saved
+     * @param savedInstanceState
+     */
+    private void setModel(Bundle savedInstanceState) {
+        if(savedInstanceState == null) {
+            ContactListModel model = new ContactListModel();
+            //TODO: set information in the mode
+            setModel(model);
+        }
+    }
+
+    /**
+     * Called on create of the activity
+     *
+     * @param savedInstanceState    object containing the activity's previously saved state
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
-        setToolbarWithTitle(R.string.phonebook);
+        setToolbarWithTitle(R.string.phonebook, true);
+        setModel(savedInstanceState);
     }
 
+
+    /**
+     * Called the the activity is resumed
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //TODO: if a model is selected launch the contact details activity
+    }
 
     /**
      * Inflate the menu; this adds items to the action bar if it is present.
@@ -38,20 +61,18 @@ public class ContactListActivity extends GenericActivity {
         return true;
     }
 
+
+    /**
+     * This callback is called only when there is a saved instance previously saved using
+     * onSaveInstanceState(). We restore some state in onCreate() while we can optionally restore
+     * other state here, possibly usable after onStart() has completed.
+     * The savedInstanceState Bundle is same as the one used in onCreate().
+     *
+     * @param savedInstanceState    The state previously saved
+     */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
     }
-
 
 }

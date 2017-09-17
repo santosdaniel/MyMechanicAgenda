@@ -10,6 +10,30 @@ import java.util.List;
 public class ContainerHelper {
 
     /**
+     * Checks if an array is null or empty
+     *
+     * @param array Array to check if it is empty
+     * @param <T>   Type of the elements tha compose the array
+     * @return False the array is not empty
+     * True the array is null or empty
+     */
+    public static <T> boolean isEmpty(T[] array) {
+        return (array == null) || (array.length == 0);
+    }
+
+    /**
+     * Checks if an array is not empty
+     *
+     * @param array Array to check
+     * @param <T>   Type of the elements tha compose the array
+     * @return False the array is null or empty
+     * True the array is not empty
+     */
+    public static <T> boolean isNotEmpty(T[] array) {
+        return !isEmpty(array);
+    }
+
+    /**
      * Checks if a list is null or empty
      *
      * @param list List to check if it is empty

@@ -4,4 +4,5 @@
     <string name="phonebook">Phonebook</string>
     <string name="title">Title</string>
     <string name="reason">Reason</string>
+    <string name="search" />
 </resources>

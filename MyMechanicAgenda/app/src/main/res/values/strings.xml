@@ -7,4 +7,5 @@
     <string name="description">Description</string>
     <string name="permission_needed">Permission Needed</string>
     <string name="reason">Reason</string>
+    <string name="search" />
 </resources>
