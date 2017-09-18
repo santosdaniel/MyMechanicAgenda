@@ -50,6 +50,7 @@ public abstract class GenericRViewCursorAdapter extends GenericRecyclerViewAdapt
         if (ContainerHelper.INSTANCE.isNotEmpty(cursor) && (position < cursor.getCount())) {
             cursor.moveToPosition(position);
 
+
             GenericListItem item = getGenericListItem(holder, cursor);
 
             if (TextUtils.isEmpty(item.getImageUri())) {

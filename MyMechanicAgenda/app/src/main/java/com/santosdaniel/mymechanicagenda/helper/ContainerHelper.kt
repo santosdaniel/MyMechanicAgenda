@@ -45,7 +45,7 @@ object ContainerHelper {
      * @return False the list is null or empty
      * True the list is not empty
     </T> */
-    fun <T> isNotEmpty(list: List<T>): Boolean = !isEmpty(list)
+    fun <T> isNotEmpty(list: List<T>?): Boolean = !isEmpty(list)
 
     /**
      * Checks if a cursor is null or empty

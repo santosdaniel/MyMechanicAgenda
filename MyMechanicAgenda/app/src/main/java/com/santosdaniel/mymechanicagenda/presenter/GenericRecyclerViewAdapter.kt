@@ -90,7 +90,7 @@ protected constructor(protected val activity: Activity,
 
     companion object {
 
-        protected val NO_ELEMENTS = 0
+        public val NO_ELEMENTS = 0
     }
 
 }

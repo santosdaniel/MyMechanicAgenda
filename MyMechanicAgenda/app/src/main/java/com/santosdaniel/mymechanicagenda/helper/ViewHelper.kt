@@ -8,7 +8,7 @@ import android.view.View
  */
 object ViewHelper {
 
-    fun showSnackbar(view: View) {
+    fun showSnackBar(view: View) {
         Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
     }

@@ -39,9 +39,7 @@ class ContactListActivity : GenericActivity<ContactListModel>() {
     /**
      * Called the the activity is resumed
      */
-    override fun onResume() {
-        super.onResume()
-    }
+    override fun onResume() = super.onResume()
 
     /**
      * Inflate the menu; this adds items to the action bar if it is present.
@@ -63,8 +61,7 @@ class ContactListActivity : GenericActivity<ContactListModel>() {
      *
      * @param savedInstanceState    The state previously saved
      */
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-    }
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) =
+            super.onRestoreInstanceState(savedInstanceState)
 
 }

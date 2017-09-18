@@ -47,14 +47,6 @@ abstract class GenericActivity<T> : AppCompatActivity() {
     /**
      * Model defined by the child class
      */
-    /**
-     * @return The model that currently is pointing
-     */
-    /**
-     * Set the model of the activity
-     *
-     * @param model Reference to the model to set
-     */
     protected var model: T? = null
 
     /**
