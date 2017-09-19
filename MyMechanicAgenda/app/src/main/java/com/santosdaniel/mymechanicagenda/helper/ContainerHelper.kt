@@ -63,5 +63,19 @@ object ContainerHelper {
      * @return False the cursor is null or empty
      * True the cursor is not empty
      */
-    fun isNotEmpty(cursor: Cursor): Boolean = !isEmpty(cursor)
+    fun isNotEmpty(cursor: Cursor?): Boolean = !isEmpty(cursor)
+
+    /**
+     * Verifies if a certain object is null
+     *
+     * @obj The object to check if it is null
+     */
+    private fun <T> isNull(obj : T?) = (obj == null)
+
+    /**
+     * Verifies if a certain object is null null
+     *
+     * @obj The object to check if it is not null
+     */
+    fun <T> isNotNull(obj: T?) = (!ContainerHelper.isNull(obj))
 }

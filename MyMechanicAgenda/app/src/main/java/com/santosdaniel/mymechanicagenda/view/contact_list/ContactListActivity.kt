@@ -18,7 +18,7 @@ class ContactListActivity : GenericActivity<ContactListModel>() {
      */
     private fun setModel(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
-            var model = ContactListModel()
+            val model = ContactListModel()
             super.model = model
         }
     }

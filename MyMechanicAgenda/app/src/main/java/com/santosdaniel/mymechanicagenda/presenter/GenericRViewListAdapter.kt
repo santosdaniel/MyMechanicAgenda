@@ -53,9 +53,8 @@ protected constructor(activity: Activity, recyclerView: RecyclerView, progressBa
     /**
      * @return The number of items that have
      */
-    override fun getItemCount(): Int {
-        return if (ContainerHelper.isEmpty(dataSet)) GenericRecyclerViewAdapter.NO_ELEMENTS else dataSet!!.size
-    }
+    override fun getItemCount(): Int =
+            if (ContainerHelper.isEmpty(dataSet)) GenericRecyclerViewAdapter.NO_ELEMENTS else dataSet!!.size
 
     /**
      * Find the item that is supported by a certain view

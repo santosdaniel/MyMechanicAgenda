@@ -38,25 +38,23 @@ class ContactsCursorLoader
          * @param bundle Bundle passed to create the cursor
          * @return The string to select name (If the user is trying to search by any)
          */
-        private fun getSelectionString(bundle: Bundle?): String? {
-            return if (bundle == null || TextUtils.isEmpty(bundle.getString(NAME_ATTR))) {
-                null
-            } else {
-                Contacts.DISPLAY_NAME_PRIMARY + " LIKE ?"
-            }
-        }
+        private fun getSelectionString(bundle: Bundle?): String? =
+                if (bundle == null || TextUtils.isEmpty(bundle.getString(NAME_ATTR))) {
+                    null
+                } else {
+                    Contacts.DISPLAY_NAME_PRIMARY + " LIKE ?"
+                }
 
         /**
          * @param bundle Bundle passed to create the cursor
          * @return The string that should used while is making the like SQL
          */
-        private fun getSelectionArgs(bundle: Bundle?): Array<String>? {
-            return if (bundle == null || TextUtils.isEmpty(bundle.getString(NAME_ATTR))) {
-                null
-            } else {
-                arrayOf("%" + bundle.getString(NAME_ATTR) + "%")
-            }
-        }
+        private fun getSelectionArgs(bundle: Bundle?): Array<String>? =
+                if (bundle == null || TextUtils.isEmpty(bundle.getString(NAME_ATTR))) {
+                    null
+                } else {
+                    arrayOf("%" + bundle.getString(NAME_ATTR) + "%")
+                }
 
         /**
          * Makes the contacts to be sorted by name

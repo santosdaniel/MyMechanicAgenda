@@ -26,16 +26,13 @@ class ContactsAdapter
 (activity: Activity, recyclerView: RecyclerView, progressBar: ProgressBar) : GenericRViewCursorAdapter(activity, recyclerView, progressBar) {
 
     /**
-     * @param viewHolder reference to the view holder that support the item
-     * @param cursor     cursor from where the data should be fetch
+     *
+     * @param data          reference to the item to fill the elements
+     * @param cursor        cursor from where the data should be fetch
+     *
      * @return The GenericListItem associated with current cursor
      */
-    override fun getGenericListItem(viewHolder: ListItemViewHolder, cursor: Cursor): GenericListItem {
-        if (viewHolder.data == null) {
-            viewHolder.data = GenericListItem()
-        }
-        val data = viewHolder.data
-
+    override fun fillItemData(data: GenericListItem, cursor: Cursor) {
         //Read indexes
         val idIndex = cursor.getColumnIndex(Contacts._ID)
         val lookupKeyIndex = cursor.getColumnIndex(Contacts.LOOKUP_KEY)
@@ -50,16 +47,13 @@ class ContactsAdapter
         val thumbnailUri = cursor.getString(thumbnailUriIndex)
         val photoUri = cursor.getString(photoUriIndex)
 
-        if(data != null) {
-            data.id = id
-            data.lookUpKey = lookupKey
-            data.title = displayName
-            data.description = StringHelper.EMPTY_STRING
-            data.imageUri = thumbnailUri
-            data.imageUri = photoUri
-        }
-
-        return data!!
+        //Set the data
+        data.id = id
+        data.lookUpKey = lookupKey
+        data.title = displayName
+        data.description = StringHelper.EMPTY_STRING
+        data.imageUri = thumbnailUri
+        data.imageUri = photoUri
     }
 
 

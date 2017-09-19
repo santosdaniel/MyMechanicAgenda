@@ -50,14 +50,12 @@ protected constructor(protected val activity: Activity,
      *
      * @param isLoading False that indicates if it is loading the content or not
      */
-    fun setIsLoading(isLoading: Boolean) {
-        if (isLoading) {
-            this.progressBar.visibility = View.VISIBLE
-            this.recyclerView.visibility = View.INVISIBLE
-        } else {
-            this.progressBar.visibility = View.GONE
-            this.recyclerView.visibility = View.VISIBLE
-        }
+    fun setIsLoading(isLoading: Boolean) = if (isLoading) {
+        this.progressBar.visibility = View.VISIBLE
+        this.recyclerView.visibility = View.INVISIBLE
+    } else {
+        this.progressBar.visibility = View.GONE
+        this.recyclerView.visibility = View.VISIBLE
     }
 
     /**
@@ -89,8 +87,7 @@ protected constructor(protected val activity: Activity,
     abstract fun stopLoading()
 
     companion object {
-
-        public val NO_ELEMENTS = 0
+        val NO_ELEMENTS = 0
     }
 
 }

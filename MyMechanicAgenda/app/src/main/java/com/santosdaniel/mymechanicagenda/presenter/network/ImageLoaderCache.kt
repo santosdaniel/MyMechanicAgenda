@@ -26,9 +26,7 @@ internal class ImageLoaderCache : ImageLoader.ImageCache {
      * @param url The url where the image was loaded
      * @return The bitmap that exists in cache
      */
-    override fun getBitmap(url: String): Bitmap? {
-        return cache.get(url)
-    }
+    override fun getBitmap(url: String): Bitmap? = cache.get(url)
 
     /**
      * Put one bitmap in cache

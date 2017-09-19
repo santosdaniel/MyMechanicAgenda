@@ -1,6 +1,5 @@
 package com.santosdaniel.mymechanicagenda.presenter.network
 
-import android.annotation.SuppressLint
 import android.content.Context
 
 import com.android.volley.Request
@@ -57,13 +56,11 @@ private constructor(
     private // getApplicationContext() is key, it keeps you from leaking the
             // Activity or BroadcastReceiver if someone passes one in.
     val requestQueue: RequestQueue
-        get() {
-            if (mRequestQueue == null) {
-                mRequestQueue = Volley.newRequestQueue(context.applicationContext)
-                return mRequestQueue as RequestQueue
-            } else {
-                return mRequestQueue as RequestQueue
-            }
+        get() = if (mRequestQueue == null) {
+            mRequestQueue = Volley.newRequestQueue(context.applicationContext)
+            mRequestQueue as RequestQueue
+        } else {
+            mRequestQueue as RequestQueue
         }
 
     /**
@@ -77,7 +74,6 @@ private constructor(
     }
 
     companion object {
-        @SuppressLint("StaticFieldLeak")
         private var mInstance: NetworkRequestsSingleton? = null
 
         /**
@@ -87,14 +83,11 @@ private constructor(
          * @return the instance of the network requests class
          */
         @Synchronized
-        fun getInstance(context: Context): NetworkRequestsSingleton {
-            if (mInstance == null) {
-                mInstance = NetworkRequestsSingleton(context)
-                return mInstance as NetworkRequestsSingleton
-            } else {
-                return mInstance as NetworkRequestsSingleton
-            }
-
+        fun getInstance(context: Context): NetworkRequestsSingleton = if (mInstance == null) {
+            mInstance = NetworkRequestsSingleton(context)
+            mInstance as NetworkRequestsSingleton
+        } else {
+            mInstance as NetworkRequestsSingleton
         }
     }
 }

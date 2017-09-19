@@ -40,7 +40,7 @@ class SearchViewDelegator
     private fun submitQuery(query: String): Boolean {
         if (ContainerHelper.isNotEmpty(fragmentList)) {
             try {
-                var activity = activityRef.get()
+                val activity = activityRef.get()
                 if(activity != null) {
                     val loaderManager = activity.supportLoaderManager
                     for (fragmentWeakReference in (fragmentList!!)) {
@@ -81,9 +81,7 @@ class SearchViewDelegator
      * @return true if the query has been handled by the listener, false to let the
      * SearchView perform the default action.
      */
-    override fun onQueryTextSubmit(query: String): Boolean {
-        return submitQuery(query)
-    }
+    override fun onQueryTextSubmit(query: String): Boolean = submitQuery(query)
 
     /**
      * Called when the query text is changed by the user.
@@ -92,9 +90,7 @@ class SearchViewDelegator
      * @return false if the SearchView should perform the default action of showing any
      * suggestions if available, true if the action was handled by the listener.
      */
-    override fun onQueryTextChange(newText: String): Boolean {
-        return submitQuery(newText)
-    }
+    override fun onQueryTextChange(newText: String): Boolean = submitQuery(newText)
 
     companion object {
 

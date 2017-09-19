@@ -17,15 +17,14 @@ object ToolbarSearchViewHelper {
      * @param toolbar       Reference to the toolbar of the application
      * @param searchSection Place that wraps the search elements
      */
-    fun showHideSearchView(isSearching: Boolean, toolbar: Toolbar, searchSection: View) {
-        if (isSearching) {
-            UIHelper.setVisibility(GONE, toolbar)
-            UIHelper.setVisibility(View.VISIBLE, searchSection)
-        } else {
-            UIHelper.setVisibility(GONE, searchSection)
-            UIHelper.setVisibility(View.VISIBLE, toolbar)
-        }
-    }
+    fun showHideSearchView(isSearching: Boolean, toolbar: Toolbar, searchSection: View) =
+            if (isSearching) {
+                UIHelper.setVisibility(GONE, toolbar)
+                UIHelper.setVisibility(View.VISIBLE, searchSection)
+            } else {
+                UIHelper.setVisibility(GONE, searchSection)
+                UIHelper.setVisibility(View.VISIBLE, toolbar)
+            }
 
     /**
      * Shows or hides the search view elements
@@ -42,7 +41,6 @@ object ToolbarSearchViewHelper {
                 showHideSearchView(isSearching, tb, sSection)
             }
         } catch (e: Exception) {
-
         }
 
     }

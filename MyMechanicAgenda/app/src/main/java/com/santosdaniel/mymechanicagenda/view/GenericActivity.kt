@@ -53,9 +53,7 @@ abstract class GenericActivity<T> : AppCompatActivity() {
      * Prevent the crash due to animations when the user go to the activity back.
      */
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    override fun finishAfterTransition() {
-        finish()
-    }
+    override fun finishAfterTransition() = finish()
 
     /**
      * Initializes the model that is going to use in the activity
@@ -185,16 +183,16 @@ abstract class GenericActivity<T> : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
 
-        when (id) {
+        return when (id) {
             R.id.action_search -> {
                 this.genericModel!!.isSearching = true
                 ToolbarSearchViewHelper.showHideSearchView(this.genericModel!!.isSearching, this.toolbar!!, this.searchSection!!)
                 searchView!!.isFocusable = true
                 searchView!!.isIconified = false
                 searchView!!.requestFocusFromTouch()
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
