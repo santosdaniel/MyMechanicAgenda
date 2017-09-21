@@ -9,7 +9,6 @@ import android.view.View
 import android.widget.ProgressBar
 import com.santosdaniel.mymechanicagenda.helper.StringHelper
 import com.santosdaniel.mymechanicagenda.presenter.GenericRViewCursorAdapter
-import com.santosdaniel.mymechanicagenda.presenter.ListItemViewHolder
 import com.santosdaniel.mymechanicagenda.view.GenericListItem
 
 /**

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MyMechanicAgenda</string>
     <string name="action_settings">Settings</string>
-    <string name="phonebook">Phonebook</string>
+    <string name="phone_book">Phonebook</string>
     <string name="title">Title</string>
     <string name="reason">Reason</string>
     <string name="search" />

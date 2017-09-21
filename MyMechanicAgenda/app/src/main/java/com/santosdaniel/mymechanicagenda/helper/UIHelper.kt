@@ -34,9 +34,7 @@ object UIHelper {
      */
     fun setVisibility(visibility: Int, vararg views: View) {
         if (ContainerHelper.isNotEmpty(views)) {
-            for (view in views) {
-                view.visibility = visibility
-            }
+            views.forEach { it -> it.visibility = visibility }
         }
     }
 

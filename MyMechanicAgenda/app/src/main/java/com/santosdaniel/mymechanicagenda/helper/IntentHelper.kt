@@ -21,15 +21,14 @@ object IntentHelper {
      * @param intent         intent that is going to be used to launch the new activity
      */
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    fun startNewActivity(activityOrigin: Activity, sharedView: View, intent: Intent) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            //Simple start of activity
-            activityOrigin.startActivity(intent)
-        } else {
-            //Start of activity with shared element transition
-            val transitionName = activityOrigin.resources.getString(R.string.toolbar_transition)
-            val transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(activityOrigin, sharedView, transitionName)
-            activityOrigin.startActivity(intent, transitionActivityOptions.toBundle())
-        }
-    }
+    fun startNewActivity(activityOrigin: Activity, sharedView: View, intent: Intent) =
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                //Simple start of activity
+                activityOrigin.startActivity(intent)
+            } else {
+                //Start of activity with shared element transition
+                val transitionName = activityOrigin.resources.getString(R.string.toolbar_transition)
+                val transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(activityOrigin, sharedView, transitionName)
+                activityOrigin.startActivity(intent, transitionActivityOptions.toBundle())
+            }
 }

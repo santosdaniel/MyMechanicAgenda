@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.santosdaniel.mymechanicagenda.R
+import com.santosdaniel.mymechanicagenda.helper.UIHelper
 import com.santosdaniel.mymechanicagenda.view.GenericListItem
 
 /**
@@ -51,11 +52,11 @@ protected constructor(protected val activity: Activity,
      * @param isLoading False that indicates if it is loading the content or not
      */
     fun setIsLoading(isLoading: Boolean) = if (isLoading) {
-        this.progressBar.visibility = View.VISIBLE
-        this.recyclerView.visibility = View.INVISIBLE
+        UIHelper.setVisibility(View.VISIBLE, this.progressBar)
+        UIHelper.setVisibility(View.INVISIBLE, this.recyclerView)
     } else {
-        this.progressBar.visibility = View.GONE
-        this.recyclerView.visibility = View.VISIBLE
+        UIHelper.setVisibility(View.GONE, this.progressBar)
+        UIHelper.setVisibility(View.VISIBLE, this.recyclerView)
     }
 
     /**
