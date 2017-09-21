@@ -31,7 +31,7 @@ protected constructor(activity: Activity, recyclerView: RecyclerView, progressBa
     /**
      * Creates a new reference to a generic item or reuses the old one
      *
-     * @param viewHolder holde of the view that has the item
+     * @param viewHolder holder of the view that has the item
      */
     private fun createGenericListItem(viewHolder: ListItemViewHolder) : GenericListItem {
         if (viewHolder.data == null) {

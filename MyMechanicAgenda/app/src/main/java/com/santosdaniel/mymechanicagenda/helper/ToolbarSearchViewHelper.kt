@@ -42,6 +42,5 @@ object ToolbarSearchViewHelper {
             }
         } catch (e: Exception) {
         }
-
     }
 }

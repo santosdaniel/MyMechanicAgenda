@@ -24,11 +24,7 @@ class SearchViewDelegator
  * @param fragmentList  List of fragments to notify
  */
 (activity: AppCompatActivity, private val fragmentList: List<WeakReference<Fragment>>?) : SearchView.OnQueryTextListener {
-    private val activityRef: WeakReference<AppCompatActivity>
-
-    init {
-        this.activityRef = WeakReference(activity)
-    }
+    private val activityRef = WeakReference(activity)
 
     /***
      * Submit a query to the fragments that implement the loaderCalls
