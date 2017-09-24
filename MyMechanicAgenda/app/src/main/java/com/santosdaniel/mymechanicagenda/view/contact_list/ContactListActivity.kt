@@ -14,7 +14,7 @@ class ContactListActivity : GenericActivity<ContactListModel>() {
     /**
      * Initializes the model that is going to use in the activity
      *
-     * @param savedInstanceState
+     * @param savedInstanceState object containing the activity's previously saved state
      */
     private fun setModel(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {

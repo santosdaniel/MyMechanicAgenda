@@ -20,7 +20,6 @@ object IntentHelper {
      * @param sharedView     the view that is going to be shared between activities
      * @param intent         intent that is going to be used to launch the new activity
      */
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     fun startNewActivity(activityOrigin: Activity, sharedView: View, intent: Intent) =
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
                 //Simple start of activity

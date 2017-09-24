@@ -1,15 +1,18 @@
 package com.santosdaniel.mymechanicagenda.presenter.contact_list
 
 import android.app.Activity
+import android.content.Intent
 import android.database.Cursor
 import android.provider.ContactsContract.Contacts
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 import android.view.View
 import android.widget.ProgressBar
+import com.santosdaniel.mymechanicagenda.helper.IntentHelper
 import com.santosdaniel.mymechanicagenda.helper.StringHelper
 import com.santosdaniel.mymechanicagenda.presenter.GenericRViewCursorAdapter
 import com.santosdaniel.mymechanicagenda.view.GenericListItem
+import com.santosdaniel.mymechanicagenda.view.contact_details.ContactDetailsActivity
 
 /**
  * Adapter of the list of elements
@@ -64,13 +67,11 @@ class ContactsAdapter
     override fun onClick(v: View) {
         val item = getItemByView(v)
         if (item != null && !TextUtils.isEmpty(item.lookUpKey)) {
-            //TODO:
-            /*
-            Intent intent = new Intent(activity, ReceiptDetailsActivity.class);
-            intent.putExtra(ReceiptDetailsActivity.TITLE, item.title);
-            intent.putExtra(ReceiptDetailsActivity.URL, item.detailsUrl);
-            IntentHelper.startNewActivity(activity, v, intent);
-            */
+            val intent =  Intent(activity, ContactDetailsActivity::class.java)
+            //intent.putExtra(ContactDetailsActivity.TITLE, item.title)
+            //intent.putExtra(ReceiptDetailsActivity.URL, item.detailsUrl);
+            IntentHelper.startNewActivity(activity, v, intent)
+
         }
     }
 
