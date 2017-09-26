@@ -15,7 +15,7 @@ import com.santosdaniel.mymechanicagenda.view.GenericListItem
  * that use list to save their data
  */
 
-internal abstract class GenericRViewListAdapter
+abstract class GenericRViewListAdapter
 /**
  * Constructor to the view adapter
  *

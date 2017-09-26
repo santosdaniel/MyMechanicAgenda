@@ -64,10 +64,11 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
     }
 
     /**
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return
+     * @param inflater  The inflater of the view
+     * @param container The container where is to inflate the fragment
+     * @param savedInstanceState    The state previously saved
+     *
+     * @return  The view that is going support the fragment
      */
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
