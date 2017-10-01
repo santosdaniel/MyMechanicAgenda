@@ -1,10 +1,10 @@
 package com.santosdaniel.mymechanicagenda.helper
 
-import android.annotation.TargetApi
 import android.app.Activity
 import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
+import android.text.TextUtils
 import android.view.View
 
 import com.santosdaniel.mymechanicagenda.R
@@ -30,4 +30,17 @@ object IntentHelper {
                 val transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(activityOrigin, sharedView, transitionName)
                 activityOrigin.startActivity(intent, transitionActivityOptions.toBundle())
             }
+
+    /**
+     * Get a string from the intent
+     *
+     * @param intent    Intent from is to get the string
+     * @param fieldKey  key of the field to read from the intent
+     *
+     *return The string that was put in the intent
+     */
+    fun getStringFromIntent(intent: Intent, fieldKey : String) : String {
+        val strValue = intent.getStringExtra(fieldKey)
+        return if(TextUtils.isEmpty(strValue)) StringHelper.EMPTY_STRING else strValue;
+    }
 }

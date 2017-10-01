@@ -31,7 +31,8 @@ class ContactListActivity : GenericActivity<ContactListModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contacts)
-        setToolbarWithTitle(R.string.phone_book, true)
+        setToolbarWithTitle(true)
+        setTitle(R.string.phone_book)
         setModel(savedInstanceState)
     }
 

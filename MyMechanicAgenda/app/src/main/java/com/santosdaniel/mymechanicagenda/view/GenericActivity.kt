@@ -159,16 +159,14 @@ abstract class GenericActivity<T> : AppCompatActivity() {
     /**
      * Set the title title of the activity and set the toolbar (if any)
      *
-     * @param titleId    Identifier of the title to use
      * @param withSearch Flag that indicates if the activity supports searchBar or not
      */
-    protected fun setToolbarWithTitle(titleId: Int, withSearch: Boolean) {
+    protected fun setToolbarWithTitle(withSearch: Boolean) {
         this.toolbar = findViewById(R.id.toolbar) as Toolbar
         if (this.toolbar != null) {
             setSupportActionBar(toolbar)
         }
         this.withSearch = withSearch
-        setTitle(titleId)
     }
 
     /**
