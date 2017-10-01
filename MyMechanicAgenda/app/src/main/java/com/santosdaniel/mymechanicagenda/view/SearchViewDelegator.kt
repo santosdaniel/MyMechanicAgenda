@@ -9,7 +9,7 @@ import android.util.Log
 
 import com.santosdaniel.mymechanicagenda.enumerations.QueryEnum
 import com.santosdaniel.mymechanicagenda.helper.ContainerHelper
-import com.santosdaniel.mymechanicagenda.presenter.contact_list.ContactsCursorLoader
+import com.santosdaniel.mymechanicagenda.presenter.contactList.ContactsCursorLoader
 
 import java.lang.ref.WeakReference
 

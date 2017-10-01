@@ -1,4 +1,4 @@
-package com.santosdaniel.mymechanicagenda.presenter.contact_details;
+package com.santosdaniel.mymechanicagenda.presenter.contactDetails;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +13,10 @@ import com.santosdaniel.mymechanicagenda.model.database.Note;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHolder> {
+/**
+ * Adapter of the list of vehicles
+ */
+public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.NoteViewHolder> {
 
     private NoteClickListener clickListener;
     private List<Note> dataset;
@@ -42,9 +45,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
         }
     }
 
-    public NotesAdapter(NoteClickListener clickListener) {
+    public VehiclesAdapter(NoteClickListener clickListener) {
         this.clickListener = clickListener;
-        this.dataset = new ArrayList<Note>();
+        this.dataset = new ArrayList<>();
     }
 
     public void setNotes(@NonNull List<Note> notes) {
@@ -57,14 +60,14 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteViewHold
     }
 
     @Override
-    public NotesAdapter.NoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public VehiclesAdapter.NoteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_note, parent, false);
         return new NoteViewHolder(view, clickListener);
     }
 
     @Override
-    public void onBindViewHolder(NotesAdapter.NoteViewHolder holder, int position) {
+    public void onBindViewHolder(VehiclesAdapter.NoteViewHolder holder, int position) {
         Note note = dataset.get(position);
         holder.text.setText(note.getText());
         holder.comment.setText(note.getComment());

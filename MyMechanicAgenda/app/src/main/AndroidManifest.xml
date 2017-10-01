@@ -15,7 +15,7 @@
 
 
         <activity
-            android:name=".view.contact_list.ContactListActivity"
+            android:name=".view.contactList.ContactListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.contact_details.ContactDetailsActivity"
+            android:name=".view.contactDetails.ContactDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

@@ -1,4 +1,4 @@
-package com.santosdaniel.mymechanicagenda.presenter.generic_database;
+package com.santosdaniel.mymechanicagenda.presenter.genericDatabase;
 
 import com.santosdaniel.mymechanicagenda.model.database.DaoSession;
 

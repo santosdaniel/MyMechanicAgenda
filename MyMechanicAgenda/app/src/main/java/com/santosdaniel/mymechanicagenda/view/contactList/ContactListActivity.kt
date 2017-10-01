@@ -1,4 +1,4 @@
-package com.santosdaniel.mymechanicagenda.view.contact_list
+package com.santosdaniel.mymechanicagenda.view.contactList
 
 import android.os.Bundle
 import android.view.Menu

@@ -1,4 +1,4 @@
-package com.santosdaniel.mymechanicagenda.presenter.contact_details;
+package com.santosdaniel.mymechanicagenda.presenter.contactDetails;
 
 import android.util.Log;
 
@@ -6,8 +6,8 @@ import com.santosdaniel.mymechanicagenda.helper.DBHelper;
 import com.santosdaniel.mymechanicagenda.model.database.DaoSession;
 import com.santosdaniel.mymechanicagenda.model.database.Note;
 import com.santosdaniel.mymechanicagenda.model.database.NoteDao;
-import com.santosdaniel.mymechanicagenda.presenter.generic_database.GenericRepository;
-import com.santosdaniel.mymechanicagenda.presenter.generic_database.IDaoSessionProvider;
+import com.santosdaniel.mymechanicagenda.presenter.genericDatabase.GenericRepository;
+import com.santosdaniel.mymechanicagenda.presenter.genericDatabase.IDaoSessionProvider;
 
 import org.greenrobot.greendao.query.Query;
 

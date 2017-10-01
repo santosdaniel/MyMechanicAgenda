@@ -1,4 +1,4 @@
-package com.santosdaniel.mymechanicagenda.presenter.contact_details;
+package com.santosdaniel.mymechanicagenda.presenter.contactDetails;
 
 import com.santosdaniel.mymechanicagenda.model.database.NoteType;
 

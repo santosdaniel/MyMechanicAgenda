@@ -2,7 +2,7 @@ package com.santosdaniel.mymechanicagenda.model.database;
 
 
 
-        import com.santosdaniel.mymechanicagenda.presenter.contact_details.NoteTypeConverter;
+        import com.santosdaniel.mymechanicagenda.presenter.contactDetails.NoteTypeConverter;
 
         import org.greenrobot.greendao.annotation.Convert;
         import org.greenrobot.greendao.annotation.Entity;

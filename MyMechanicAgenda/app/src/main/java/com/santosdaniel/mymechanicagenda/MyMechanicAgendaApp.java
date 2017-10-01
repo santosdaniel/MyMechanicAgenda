@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.santosdaniel.mymechanicagenda.model.database.DaoMaster;
 import com.santosdaniel.mymechanicagenda.model.database.DaoSession;
-import com.santosdaniel.mymechanicagenda.presenter.generic_database.IDaoSessionProvider;
+import com.santosdaniel.mymechanicagenda.presenter.genericDatabase.IDaoSessionProvider;
 
 import org.greenrobot.greendao.database.Database;
 

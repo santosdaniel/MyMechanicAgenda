@@ -1,4 +1,4 @@
-package com.santosdaniel.mymechanicagenda.view.contact_list
+package com.santosdaniel.mymechanicagenda.view.contactList
 
 import android.Manifest
 import android.database.Cursor
@@ -18,8 +18,8 @@ import com.santosdaniel.mymechanicagenda.enumerations.PermissionEnum
 import com.santosdaniel.mymechanicagenda.enumerations.QueryEnum
 import com.santosdaniel.mymechanicagenda.helper.ContainerHelper
 import com.santosdaniel.mymechanicagenda.helper.PermissionsRequestHelper
-import com.santosdaniel.mymechanicagenda.presenter.contact_list.ContactsAdapter
-import com.santosdaniel.mymechanicagenda.presenter.contact_list.ContactsCursorLoader
+import com.santosdaniel.mymechanicagenda.presenter.contactList.ContactsAdapter
+import com.santosdaniel.mymechanicagenda.presenter.contactList.ContactsCursorLoader
 import com.santosdaniel.mymechanicagenda.view.GenericRecycleViewFragment
 
 /**

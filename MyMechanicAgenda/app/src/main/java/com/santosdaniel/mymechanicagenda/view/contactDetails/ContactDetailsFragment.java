@@ -1,4 +1,4 @@
-package com.santosdaniel.mymechanicagenda.view.contact_details;
+package com.santosdaniel.mymechanicagenda.view.contactDetails;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,9 +19,9 @@ import android.widget.TextView.OnEditorActionListener;
 import com.santosdaniel.mymechanicagenda.R;
 import com.santosdaniel.mymechanicagenda.model.database.Note;
 import com.santosdaniel.mymechanicagenda.model.database.NoteType;
-import com.santosdaniel.mymechanicagenda.presenter.contact_details.ContactRepository;
-import com.santosdaniel.mymechanicagenda.presenter.contact_details.NotesAdapter;
-import com.santosdaniel.mymechanicagenda.presenter.generic_database.IDaoSessionProvider;
+import com.santosdaniel.mymechanicagenda.presenter.contactDetails.ContactRepository;
+import com.santosdaniel.mymechanicagenda.presenter.contactDetails.VehiclesAdapter;
+import com.santosdaniel.mymechanicagenda.presenter.genericDatabase.IDaoSessionProvider;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -38,7 +38,7 @@ public class ContactDetailsFragment extends Fragment {
     private View addNoteButton;
 
     private ContactRepository contactRepository;
-    private NotesAdapter notesAdapter;
+    private VehiclesAdapter vehiclesAdapter;
 
     /**
      * Find the views that is going to use in the fragment
@@ -46,13 +46,13 @@ public class ContactDetailsFragment extends Fragment {
      * @param fragmentView Reference to the view of the fragment
      */
     private void bindViews(View fragmentView) {
-        RecyclerView recyclerView = (RecyclerView) fragmentView.findViewById(R.id.recyclerViewNotes);
+        RecyclerView recyclerView = fragmentView.findViewById(R.id.recyclerViewNotes);
         //noinspection ConstantConditions
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        notesAdapter = new NotesAdapter(noteClickListener);
-        recyclerView.setAdapter(notesAdapter);
+        vehiclesAdapter = new VehiclesAdapter(noteClickListener);
+        recyclerView.setAdapter(vehiclesAdapter);
 
         addNoteButton = fragmentView.findViewById(R.id.buttonAdd);
         //noinspection ConstantConditions
@@ -111,7 +111,7 @@ public class ContactDetailsFragment extends Fragment {
 
     private void updateNotes() {
         List<Note> notes = this.contactRepository.getAllContacts();
-        notesAdapter.setNotes(notes);
+        vehiclesAdapter.setNotes(notes);
     }
 
 
@@ -138,10 +138,10 @@ public class ContactDetailsFragment extends Fragment {
         updateNotes();
     }
 
-    NotesAdapter.NoteClickListener noteClickListener = new NotesAdapter.NoteClickListener() {
+    VehiclesAdapter.NoteClickListener noteClickListener = new VehiclesAdapter.NoteClickListener() {
         @Override
         public void onNoteClick(int position) {
-            Note note = notesAdapter.getNote(position);
+            Note note = vehiclesAdapter.getNote(position);
             Long noteId = note.getId();
 
             contactRepository.deleteById(noteId);

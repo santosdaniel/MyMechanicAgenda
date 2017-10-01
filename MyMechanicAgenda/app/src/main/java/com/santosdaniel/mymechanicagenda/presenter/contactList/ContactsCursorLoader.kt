@@ -1,4 +1,4 @@
-package com.santosdaniel.mymechanicagenda.presenter.contact_list
+package com.santosdaniel.mymechanicagenda.presenter.contactList
 
 import android.content.Context
 import android.os.Bundle

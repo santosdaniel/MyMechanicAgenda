@@ -1,4 +1,4 @@
-package com.santosdaniel.mymechanicagenda.presenter.contact_list
+package com.santosdaniel.mymechanicagenda.presenter.contactList
 
 import android.app.Activity
 import android.content.Intent
@@ -12,7 +12,7 @@ import com.santosdaniel.mymechanicagenda.helper.IntentHelper
 import com.santosdaniel.mymechanicagenda.helper.StringHelper
 import com.santosdaniel.mymechanicagenda.presenter.GenericRViewCursorAdapter
 import com.santosdaniel.mymechanicagenda.view.GenericListItem
-import com.santosdaniel.mymechanicagenda.view.contact_details.ContactDetailsActivity
+import com.santosdaniel.mymechanicagenda.view.contactDetails.ContactDetailsActivity
 
 /**
  * Adapter of the list of elements
@@ -68,8 +68,9 @@ class ContactsAdapter
         val item = getItemByView(v)
         if (item != null && !TextUtils.isEmpty(item.lookUpKey)) {
             val intent =  Intent(activity, ContactDetailsActivity::class.java)
-            //intent.putExtra(ContactDetailsActivity.TITLE, item.title)
-            //intent.putExtra(ReceiptDetailsActivity.URL, item.detailsUrl);
+            intent.putExtra(ContactDetailsActivity.LOOKUP_KEY, item.lookUpKey)
+            intent.putExtra(ContactDetailsActivity.TITLE_KEY, item.title)
+            intent.putExtra(ContactDetailsActivity.IMAGE_URI_KEY, item.imageUri)
             IntentHelper.startNewActivity(activity, v, intent)
 
         }
