@@ -11,5 +11,5 @@ object DBHelper {
      * @return False is not a valid identifier to the database
      *         True  is a valid identifier to the database
      */
-    fun validId(id: Long?) : Boolean = ((id != null) && (id > 0))
+    fun validId(id: Long?): Boolean = ((id != null) && (id > 0))
 }

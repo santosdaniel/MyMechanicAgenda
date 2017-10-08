@@ -10,14 +10,12 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
-
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.helper.ToolbarSearchViewHelper
 import com.santosdaniel.mymechanicagenda.helper.UIHelper
-
 import java.io.Serializable
 import java.lang.ref.WeakReference
-import java.util.ArrayList
+import java.util.*
 
 /**
  * Activity that has all the logic used by all the activities of the application
@@ -151,7 +149,7 @@ abstract class GenericActivity<T> : AppCompatActivity() {
      */
     override fun onAttachFragment(fragment: Fragment?) {
         super.onAttachFragment(fragment)
-        if(fragment != null) {
+        if (fragment != null) {
             this.fragmentList!!.add(WeakReference(fragment))
         }
     }

@@ -30,19 +30,6 @@ import com.santosdaniel.mymechanicagenda.view.GenericRecycleViewFragment
  */
 class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), LoaderManager.LoaderCallbacks<Cursor> {
 
-    // Called just before the Fragment displays its UI
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        // Always call the super method first
-        super.onActivityCreated(savedInstanceState)
-
-        val contactsAdapter = ContactsAdapter(activity, this.lstResults!!, loadProgress!!)
-        lstResults!!.adapter = contactsAdapter
-        lstAdapter = contactsAdapter
-
-        // Initializes the loader
-        val emptyBundle = Bundle()
-        loaderManager.initLoader(QueryEnum.ListContacts.ordinal, emptyBundle, this)
-    }
 
     /**
      * Find the views that is going to use in the fragment
@@ -77,6 +64,20 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
         return fragmentView
     }
 
+    // Called just before the Fragment displays its UI
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        // Always call the super method first
+        super.onActivityCreated(savedInstanceState)
+
+        val contactsAdapter = ContactsAdapter(activity, this.lstResults!!, loadProgress!!)
+        lstResults!!.adapter = contactsAdapter
+        lstAdapter = contactsAdapter
+
+        // Initializes the loader
+        val emptyBundle = Bundle()
+        loaderManager.initLoader(QueryEnum.ListContacts.ordinal, emptyBundle, this)
+    }
+
 
     /**
      * Instantiate and return a new Loader for the given ID.
@@ -107,7 +108,7 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
      * @cursor The cursor to set
      */
     private fun setCursorInAdapter(cursor: Cursor?) {
-        if(ContainerHelper.isNotNull(this.lstAdapter)) {
+        if (ContainerHelper.isNotNull(this.lstAdapter)) {
             this.lstAdapter?.setDataSet(cursor)
             this.lstAdapter?.setIsLoading(false)
             this.lstAdapter?.notifyDataSetChanged()

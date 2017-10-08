@@ -67,7 +67,7 @@ class ContactsAdapter
     override fun onClick(v: View) {
         val item = getItemByView(v)
         if (item != null && !TextUtils.isEmpty(item.lookUpKey)) {
-            val intent =  Intent(activity, ContactDetailsActivity::class.java)
+            val intent = Intent(activity, ContactDetailsActivity::class.java)
             intent.putExtra(ContactDetailsActivity.LOOKUP_KEY, item.lookUpKey)
             intent.putExtra(ContactDetailsActivity.TITLE_KEY, item.title)
             intent.putExtra(ContactDetailsActivity.IMAGE_URI_KEY, item.imageUri)

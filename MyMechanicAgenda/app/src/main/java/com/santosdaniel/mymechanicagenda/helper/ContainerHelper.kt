@@ -70,7 +70,7 @@ object ContainerHelper {
      *
      * @obj The object to check if it is null
      */
-    private fun <T> isNull(obj : T?) = (obj == null)
+    private fun <T> isNull(obj: T?) = (obj == null)
 
     /**
      * Verifies if a certain object is null null

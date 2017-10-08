@@ -13,7 +13,7 @@ import com.santosdaniel.mymechanicagenda.view.GenericListItem
 /**
  * Adapter of the list of vehicles
  */
-class VehiclesAdapter protected constructor(activity: Activity, recyclerView: RecyclerView, progressBar: ProgressBar) : GenericRViewListAdapter(activity, recyclerView, progressBar) {
+class VehiclesAdapter constructor(activity: Activity, recyclerView: RecyclerView, progressBar: ProgressBar) : GenericRViewListAdapter(activity, recyclerView, progressBar) {
 
     /**
      * Called when the user clicks in one item of the list
@@ -48,7 +48,7 @@ class VehiclesAdapter protected constructor(activity: Activity, recyclerView: Re
 
     }
 
-    fun setVehicles(vehicles: List<Vehicle>) {}
+    fun setVehicles(vehicles: List<Vehicle>?) {}
 
     /*
     private NoteClickListener clickListener;

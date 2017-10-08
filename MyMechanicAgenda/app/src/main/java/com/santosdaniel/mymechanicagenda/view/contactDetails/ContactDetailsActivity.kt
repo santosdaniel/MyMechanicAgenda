@@ -12,7 +12,6 @@ import com.santosdaniel.mymechanicagenda.view.GenericActivity
 class ContactDetailsActivity : GenericActivity<ContactDetailsModel>() {
 
 
-
     /**
      * Initializes the model that is going to use in the activity
      *
@@ -46,7 +45,6 @@ class ContactDetailsActivity : GenericActivity<ContactDetailsModel>() {
 
         title = model!!.title
     }
-
 
 
     companion object {

@@ -37,7 +37,7 @@ class SearchViewDelegator
         if (ContainerHelper.isNotEmpty(fragmentList)) {
             try {
                 val activity = activityRef.get()
-                if(activity != null) {
+                if (activity != null) {
                     val loaderManager = activity.supportLoaderManager
                     for (fragmentWeakReference in (fragmentList!!)) {
 

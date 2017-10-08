@@ -14,7 +14,7 @@ object LogHelper {
      * @param tag     The tag to use while logging the the error
      * @param message The message to get logged
      */
-    fun e(tag: String, message: String) {
+    fun e(tag: String, message: String?) {
         Log.e(tag, message)
     }
 
@@ -26,7 +26,7 @@ object LogHelper {
      * @param message   The message to get logged
      * @param throwable The throwable
      */
-    fun e(tag: String, message: String, throwable: Throwable) {
+    fun e(tag: String, message: String?, throwable: Throwable) {
         Log.e(tag, message, throwable)
     }
 }

@@ -39,8 +39,8 @@ object IntentHelper {
      *
      *return The string that was put in the intent
      */
-    fun getStringFromIntent(intent: Intent, fieldKey : String) : String {
+    fun getStringFromIntent(intent: Intent, fieldKey: String): String {
         val strValue = intent.getStringExtra(fieldKey)
-        return if(TextUtils.isEmpty(strValue)) StringHelper.EMPTY_STRING else strValue;
+        return if (TextUtils.isEmpty(strValue)) StringHelper.EMPTY_STRING else strValue;
     }
 }

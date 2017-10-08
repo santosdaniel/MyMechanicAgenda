@@ -15,9 +15,6 @@ protected constructor() {
     /**
      * Reference to the data access objects provider
      */
-    /**
-     * @return The data access provider
-     */
     protected val daoProvider: DaoProvider
 
     init {

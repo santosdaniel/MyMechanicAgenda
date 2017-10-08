@@ -2,11 +2,14 @@ package com.santosdaniel.mymechanicagenda.model.database
 
 
 import com.raizlabs.android.dbflow.annotation.Column
+import com.raizlabs.android.dbflow.annotation.Table
+import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
 import com.santosdaniel.mymechanicagenda.presenter.vehicleDetails.BrandEnumConverter
 
 /**
  * Used to represent one vehicle in the application
  */
+@Table(database = MyMechanicDatabase::class)
 class Vehicle : GenericEntity() {
 
     /**

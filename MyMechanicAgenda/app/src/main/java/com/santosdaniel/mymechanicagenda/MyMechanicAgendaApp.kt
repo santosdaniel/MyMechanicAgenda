@@ -1,7 +1,7 @@
 package com.santosdaniel.mymechanicagenda
 
 import android.app.Application
-
+import com.raizlabs.android.dbflow.config.FlowConfig
 import com.raizlabs.android.dbflow.config.FlowManager
 
 
@@ -15,6 +15,14 @@ class MyMechanicAgendaApp : Application() {
      */
     override fun onCreate() {
         super.onCreate()
-        FlowManager.init(this)
+        FlowManager.init(FlowConfig.Builder(this).build())
+    }
+
+    /**
+     * Called when the application is going to terminate
+     */
+    override fun onTerminate() {
+        super.onTerminate()
+        FlowManager.destroy()
     }
 }

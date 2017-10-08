@@ -33,7 +33,7 @@ protected constructor(activity: Activity, recyclerView: RecyclerView, progressBa
      *
      * @param viewHolder holder of the view that has the item
      */
-    private fun createGenericListItem(viewHolder: ListItemViewHolder) : GenericListItem {
+    private fun createGenericListItem(viewHolder: ListItemViewHolder): GenericListItem {
         if (viewHolder.data == null) {
             viewHolder.data = GenericListItem()
         }
@@ -54,7 +54,7 @@ protected constructor(activity: Activity, recyclerView: RecyclerView, progressBa
     override fun onBindViewHolder(holder: ListItemViewHolder, position: Int) {
         if (ContainerHelper.isNotEmpty(cursor)) {
             val pCursor = cursor!!
-            if(position < pCursor.count) {
+            if (position < pCursor.count) {
 
                 pCursor.moveToPosition(position)
 
