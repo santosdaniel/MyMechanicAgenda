@@ -9,4 +9,62 @@
     <string name="reason">Reason</string>
     <string name="search" />
     <string name="find_contacts">Find contacts</string>
+    <string name="customer_picture">Picture of customer</string>
+    <string name="passenger">Passengers</string>
+    <string name="saloon">Saloon</string>
+    <string name="convertible">Convertible</string>
+    <string name="station_wagon">Station wagon</string>
+    <string name="truck_station_wagon">Truck station wagon</string>
+    <string name="coupe">Coupe</string>
+    <string name="multipurpose_passenger_car">Multipurpose passenger car</string>
+    <string name="forward_control_passenger_car">Forward control passenger car</string>
+    <string name="special_passenger">Special passenger</string>
+    <string name="bus">Bus</string>
+    <string name="commercial_vehicle">Commercial vehicle</string>
+    <string name="trailer">Trailer</string>
+    <string name="semi_trailer">Semi trailer</string>
+    <string name="motorcycle">Motorcycle</string>
+    <string name="moped">Moped</string>
+    <string name="truck">Truck</string>
+    <string name="other_type">Other type</string>
+    <string name="registration_card">Registration card</string>
+    <string name="invoice">Invoice</string>
+    <string name="vehicle_photo">Vehicle photo</string>
+    <string name="alfa_romeo" translatable="false">Alfa romeo</string>
+    <string name="audi" translatable="false">Audi</string>
+    <string name="bmw" translatable="false">BMW</string>
+    <string name="chrysler" translatable="false">Chrysler</string>
+    <string name="citroen" translatable="false">Citroen</string>
+    <string name="dacia" translatable="false">Dacia</string>
+    <string name="ds" translatable="false">DS</string>
+    <string name="fiat" translatable="false">Fiat</string>
+    <string name="ford" translatable="false">Ford</string>
+    <string name="honda" translatable="false">Honda</string>
+    <string name="hyunday" translatable="false">Hyunday</string>
+    <string name="jaguar" translatable="false">Jaguar</string>
+    <string name="jeep" translatable="false">JEEP</string>
+    <string name="kia" translatable="false">KIA</string>
+    <string name="lancia" translatable="false">Lancia</string>
+    <string name="unknown_brand">Unknown</string>
+    <string name="volvo" translatable="false">Volvo</string>
+    <string name="volswagen" translatable="false">Volswagen</string>
+    <string name="vauxhall" translatable="false">Vauxhall</string>
+    <string name="toyota" translatable="false">Toyota</string>
+    <string name="suzuki" translatable="false">Suzuki</string>
+    <string name="skoda" translatable="false">SKODA</string>
+    <string name="seat" translatable="false">SEAT</string>
+    <string name="renault" translatable="false">Renaut</string>
+    <string name="porche" translatable="false">Porche</string>
+    <string name="peugeot" translatable="false">Peugeot</string>
+    <string name="opel" translatable="false">Opel</string>
+    <string name="nissan" translatable="false">Nissan</string>
+    <string name="mitsubishi" translatable="false">Mitsubishi</string>
+    <string name="mini" translatable="false">MINI</string>
+    <string name="mercedes" translatable="false">Mercedes</string>
+    <string name="mazda" translatable="false">Mazda</string>
+    <string name="lexus" translatable="false">Lexus</string>
+    <string name="land_rover" translatable="false">Land Rover</string>
+    <string name="minutes">m</string>
+    <string name="hours">h</string>
+    <string name="days">d</string>
 </resources>

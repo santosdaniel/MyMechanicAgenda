@@ -7,6 +7,6 @@
 
     <include layout="@layout/application_bar" />
 
-    <include layout="@layout/content_contact_details" />
+    <include layout="@layout/content_customer_details" />
 
 </android.support.design.widget.CoordinatorLayout>

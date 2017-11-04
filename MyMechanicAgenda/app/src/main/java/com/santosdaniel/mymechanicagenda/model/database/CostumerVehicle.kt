@@ -1,10 +1,7 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
 
-import com.raizlabs.android.dbflow.annotation.Column
-import com.raizlabs.android.dbflow.annotation.NotNull
-import com.raizlabs.android.dbflow.annotation.PrimaryKey
-import com.raizlabs.android.dbflow.annotation.Table
+import com.raizlabs.android.dbflow.annotation.*
 import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
 import java.util.*
 
@@ -12,29 +9,25 @@ import java.util.*
 /**
  * Association between contact and vehicle
  */
-/**
- * Default constructor of the association
- */
 @Table(database = MyMechanicDatabase::class)
-class CostumerVehicle {
+class CostumerVehicle : GenericEntity() {
 
-    /**
-     * Identifier of the association in database
-     */
-    @PrimaryKey
-    var id: Long? = null
 
     /**
      * Identifier of the costumer which the vehicle is associated
      */
-    @Column(name = COSTUMER_ID_COLUMN_NAME)
-    var contactId: Long = 0
+    @NotNull
+    @ForeignKeyReference(columnName = COSTUMER_ID_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
+    @ForeignKey(tableClass = Customer::class)
+    var customer: Customer? = null
 
     /**
      * Identifier of the vehicle
      */
-    @Column(name = VEHICLE_ID_COLUMN_NAME)
-    var vehicleId: Long = 0
+    @NotNull
+    @ForeignKeyReference(columnName = VEHICLE_ID_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
+    @ForeignKey(tableClass = Vehicle::class)
+    var vehicle: Vehicle? = null
 
 
     /**
@@ -53,11 +46,9 @@ class CostumerVehicle {
 
     companion object {
 
-        const val COSTUMER_ID_COLUMN_NAME = "costumerId"
-        const val VEHICLE_ID_COLUMN_NAME = "vehicleId"
+        const val COSTUMER_ID_COLUMN_NAME = "costumer_id"
+        const val VEHICLE_ID_COLUMN_NAME = "vehicle_id"
         const val FROM_COLUMN_NAME = "from"
         const val UNTIL_COLUMN_NAME = "until"
     }
-
-
 }

@@ -39,7 +39,7 @@ dependencies {
 
     // kotlin extensions
     compile "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:${db_flow_version}"
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     // RXJava 1 support
     //compile "com.github.Raizlabs.DBFlow:dbflow-rx:${db_flow_version}"
