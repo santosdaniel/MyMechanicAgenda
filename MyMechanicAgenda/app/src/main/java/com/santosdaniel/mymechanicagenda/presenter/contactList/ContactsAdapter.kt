@@ -54,7 +54,7 @@ class ContactsAdapter
         data.lookUpKey = lookupKey
         data.title = displayName
         data.description = StringHelper.EMPTY_STRING
-        data.imageUri = thumbnailUri
+        data.thumbnailUri = thumbnailUri
         data.imageUri = photoUri
     }
 
@@ -66,7 +66,7 @@ class ContactsAdapter
      */
     override fun onClick(v: View) {
         val item = getItemByView(v)
-        if (item != null && !TextUtils.isEmpty(item.lookUpKey)) {
+        if (item != null && StringHelper.isNotNullOrEmpty(item.lookUpKey)) {
             val intent = Intent(activity, CustomerDetailsActivity::class.java)
             intent.putExtra(CustomerDetailsActivity.LOOKUP_KEY, item.lookUpKey)
             intent.putExtra(CustomerDetailsActivity.TITLE_KEY, item.title)

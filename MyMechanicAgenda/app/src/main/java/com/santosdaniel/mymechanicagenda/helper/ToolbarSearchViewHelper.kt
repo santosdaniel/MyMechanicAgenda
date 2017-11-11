@@ -17,7 +17,7 @@ object ToolbarSearchViewHelper {
      * @param toolbar       Reference to the toolbar of the application
      * @param searchSection Place that wraps the search elements
      */
-    fun showHideSearchView(isSearching: Boolean, toolbar: Toolbar, searchSection: View) =
+    fun showHideSearchView(isSearching: Boolean, toolbar: Toolbar?, searchSection: View?) =
             if (isSearching) {
                 UIHelper.setVisibility(GONE, toolbar)
                 UIHelper.setVisibility(View.VISIBLE, searchSection)

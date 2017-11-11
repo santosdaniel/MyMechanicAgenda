@@ -10,17 +10,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.santosdaniel.mymechanicagenda.view.customerDetails.CustomerDetailsActivity">
 
-    <ImageView
-        android:id="@+id/customer_picture"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/customer_picture"
-        app:srcCompat="@mipmap/person" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/items_list"
         style="@style/items_list_style"
-        android:layout_below="@+id/customer_picture"
         android:layout_centerHorizontal="true"
         app:layout_constraintBottom_toBottomOf="@id/customer_picture"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -31,7 +23,6 @@
     <ProgressBar
         android:id="@+id/load_progress"
         style="@style/load_progress_style"
-        android:layout_below="@+id/customer_picture"
         android:layout_centerHorizontal="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

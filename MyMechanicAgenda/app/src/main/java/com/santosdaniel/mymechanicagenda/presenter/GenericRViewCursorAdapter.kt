@@ -10,6 +10,7 @@ import android.widget.ProgressBar
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.helper.ContainerHelper
 import com.santosdaniel.mymechanicagenda.helper.UIHelper
+import com.santosdaniel.mymechanicagenda.helper.ViewHelper
 import com.santosdaniel.mymechanicagenda.presenter.network.NetworkRequestsSingleton
 import com.santosdaniel.mymechanicagenda.view.GenericListItem
 
@@ -61,14 +62,9 @@ protected constructor(activity: Activity, recyclerView: RecyclerView, progressBa
                 val data = createGenericListItem(holder)
                 fillItemData(data, pCursor)
 
-                if (TextUtils.isEmpty(data.imageUri)) {
-                    //Reset the content of the thumbnail
-                    val unknown = UIHelper.getDrawable(activity, R.mipmap.person)
-                    holder.thumbnail.setImageDrawable(unknown)
-                } else {
-                    val imageLoader = NetworkRequestsSingleton.getInstance(activity.applicationContext).localImageLoader
-                    imageLoader.load(data.imageUri!!, holder.thumbnail)
-                }
+                //Load the image of the contact
+                ViewHelper.loadImageOrDefault(activity, data.imageUri, R.mipmap.person, holder.thumbnail)
+                //Loads the title of the item
                 holder.title.text = data.title
                 //TODO: If has a car show the model here
                 holder.description.text = data.description

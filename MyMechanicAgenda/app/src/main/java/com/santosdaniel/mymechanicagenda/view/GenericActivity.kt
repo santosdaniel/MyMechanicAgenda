@@ -141,7 +141,7 @@ abstract class GenericActivity<T> : AppCompatActivity() {
         setModel()
         super.onResume()
         bindToolbarViews()
-        ToolbarSearchViewHelper.showHideSearchView(this.genericModel!!.isSearching, this.toolbar!!, this.searchSection!!)
+        ToolbarSearchViewHelper.showHideSearchView(this.genericModel!!.isSearching, this.toolbar, this.searchSection)
     }
 
     /**
@@ -160,7 +160,7 @@ abstract class GenericActivity<T> : AppCompatActivity() {
      * @param withSearch Flag that indicates if the activity supports searchBar or not
      */
     protected fun setToolbarWithTitle(withSearch: Boolean) {
-        this.toolbar = findViewById(R.id.toolbar) as Toolbar
+        this.toolbar = findViewById(R.id.toolbar) as Toolbar?
         if (this.toolbar != null) {
             setSupportActionBar(toolbar)
         }

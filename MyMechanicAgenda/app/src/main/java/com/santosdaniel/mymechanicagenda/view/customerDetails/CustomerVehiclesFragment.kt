@@ -2,15 +2,14 @@ package com.santosdaniel.mymechanicagenda.view.customerDetails
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.ProgressBar
 import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction
-
 import com.santosdaniel.mymechanicagenda.R
+import com.santosdaniel.mymechanicagenda.helper.StringHelper
+import com.santosdaniel.mymechanicagenda.helper.ViewHelper
 import com.santosdaniel.mymechanicagenda.model.database.Customer
 import com.santosdaniel.mymechanicagenda.presenter.customerDetails.CustomerRepository
 import com.santosdaniel.mymechanicagenda.presenter.customerDetails.VehiclesAdapter
@@ -21,14 +20,14 @@ import java.io.Serializable
 /**
  * Activity to present the contact with a list of vehicles
  */
-class CustomerDetailsFragment : GenericRecycleViewFragment<VehiclesAdapter>(), IGenericStateView<CustomerDetailsModel>, QueryTransaction.QueryResultSingleCallback<Customer> {
+class CustomerVehiclesFragment : GenericRecycleViewFragment<VehiclesAdapter>(), IGenericStateView<CustomerDetailsModel>, QueryTransaction.QueryResultSingleCallback<Customer> {
 
-    private var customerPicture : ImageView? = null
+    private var customerPicture: ImageView? = null
 
     private var customerRepository: CustomerRepository? = null
     private var vehiclesAdapter: VehiclesAdapter? = null
     private var contactData: CustomerDetailsModel? = null
-    private var customer : Customer? = null
+    private var customer: Customer? = null
 
     /**
      * Find the views that is going to use in the fragment
@@ -40,17 +39,19 @@ class CustomerDetailsFragment : GenericRecycleViewFragment<VehiclesAdapter>(), I
         super.loadProgress = fragmentView.findViewById(R.id.load_progress)
         this.customerPicture = fragmentView.findViewById(R.id.customer_picture)
 
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        super.lstResults!!.setHasFixedSize(false)
+        if (super.lstResults != null) {
+            // use this setting to improve performance if you know that changes
+            // in content do not change the layout size of the RecyclerView
+            super.lstResults!!.setHasFixedSize(false)
 
-        // use a linear layout manager
-        super.lstLayoutManager = LinearLayoutManager(context)
-        super.lstResults!!.layoutManager = lstLayoutManager
+            // use a linear layout manager
+            super.lstLayoutManager = LinearLayoutManager(context)
+            super.lstResults!!.layoutManager = lstLayoutManager
 
 
-        this.vehiclesAdapter = VehiclesAdapter(activity, super.lstResults!!, super.loadProgress!!)
-        //recyclerView.setAdapter(vehiclesAdapter);
+            this.vehiclesAdapter = VehiclesAdapter(activity, super.lstResults!!, super.loadProgress!!)
+            this.lstResults!!.adapter = vehiclesAdapter
+        }
     }
 
     /**
@@ -62,7 +63,7 @@ class CustomerDetailsFragment : GenericRecycleViewFragment<VehiclesAdapter>(), I
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val fragmentView = inflater!!.inflate(R.layout.fragment_customer_details, container, false)
+        val fragmentView = inflater!!.inflate(R.layout.customer_vehicles_fragment, container, false)
         bindViews(fragmentView)
 
         this.customerRepository = CustomerRepository()
@@ -74,15 +75,14 @@ class CustomerDetailsFragment : GenericRecycleViewFragment<VehiclesAdapter>(), I
      *
      * @param customer  The customer is set it
      */
-    private fun setCustomer(customer: Customer?)
-    {
+    private fun setCustomer(customer: Customer?) {
         loadProgress?.visibility = View.GONE
         if (customer == null) {
             this.customer = Customer()
         } else {
             this.customer = customer
-            this.vehiclesAdapter!!.setVehicles(customer.vehicles)
         }
+        this.vehiclesAdapter!!.setVehicles(this.customer!!.vehicles)
         //Set the temporary data into the customer data
         this.customer!!.lookup = this.contactData!!.lookupId
         this.customer!!.fullName = this.contactData!!.title
@@ -103,10 +103,21 @@ class CustomerDetailsFragment : GenericRecycleViewFragment<VehiclesAdapter>(), I
      *
      * @param lookupId The lookup of the contact
      */
-    private fun loadCustomer(lookupId: String)  {
-        this.customerRepository!!.loadByLookId(lookupId, this)
+    private fun loadCustomer(lookupId: String?) {
+        if (StringHelper.isNotNullOrEmpty(lookupId)) {
+            this.customerRepository!!.loadByLookId(lookupId!!, this)
+        }
     }
 
+    /**
+     * Load the image of the customer
+     */
+    private fun loadThumbnail(imageUri: String?) {
+        //Load the image of the contact
+        if (StringHelper.isNotNullOrEmpty(imageUri) && (customerPicture != null)) {
+            ViewHelper.loadImageOrDefault(activity, imageUri, R.mipmap.person, customerPicture!!)
+        }
+    }
 
     /**
      * Set the state of the view
@@ -116,7 +127,9 @@ class CustomerDetailsFragment : GenericRecycleViewFragment<VehiclesAdapter>(), I
     override fun setState(state: CustomerDetailsModel) {
         this.contactData = state
         loadCustomer(state.lookupId)
+        loadThumbnail(state.imageUri)
     }
+
 
     /**
      * Called when information of the fragment needs to be saved
@@ -125,7 +138,7 @@ class CustomerDetailsFragment : GenericRecycleViewFragment<VehiclesAdapter>(), I
         super.onSaveInstanceState(outState)
         if (outState != null) {
             //Save the contactData
-            if(this.contactData != null) {
+            if (this.contactData != null) {
                 outState.putSerializable(CONTACT_DATA_KEY, this.contactData as Serializable)
             }
             //Save the costumer
@@ -145,8 +158,8 @@ class CustomerDetailsFragment : GenericRecycleViewFragment<VehiclesAdapter>(), I
         if (savedInstanceState != null) {
             this.contactData = savedInstanceState.getSerializable(CONTACT_DATA_KEY) as CustomerDetailsModel?
             this.customer = savedInstanceState.getSerializable(CUSTOMER_KEY) as Customer?
-            if(this.contactData != null) {
-                if(this.customer == null) {
+            if (this.contactData != null) {
+                if (this.customer == null) {
                     this.setState(this.contactData!!)
                 } else {
                     this.setCustomer(this.customer)
@@ -157,7 +170,7 @@ class CustomerDetailsFragment : GenericRecycleViewFragment<VehiclesAdapter>(), I
 
     companion object {
 
-        val TAG = "CustomerDetailsFragment"
+        val TAG = "CustomerVehiclesFragment"
         val CONTACT_DATA_KEY = "contactData"
         val CUSTOMER_KEY = "customer"
     }

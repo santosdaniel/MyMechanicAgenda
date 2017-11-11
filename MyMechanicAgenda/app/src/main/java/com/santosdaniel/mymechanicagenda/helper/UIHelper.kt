@@ -32,9 +32,9 @@ object UIHelper {
      * @param visibility The visibility to set
      * @param views      The array of views to set the visibility
      */
-    fun setVisibility(visibility: Int, vararg views: View) {
+    fun setVisibility(visibility: Int, vararg views: View?) {
         if (ContainerHelper.isNotEmpty(views)) {
-            views.forEach { it -> it.visibility = visibility }
+            views.forEach { it -> it?.visibility = visibility }
         }
     }
 

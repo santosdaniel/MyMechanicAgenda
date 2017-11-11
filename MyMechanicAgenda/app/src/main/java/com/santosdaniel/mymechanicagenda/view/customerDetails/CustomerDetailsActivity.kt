@@ -63,10 +63,10 @@ class CustomerDetailsActivity : GenericActivity<CustomerDetailsModel>() {
      */
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_contact_details)
+        setContentView(R.layout.customer_details_activity)
         setModel(savedInstanceState)
         setToolbarWithTitle(false)
-        bindViews();
+        bindViews()
     }
 
     /**

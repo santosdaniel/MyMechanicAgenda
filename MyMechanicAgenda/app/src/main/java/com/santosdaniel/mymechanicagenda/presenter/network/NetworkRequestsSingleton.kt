@@ -25,8 +25,7 @@ private constructor(
 
     /**
      * ImageLoader is a an orchestrator for large numbers of ImageRequests
-     */
-    /**
+     *
      * @return The loader of the images from the network
      */
     val networkImageLoader: ImageLoader
