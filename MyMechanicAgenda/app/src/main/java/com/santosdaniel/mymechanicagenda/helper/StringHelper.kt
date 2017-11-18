@@ -4,7 +4,8 @@ package com.santosdaniel.mymechanicagenda.helper
  * Container methods to the manage strings
  */
 object StringHelper {
-    var EMPTY_STRING = ""
+    val EMPTY_STRING = ""
+    val SPACE = " "
 
     /**
      * Checks if a string is null or empty

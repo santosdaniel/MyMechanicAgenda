@@ -114,8 +114,8 @@ class CustomerVehiclesFragment : GenericRecycleViewFragment<VehiclesAdapter>(), 
      */
     private fun loadThumbnail(imageUri: String?) {
         //Load the image of the contact
-        if (StringHelper.isNotNullOrEmpty(imageUri) && (customerPicture != null)) {
-            ViewHelper.loadImageOrDefault(activity, imageUri, R.mipmap.person, customerPicture!!)
+        if (StringHelper.isNotNullOrEmpty(imageUri)) {
+            ViewHelper.loadImageOrDefault(activity, imageUri, R.mipmap.person, customerPicture)
         }
     }
 

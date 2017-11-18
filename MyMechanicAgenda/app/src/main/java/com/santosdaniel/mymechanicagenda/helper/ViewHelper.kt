@@ -19,14 +19,7 @@ object ViewHelper {
                     .setAction("Action", null).show()
 
 
-    /**
-     *
-     * @property activity reference to the activity where the image is going to be load
-     * @property imageUri uri to the image to load
-     * @property defaultDrawableId identifier of the drawable used if the image uri does not exists
-     * @property imageView imageView where is to load the image
-     */
-    fun loadImageOrDefault(activity: Activity, imageUri: String?, defaultDrawableId: Int, imageView: ImageView) {
+    private fun pLoadImageOrDefault(activity: Activity, imageUri: String?, defaultDrawableId: Int, imageView: ImageView) {
         if (StringHelper.isNullOrEmpty(imageUri)) {
             //Reset the content of the thumbnail
             val defaultIcon = UIHelper.getDrawable(activity, defaultDrawableId)
@@ -35,6 +28,20 @@ object ViewHelper {
             //Uses the loader of images to make to load asynchronous
             val imageLoader = NetworkRequestsSingleton.getInstance(activity.applicationContext).localImageLoader
             imageLoader.load(imageUri!!, imageView)
+        }
+    }
+
+    /**
+     *  Loads an image or end ups loading the default image passed
+     *
+     * @property activity reference to the activity where the image is going to be load
+     * @property imageUri uri to the image to load
+     * @property defaultDrawableId identifier of the drawable used if the image uri does not exists
+     * @property imageView imageView where is to load the image
+     */
+    fun loadImageOrDefault(activity: Activity, imageUri: String?, defaultDrawableId: Int, imageView: ImageView?) {
+        if(imageView != null) {
+            pLoadImageOrDefault(activity, imageUri, defaultDrawableId, imageView)
         }
     }
 }

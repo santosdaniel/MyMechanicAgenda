@@ -26,6 +26,10 @@
         <activity
             android:name=".view.customerDetails.CustomerDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.vehicleDetails.edit.EditVehicleDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

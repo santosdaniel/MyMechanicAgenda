@@ -6,44 +6,44 @@ import java.io.Serializable
 import java.util.*
 
 /**
- * Represents one intervention made over a certain vehicle
+ * Represents one reparation made over a certain vehicle
  */
 @Table(database = MyMechanicDatabase::class)
-class Intervention : GenericEntity(), Serializable {
+class Reparation : GenericEntity(), Serializable {
 
     /**
-     * The vehicle were was made the intervention
+     * The vehicle were was made the reparation
      */
     @ForeignKeyReference(columnName = VEHICLE_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
     @ForeignKey(tableClass = Vehicle::class)
     var vehicle: Vehicle? = null
 
     /**
-     * List of documents associated with intervention
+     * List of documents associated with reparation
      */
     @get:OneToMany(methods = arrayOf(OneToMany.Method.ALL), variableName = DOCUMENTS_VARIABLE_NAME)
     var documents: List<Document>? = null
 
     /**
-     * Date when the intervention was made
+     * Date when the reparation was made
      */
     @Column(name = DATE_COLUMN_NAME)
     var date: Date? = null
 
     /**
-     * Small description of the intervention made
+     * Small description of the reparation made
      */
     @Column(name = DESCRIPTION_COLUMN_NAME)
     var description: String? = null
 
     /**
-     * Small description of the intervention made
+     * Small description of the reparation made
      */
     @Column(name = DURATION_VALUE_COLUMN_NAME)
     var durationValue: Float? = null
 
     /**
-     * Unit of the duration of the intervention
+     * Unit of the duration of the reparation
      */
     @Column(name = DURATION_UNIT_COLUMN_NAME, typeConverter = TimeUnitConverter::class)
     var durationUnit: TimeUnit? = null

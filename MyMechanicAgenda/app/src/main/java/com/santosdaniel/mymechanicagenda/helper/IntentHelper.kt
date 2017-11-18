@@ -8,6 +8,7 @@ import android.text.TextUtils
 import android.view.View
 
 import com.santosdaniel.mymechanicagenda.R
+import java.io.Serializable
 
 /**
  * Helper to manage intents of the application
@@ -41,6 +42,20 @@ object IntentHelper {
      */
     fun getStringFromIntent(intent: Intent, fieldKey: String): String {
         val strValue = intent.getStringExtra(fieldKey)
-        return if (TextUtils.isEmpty(strValue)) StringHelper.EMPTY_STRING else strValue;
+        return if (TextUtils.isEmpty(strValue)) StringHelper.EMPTY_STRING else strValue
+    }
+
+    /**
+     * Get a serializable from the intent
+     *
+     * @param intent    Intent from is to get the string
+     * @param fieldKey  key of the field to read from the intent
+     */
+    fun getSerializable(intent: Intent, fieldKey: String): Serializable? {
+        return try {
+            intent.getSerializableExtra(fieldKey)
+        } catch (e: Throwable) {
+            null
+        }
     }
 }

@@ -1,21 +1,21 @@
-package com.santosdaniel.mymechanicagenda.view.customerDetails
+package com.santosdaniel.mymechanicagenda.view.vehicleDetails.edit
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.widget.ImageView
-
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.helper.IntentHelper
 import com.santosdaniel.mymechanicagenda.helper.ViewHelper
+import com.santosdaniel.mymechanicagenda.model.database.Vehicle
+import com.santosdaniel.mymechanicagenda.presenter.vehicleDetails.VehicleHelper
 import com.santosdaniel.mymechanicagenda.view.GenericActivity
 import com.santosdaniel.mymechanicagenda.view.IGenericStateView
-import com.santosdaniel.mymechanicagenda.view.vehicleDetails.edit.EditVehicleDetailsActivity
 
 /**
- * Activity to present the contact with a list of vehicles
+ * Activity to edit a vehicle
  */
-class CustomerDetailsActivity : GenericActivity<CustomerDetailsModel>() {
+class EditVehicleDetailsActivity : GenericActivity<Vehicle>() {
 
     /**
      * Reference to picture of the customer
@@ -27,10 +27,10 @@ class CustomerDetailsActivity : GenericActivity<CustomerDetailsModel>() {
      */
     private var addVehicle: FloatingActionButton? = null
 
-    private fun setFragmentsModel(model: CustomerDetailsModel) {
+    private fun setFragmentsModel(model: Vehicle) {
         val fullContentDetails = supportFragmentManager.findFragmentById(R.id.full_content_details_fragment)
-        if(fullContentDetails is IGenericStateView<*>) {
-            (fullContentDetails as IGenericStateView<CustomerDetailsModel>).setState(model)
+        if (fullContentDetails is IGenericStateView<*>) {
+            (fullContentDetails as IGenericStateView<Vehicle>).setState(model)
         }
     }
 
@@ -41,13 +41,8 @@ class CustomerDetailsActivity : GenericActivity<CustomerDetailsModel>() {
      */
     private fun setModel(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
-            val model = CustomerDetailsModel()
-            model.lookupId = IntentHelper.getStringFromIntent(intent, LOOKUP_KEY)
-            model.title = IntentHelper.getStringFromIntent(intent, TITLE_KEY)
-            model.imageUri = IntentHelper.getStringFromIntent(intent, IMAGE_URI_KEY)
-
-            super.model = model
-            setFragmentsModel(model)
+            val model = IntentHelper.getSerializable(intent, MODEL_KEY)
+            super.model = if (model == null) Vehicle() else (model as Vehicle)
         }
     }
 
@@ -82,19 +77,16 @@ class CustomerDetailsActivity : GenericActivity<CustomerDetailsModel>() {
      */
     public override fun onResume() {
         super.onResume()
-        if(this.model != null) {
-            val mModel = model as CustomerDetailsModel
-            title = mModel.title
-            ViewHelper.loadImageOrDefault(this, mModel.imageUri, R.mipmap.person, this.customerPicture)
-            mModel.imageUri
+        if (this.model != null) {
+            val mModel = model as Vehicle
+            title = VehicleHelper.brandAndModel(mModel, this)
+            val photoUri = VehicleHelper.photoUri(mModel)
+            ViewHelper.loadImageOrDefault(this, photoUri, R.mipmap.add_car, this.customerPicture)
         }
-
     }
 
 
     companion object {
-        const val LOOKUP_KEY = "lookup"
-        const val TITLE_KEY = "title"
-        const val IMAGE_URI_KEY = "imageUri"
+        const val MODEL_KEY = "model"
     }
 }

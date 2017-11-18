@@ -21,11 +21,11 @@ class VehicleRepository : GenericRepository<Vehicle>() {
      * @param vehicle the vehicle that is to create
      */
     override fun create(vehicle: Vehicle): Long? {
-        try {
-            return daoProvider.vehicleDao.insert(vehicle)
+        return try {
+            daoProvider.vehicleDao.insert(vehicle)
         } catch (e: Exception) {
             LogHelper.e(TAG, e.message, e)
-            return null
+            null
         }
 
     }
@@ -36,11 +36,11 @@ class VehicleRepository : GenericRepository<Vehicle>() {
      * @param vehicle the entity that to update
      */
     override fun update(vehicle: Vehicle): Boolean {
-        try {
-            return daoProvider.vehicleDao.update(vehicle)
+        return try {
+            daoProvider.vehicleDao.update(vehicle)
         } catch (e: Exception) {
             LogHelper.e(TAG, e.message)
-            return false
+            false
         }
 
     }
@@ -51,7 +51,6 @@ class VehicleRepository : GenericRepository<Vehicle>() {
      */
     fun loadById(identifier: Long?): Vehicle? {
         return if (DBHelper.validId(identifier)) {
-
             null
         } else {
             //The identifier is not valid to search in database
@@ -70,8 +69,9 @@ class VehicleRepository : GenericRepository<Vehicle>() {
         return daoProvider.vehicleDao.delete(vehicle)
     }
 
-    companion object {
 
+
+    companion object {
         private val TAG = "VehicleRepository"
     }
 }

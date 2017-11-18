@@ -5,7 +5,7 @@ import com.santosdaniel.mymechanicagenda.R
 /**
  * Enumeration with list of brands available in the system
  */
-enum class BrandEnum(name: Int, icon: Int) {
+enum class BrandEnum(val brandName: Int, val icon: Int) {
     ALFA_ROMEO(R.string.alfa_romeo, R.mipmap.alfa_romeo),
     AUDI(R.string.audi, R.mipmap.audi),
     BMW(R.string.bmw, R.mipmap.bmw),
@@ -40,4 +40,5 @@ enum class BrandEnum(name: Int, icon: Int) {
     VOLKSWAGEN(R.string.volswagen, R.mipmap.volswagen),
     VOLVO(R.string.volvo, R.mipmap.volvo),
     UNKNOWN(R.string.unknown_brand, R.mipmap.unknown_brand)
+
 }

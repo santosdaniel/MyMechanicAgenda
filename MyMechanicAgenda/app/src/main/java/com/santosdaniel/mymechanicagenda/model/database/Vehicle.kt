@@ -51,10 +51,10 @@ class Vehicle : GenericEntity(), Serializable {
     var year: Int? = null
 
     /**
-     * List of interventions made in the vehicle
+     * List of reparations made in the vehicle
      */
-    @get:OneToMany(methods = arrayOf(OneToMany.Method.ALL), variableName = INTERVENTIONS_VARIABLE_NAME)
-    var interventions: List<Intervention>? = null
+    @get:OneToMany(methods = arrayOf(OneToMany.Method.ALL), variableName = REPARATIONS_VARIABLE_NAME)
+    var reparations: List<Reparation>? = null
 
     companion object {
         private const val serialVersionUID = -4913897499672647187L
@@ -64,6 +64,6 @@ class Vehicle : GenericEntity(), Serializable {
         private const val BRAND_COLUMN_NAME = "brand"
         private const val MODEL_COLUMN_NAME = "model"
         private const val YEAR_COLUMN_NAME = "year"
-        private const val INTERVENTIONS_VARIABLE_NAME = "interventions"
+        private const val REPARATIONS_VARIABLE_NAME = "reparations"
     }
 }
