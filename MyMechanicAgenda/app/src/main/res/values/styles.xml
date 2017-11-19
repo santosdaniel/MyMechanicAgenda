@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- Base application theme. -->
@@ -55,14 +56,37 @@
         <item name="android:layout_marginTop">24dp</item>
     </style>
 
-    <style name="add_element_button">
+    <style name="common_add_element_button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">64dp</item>
-        <item name="android:layout_marginEnd">64dp</item>
-        <item name="android:layout_marginRight">64dp</item>
+        <item name="android:layout_marginBottom">@dimen/button_margins</item>
+        <item name="android:layout_marginRight">@dimen/button_margins</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
     </style>
 
+    <style name="add_element_button" parent="common_add_element_button" />
+
+    <style name="main_coordinate_layout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="main_app_bar_layout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/main_app_bar_height</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+
+    <style name="main_sv_of_coordinate_layout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="main_content_of_coordinate_layout_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

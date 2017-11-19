@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="add_element_button" parent="common_add_element_button">
+        <item name="android:layout_marginEnd">@dimen/button_margins</item>
+    </style>
+</resources>

@@ -6,4 +6,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="corners_dimensions">5dp</dimen>
+    <dimen name="button_margins">64dp</dimen>300dp
+    <dimen name="main_app_bar_height">300dp</dimen>
 </resources>

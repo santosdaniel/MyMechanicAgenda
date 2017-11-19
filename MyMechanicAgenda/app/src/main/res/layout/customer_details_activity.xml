@@ -4,32 +4,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_contact_details"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    style="@style/main_coordinate_layout_style"
     tools:context=".view.contactList.ContactListActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/main.appbar"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        style="@style/main_app_bar_layout_style">
 
         <include layout="@layout/collapsing_image_toolbar" />
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/main_sv_of_coordinate_layout_style"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <fragment
             android:id="@+id/full_content_details_fragment"
             android:name="com.santosdaniel.mymechanicagenda.view.customerDetails.CustomerVehiclesFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/main_content_of_coordinate_layout_style"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:layout="@layout/customer_vehicles_fragment" />
     </android.support.v4.widget.NestedScrollView>
