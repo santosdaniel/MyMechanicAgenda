@@ -49,7 +49,7 @@ class CustomerVehiclesFragment : GenericRecycleViewFragment<VehiclesAdapter>(), 
             super.lstResults!!.layoutManager = lstLayoutManager
 
 
-            this.vehiclesAdapter = VehiclesAdapter(activity, super.lstResults!!, super.loadProgress!!)
+            this.vehiclesAdapter = VehiclesAdapter(activity!!, super.lstResults!!, super.loadProgress!!)
             this.lstResults!!.adapter = vehiclesAdapter
         }
     }
@@ -60,7 +60,7 @@ class CustomerVehiclesFragment : GenericRecycleViewFragment<VehiclesAdapter>(), 
      * @param savedInstanceState The state previously saved
      * @return The view that is going support the fragment
      */
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
         val fragmentView = inflater!!.inflate(R.layout.generic_progress_list_fragment, container, false)
@@ -115,7 +115,7 @@ class CustomerVehiclesFragment : GenericRecycleViewFragment<VehiclesAdapter>(), 
     private fun loadThumbnail(imageUri: String?) {
         //Load the image of the contact
         if (StringHelper.isNotNullOrEmpty(imageUri)) {
-            ViewHelper.loadImageOrDefault(activity, imageUri, R.mipmap.person, customerPicture)
+            ViewHelper.loadImageOrDefault(activity!!, imageUri, R.mipmap.person, customerPicture)
         }
     }
 
@@ -134,7 +134,7 @@ class CustomerVehiclesFragment : GenericRecycleViewFragment<VehiclesAdapter>(), 
     /**
      * Called when information of the fragment needs to be saved
      */
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         if (outState != null) {
             //Save the contactData

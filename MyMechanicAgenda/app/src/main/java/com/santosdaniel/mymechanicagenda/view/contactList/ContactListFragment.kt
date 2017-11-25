@@ -57,7 +57,7 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
      *
      * @return  The view that is going support the fragment
      */
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val fragmentView = inflater!!.inflate(R.layout.generic_list_content, container, false)
         bindViews(fragmentView)
@@ -69,7 +69,7 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
         // Always call the super method first
         super.onActivityCreated(savedInstanceState)
 
-        val contactsAdapter = ContactsAdapter(activity, this.lstResults!!, loadProgress!!)
+        val contactsAdapter = ContactsAdapter(activity!!, this.lstResults!!, loadProgress!!)
         lstResults!!.adapter = contactsAdapter
         lstAdapter = contactsAdapter
 
@@ -89,15 +89,15 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
     override fun onCreateLoader(id: Int, args: Bundle): Loader<Cursor>? {
         this.lstAdapter!!.setIsLoading(true)
         return if (id == QueryEnum.ListContacts.ordinal) {
-            return if (PermissionsRequestHelper.requestPermission(activity, Manifest.permission.READ_CONTACTS, PermissionEnum.ReadContacts.ordinal)) {
-                ContactsCursorLoader(context, args)
+            return if (PermissionsRequestHelper.requestPermission(activity!!, Manifest.permission.READ_CONTACTS, PermissionEnum.ReadContacts.ordinal)) {
+                ContactsCursorLoader(context!!, args)
             } else {
                 //Does not has enough permissions to get the contacts from the user
                 setCursorInAdapter(null)
                 null
             }
         } else {
-            Log.e("cc", "Unexpected id: " + id)
+            Log.e(CONTACT_LIST_FRAGMENT_TAG, "Unexpected id: " + id)
             null
         }
     }
@@ -146,4 +146,9 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
                                             grantResults: IntArray) =
             super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+    companion object {
+
+        private const val CONTACT_LIST_FRAGMENT_TAG = "ContactListFragment"
+    }
 }

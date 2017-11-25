@@ -102,7 +102,7 @@ abstract class GenericActivity<T> : AppCompatActivity() {
      * Bind the events of the search view
      */
     private fun bindSearchView() {
-        this.searchView = findViewById(R.id.search_view) as SearchView
+        this.searchView = findViewById(R.id.search_view)
         if (searchView != null) {
             val searchViewDelegator = SearchViewDelegator(this, this.fragmentList)
             searchView!!.setOnQueryTextListener(searchViewDelegator)
@@ -124,7 +124,7 @@ abstract class GenericActivity<T> : AppCompatActivity() {
                 bindSearchView()
                 //Quits the search mode of the view
                 val searchQuitOnClickListener = SearchQuitOnClickListener(this.toolbar!!, this.searchSection!!, this.searchView!!, this.genericModel!!)
-                this.searchQuit = findViewById(R.id.search_quit) as ImageView
+                this.searchQuit = findViewById(R.id.search_quit)
                 this.searchQuit!!.setOnClickListener(searchQuitOnClickListener)
             } else {
                 //If is to not search is going to hide the search section
@@ -160,7 +160,7 @@ abstract class GenericActivity<T> : AppCompatActivity() {
      * @param withSearch Flag that indicates if the activity supports searchBar or not
      */
     protected fun setToolbarWithTitle(withSearch: Boolean) {
-        this.toolbar = findViewById(R.id.toolbar) as Toolbar?
+        this.toolbar = findViewById(R.id.toolbar)
         if (this.toolbar != null) {
             setSupportActionBar(toolbar)
         }
