@@ -57,7 +57,7 @@ class CustomerDetailsActivity : GenericActivity<CustomerDetailsModel>() {
     private fun bindViews() {
         //Makes the bind of the addVehicle
         this.addVehicle = findViewById(R.id.add_vehicle) as FloatingActionButton?
-        this.customerPicture = findViewById(R.id.customer_picture) as ImageView?
+        this.customerPicture = findViewById(R.id.tool_bar_picture) as ImageView?
         this.addVehicle?.setOnClickListener({
             val intent = Intent(this, EditVehicleDetailsActivity::class.java)
             IntentHelper.startNewActivity(this, this.addVehicle!!, intent)

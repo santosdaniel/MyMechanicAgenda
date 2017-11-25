@@ -41,18 +41,6 @@ dependencies {
     compile "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:${db_flow_version}"
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    // RXJava 1 support
-    //compile "com.github.Raizlabs.DBFlow:dbflow-rx:${db_flow_version}"
-
-    // RXJava 1 Kotlin Extensions Support
-    //compile "com.github.Raizlabs.DBFlow:dbflow-rx-kotlinextensions:${db_flow_version}"
-
-    // RXJava 2 support
-    //compile "com.github.Raizlabs.DBFlow:dbflow-rx2:${db_flow_version}"
-
-    // RXJava 2 Kotlin Extensions Support
-    //compile "com.github.Raizlabs.DBFlow:dbflow-rx2-kotlinextensions:${db_flow_version}"
-
 }
 repositories {
     mavenCentral()

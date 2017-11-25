@@ -6,7 +6,7 @@
     <ImageView
         android:id="@+id/thumbnail"
         style="@style/item_thumbnail"
-        android:padding="5dp"
+        android:padding="@dimen/list_item_thumbnail"
         app:srcCompat="@android:drawable/ic_popup_sync" />
 
     <TextView

@@ -24,13 +24,12 @@
             android:name="com.santosdaniel.mymechanicagenda.view.customerDetails.CustomerVehiclesFragment"
             style="@style/main_content_of_coordinate_layout_style"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:layout="@layout/customer_vehicles_fragment" />
+            tools:layout="@layout/generic_progress_list_fragment" />
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_vehicle"
         style="@style/add_element_button"
-        android:layout_gravity="bottom|end"
         app:backgroundTint="@color/colorPrimaryDark"
-        app:srcCompat="@mipmap/add_car" />
+        app:srcCompat="@mipmap/add_vehicle" />
 </android.support.design.widget.CoordinatorLayout>

@@ -6,7 +6,7 @@
     <string name="reason">Reason</string>
     <string name="search" />
     <string name="find_contacts">Find contacts</string>
-    <string name="customer_picture">Picture of customer</string>
+    <string name="tool_bar_picture">Picture of customer</string>
     <string name="passenger">Passengers</string>
     <string name="saloon">Saloon</string>
     <string name="station_wagon">Station wagon</string>

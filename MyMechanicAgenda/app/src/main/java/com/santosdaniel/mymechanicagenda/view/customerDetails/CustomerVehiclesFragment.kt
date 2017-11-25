@@ -37,7 +37,7 @@ class CustomerVehiclesFragment : GenericRecycleViewFragment<VehiclesAdapter>(), 
     private fun bindViews(fragmentView: View) {
         super.lstResults = fragmentView.findViewById(R.id.items_list)
         super.loadProgress = fragmentView.findViewById(R.id.load_progress)
-        this.customerPicture = fragmentView.findViewById(R.id.customer_picture)
+        this.customerPicture = fragmentView.findViewById(R.id.tool_bar_picture)
 
         if (super.lstResults != null) {
             // use this setting to improve performance if you know that changes
@@ -63,7 +63,7 @@ class CustomerVehiclesFragment : GenericRecycleViewFragment<VehiclesAdapter>(), 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val fragmentView = inflater!!.inflate(R.layout.customer_vehicles_fragment, container, false)
+        val fragmentView = inflater!!.inflate(R.layout.generic_progress_list_fragment, container, false)
         bindViews(fragmentView)
 
         this.customerRepository = CustomerRepository()

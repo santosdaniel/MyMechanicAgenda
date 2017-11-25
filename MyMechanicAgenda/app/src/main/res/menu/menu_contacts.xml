@@ -4,8 +4,8 @@
     tools:context=".view.contactList.ContactListActivity">
     <item
         android:id="@+id/action_search"
+        android:icon="@mipmap/ic_search"
         android:orderInCategory="100"
         android:title="@string/search"
-        android:icon="@mipmap/ic_search"
         app:showAsAction="ifRoom" />
 </menu>
