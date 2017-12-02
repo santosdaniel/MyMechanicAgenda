@@ -3,11 +3,10 @@ package com.santosdaniel.mymechanicagenda.view.customerDetails
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
-import android.widget.ImageView
+import android.support.v4.app.Fragment
 
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.helper.IntentHelper
-import com.santosdaniel.mymechanicagenda.helper.ViewHelper
 import com.santosdaniel.mymechanicagenda.view.GenericActivity
 import com.santosdaniel.mymechanicagenda.view.IGenericStateView
 import com.santosdaniel.mymechanicagenda.view.vehicleDetails.edit.EditVehicleDetailsActivity
@@ -17,21 +16,32 @@ import com.santosdaniel.mymechanicagenda.view.vehicleDetails.edit.EditVehicleDet
  */
 class CustomerDetailsActivity : GenericActivity<CustomerDetailsModel>() {
 
-    /**
-     * Reference to picture of the customer
-     */
-    private var customerPicture: ImageView? = null
 
     /**
      * Floating action that allows to add vehicles
      */
     private var addVehicle: FloatingActionButton? = null
 
-    private fun setFragmentsModel(model: CustomerDetailsModel) {
-        val fullContentDetails = supportFragmentManager.findFragmentById(R.id.full_content_details_fragment)
-        if(fullContentDetails is IGenericStateView<*>) {
-            (fullContentDetails as IGenericStateView<CustomerDetailsModel>).setState(model)
+    /**
+     * The to model into the fragment
+     *
+     * @param model     the model to set in the fragment
+     * @param fragment  the fragment where is to set the model
+     */
+    private fun setFragmentModel(model: CustomerDetailsModel, fragment: Fragment) {
+        if(fragment is IGenericStateView<*>) {
+            (fragment as IGenericStateView<CustomerDetailsModel>).setState(model)
         }
+    }
+
+    /**
+     * Set the model in the fragments that make the activity
+     */
+    private fun setFragmentsModel(model: CustomerDetailsModel) {
+        val contactPicture = supportFragmentManager.findFragmentById(R.id.picture_fragment)
+        val fullContentDetails = supportFragmentManager.findFragmentById(R.id.full_content_details_fragment)
+        setFragmentModel(model, contactPicture)
+        setFragmentModel(model, fullContentDetails)
     }
 
     /**
@@ -57,7 +67,6 @@ class CustomerDetailsActivity : GenericActivity<CustomerDetailsModel>() {
     private fun bindViews() {
         //Makes the bind of the addVehicle
         this.addVehicle = findViewById(R.id.add_vehicle)
-        this.customerPicture = findViewById(R.id.tool_bar_picture)
         this.addVehicle?.setOnClickListener({
             val intent = Intent(this, EditVehicleDetailsActivity::class.java)
             IntentHelper.startNewActivity(this, this.addVehicle!!, intent)
@@ -84,11 +93,8 @@ class CustomerDetailsActivity : GenericActivity<CustomerDetailsModel>() {
         super.onResume()
         if(this.model != null) {
             val mModel = model as CustomerDetailsModel
-            title = mModel.title
-            ViewHelper.loadImageOrDefault(this, mModel.imageUri, R.mipmap.person, this.customerPicture)
-            mModel.imageUri
+            this.title = mModel.title
         }
-
     }
 
 

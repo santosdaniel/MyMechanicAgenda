@@ -17,16 +17,10 @@ import com.santosdaniel.mymechanicagenda.view.IGenericStateView
  */
 class EditVehicleDetailsActivity : GenericActivity<Vehicle>() {
 
-    /**
-     * Reference to picture of the customer
-     */
-    private var customerPicture: ImageView? = null
 
     /**
-     * Floating action that allows to add vehicles
+     * Set the model in the fragments that make part of the activity
      */
-    private var addVehicle: FloatingActionButton? = null
-
     private fun setFragmentsModel(model: Vehicle) {
         val fullContentDetails = supportFragmentManager.findFragmentById(R.id.full_content_details_fragment)
         if (fullContentDetails is IGenericStateView<*>) {
@@ -46,18 +40,7 @@ class EditVehicleDetailsActivity : GenericActivity<Vehicle>() {
         }
     }
 
-    /**
-     * Makes the bind between views and java variables
-     */
-    private fun bindViews() {
-        //Makes the bind of the addVehicle
-        this.addVehicle = findViewById(R.id.add_vehicle)
-        this.customerPicture = findViewById(R.id.tool_bar_picture)
-        this.addVehicle?.setOnClickListener({
-            val intent = Intent(this, EditVehicleDetailsActivity::class.java)
-            IntentHelper.startNewActivity(this, this.addVehicle!!, intent)
-        })
-    }
+
 
     /**
      * Called on create of the activity
@@ -66,24 +49,12 @@ class EditVehicleDetailsActivity : GenericActivity<Vehicle>() {
      */
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.customer_details_activity)
+        setContentView(R.layout.edit_vehicle_details_activity)
         setModel(savedInstanceState)
         setToolbarWithTitle(false)
-        bindViews()
     }
 
-    /**
-     * Called when the activity is resuming
-     */
-    public override fun onResume() {
-        super.onResume()
-        if (this.model != null) {
-            val mModel = model as Vehicle
-            title = VehicleHelper.brandAndModel(mModel, this)
-            val photoUri = VehicleHelper.photoUri(mModel)
-            ViewHelper.loadImageOrDefault(this, photoUri, R.mipmap.vehicle, this.customerPicture)
-        }
-    }
+
 
 
     companion object {

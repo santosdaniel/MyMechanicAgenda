@@ -7,11 +7,12 @@
     style="@style/main_coordinate_layout_style"
     tools:context=".view.contactList.ContactListActivity">
 
-    <fragment
-        android:id="@+id/picture_fragment"
-        android:name="com.santosdaniel.mymechanicagenda.view.customerDetails.CustomerPictureFragment"
-        style="@style/main_app_bar_layout_style"
-        tools:layout="@layout/collapsing_image_toolbar" />
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/main.appbar"
+        style="@style/main_app_bar_layout_style">
+
+        <include layout="@layout/collapsing_image_toolbar" />
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
@@ -20,14 +21,14 @@
 
         <fragment
             android:id="@+id/full_content_details_fragment"
-            android:name="com.santosdaniel.mymechanicagenda.view.customerDetails.CustomerVehiclesFragment"
+            android:name="com.santosdaniel.mymechanicagenda.view.vehicleDetails.edit.EditVehicleDetailsFragment"
             style="@style/main_content_of_coordinate_layout_style"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:layout="@layout/generic_progress_list_fragment" />
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/add_vehicle"
+        android:id="@+id/add_reparation"
         style="@style/add_element_button"
         app:backgroundTint="@color/colorPrimaryDark"
         app:srcCompat="@mipmap/add_vehicle" />

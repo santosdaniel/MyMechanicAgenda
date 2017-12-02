@@ -20,15 +20,9 @@
 
         <fragment
             android:id="@+id/full_content_details_fragment"
-            android:name="com.santosdaniel.mymechanicagenda.view.customerDetails.CustomerVehiclesFragment"
+            android:name="com.santosdaniel.mymechanicagenda.view.vehicleDetails.edit.EditVehicleDetailsFragment"
             style="@style/main_content_of_coordinate_layout_style"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             tools:layout="@layout/generic_progress_list_fragment" />
     </android.support.v4.widget.NestedScrollView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/add_vehicle"
-        style="@style/add_element_button"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:srcCompat="@mipmap/add_vehicle" />
 </android.support.design.widget.CoordinatorLayout>
