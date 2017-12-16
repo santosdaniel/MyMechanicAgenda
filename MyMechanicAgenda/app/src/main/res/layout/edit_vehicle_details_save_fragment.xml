@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/main_content_layout_n_b_padding_style">
+
+    <LinearLayout
+        style="@style/save_button_style"
+        android:background="@color/colorPrimary"
+        android:text="@string/save" />
+
+    <Button
+        android:id="@+id/saveBtn"
+        style="@style/save_button_style"
+        android:text="@string/save" />
+
+</RelativeLayout>

@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.NumberPicker
-import android.widget.TextView
+import android.widget.*
 
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.view.GenericStateFragment
@@ -20,14 +17,11 @@ import java.util.Date
  * Fragment that contains the details of the vehicle to edit
  */
 
-class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
+class EditVehicleSaveFragment : GenericStateFragment<VehicleDetailsModel>() {
 
     /*List of UI variables*/
-    private var vinNumber: EditText? = null
-    private var brand: TextView? = null
-    private var vehicleModel: EditText? = null
-    private var year: EditText? = null
 
+    private var saveBtn: Button? = null
 
 
     /**
@@ -37,26 +31,14 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
      */
     private fun bindViews(fragmentView: View) {
         //Makes the bind of the fragment
-        this.vinNumber = fragmentView.findViewById(R.id.vinNumberValue)
-        this.brand = fragmentView.findViewById(R.id.vinNumberValue)
-        this.vehicleModel = fragmentView.findViewById(R.id.vinNumberValue)
-        this.year = fragmentView.findViewById(R.id.vinNumberValue)
+        this.saveBtn = fragmentView.findViewById(R.id.saveBtn)
     }
-
 
     /**
      * Set the actions that is going to make when the user clicks int the elements of the UI
      */
     private fun setViewActions() {
-        /*
-        editText!!.setOnEditorActionListener(TextView.OnEditorActionListener { v, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                addVehicle()
-                return@OnEditorActionListener true
-            }
-            false
-        })
-        */
+        this.saveBtn!!.setOnClickListener{ _ -> submitVehicle()}
     }
 
     /**
@@ -68,45 +50,12 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val fragmentView = inflater!!.inflate(R.layout.edit_vehicle_details_fragment, container, false)
+        val fragmentView = inflater!!.inflate(R.layout.edit_vehicle_details_save_fragment, container, false)
         bindViews(fragmentView)
         setViewActions()
 
         return fragmentView
     }
-
-
-    /**
-     * Load the VIN number of the vehicle
-     */
-    private fun loadVinNumber(state: VehicleDetailsModel) {}
-    /**
-     * Load the brand of the vehicle
-     */
-    private fun loadBrand(state: VehicleDetailsModel) {}
-    /**
-     * Load the model of the vehicle
-     */
-    private fun loadVehicleModel(state: VehicleDetailsModel) {}
-    /**
-     * Load the year of the vehicle
-     */
-    private fun loadYearModel(state: VehicleDetailsModel) {}
-
-    /**
-     * Set the state of the view
-     *
-     * @param state The state to set
-     */
-    override fun setState(state: VehicleDetailsModel) {
-        super._state = state
-        loadVinNumber(state)
-        loadBrand(state)
-        loadVehicleModel(state)
-        loadYearModel(state)
-    }
-
-
 
     /**
      * Called when the activity is resuming
@@ -123,7 +72,16 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
         */
     }
 
-    private fun addVehicle() {
+    /**
+     * Set the state of the view
+     *
+     * @param state The state to set
+     */
+    override fun setState(state: VehicleDetailsModel) {
+        super._state = state
+    }
+
+    private fun submitVehicle() {
         /*val noteText = editText!!.text.toString()
         editText!!.setText("")
         */
@@ -131,3 +89,4 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
         val comment = "Added on " + df.format(Date())
     }
 }
+

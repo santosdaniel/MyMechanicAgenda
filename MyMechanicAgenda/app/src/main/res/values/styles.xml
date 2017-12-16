@@ -73,6 +73,16 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
+
+    <style name="data_field_row" parent="matches_parent_layout" />
+
+    <style name="data_field_component">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+
     <style name="wrap_content_layout">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -92,6 +102,7 @@
 
     <style name="main_sv_of_coordinate_layout_style" parent="matches_parent_layout" />
 
+
     <style name="main_content_of_coordinate_layout_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -103,4 +114,20 @@
         <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
         <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
     </style>
+
+    <style name="main_content_layout_n_b_padding_style" parent="main_content_layout_style">
+        <item name="android:paddingBottom">0dp</item>
+    </style>
+
+    <style name="common_save_button_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/save_button_height</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:drawableLeft">@android:drawable/ic_menu_save</item>
+        <item name="android:drawableStart">@android:drawable/ic_menu_save</item>
+        <item name="android:textSize">@dimen/save_button_text_size</item>
+    </style>
+
+    <style name="save_button_style" parent="common_save_button_style" />
 </resources>

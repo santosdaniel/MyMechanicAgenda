@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/main_content_layout_style"
+    tools:context="com.santosdaniel.mymechanicagenda.view.customerDetails.CustomerDetailsActivity">
+
+    <!--VIN Number field-->
+    <TableRow
+        android:id="@+id/vinNumberContainer"
+        style="@style/data_field_row">
+
+        <TextView
+            android:id="@+id/vinNumberLabel"
+            style="@style/data_field_component"
+            android:text="@string/vinNumberLabel" />
+
+        <EditText
+            android:id="@+id/vinNumberValue"
+            style="@style/data_field_component"
+            android:ems="10"
+            android:hint="@string/vinNumberLabel"
+            android:inputType="text" />
+
+    </TableRow>
+
+    <!-- brand field -->
+    <TableRow
+        android:id="@+id/brandContainer"
+        style="@style/data_field_row">
+
+        <TextView
+            android:id="@+id/brandLabel"
+            style="@style/data_field_component"
+            android:text="@string/brand" />
+
+        <TextView
+            android:id="@+id/brandValue"
+            style="@style/data_field_component"
+            android:text="@string/loading_data" />
+    </TableRow>
+
+    <!-- model field -->
+    <TableRow
+        android:id="@+id/modelContainer"
+        style="@style/data_field_row">
+
+        <TextView
+            android:id="@+id/modelLabel"
+            style="@style/data_field_component"
+            android:text="@string/vehicle_model" />
+
+        <EditText
+            android:id="@+id/modelValue"
+            style="@style/data_field_component"
+            android:hint="@string/vehicle_model" />
+    </TableRow>
+
+    <!-- year field -->
+    <TableRow
+        android:id="@+id/yearContainer"
+        style="@style/data_field_row">
+
+        <TextView
+            android:id="@+id/yearLabel"
+            style="@style/data_field_component"
+            android:text="@string/model_year" />
+
+        <EditText
+            android:id="@+id/yearValue"
+            style="@style/data_field_component"
+            android:ems="10"
+            android:hint="@string/model_year"
+            android:inputType="numberSigned" />
+    </TableRow>
+
+</TableLayout>

@@ -67,4 +67,10 @@
     <string name="minutes">m</string>
     <string name="hours">h</string>
     <string name="days">d</string>
+    <string name="vinNumberLabel">VIN Number</string>
+    <string name="brand">Brand</string>
+    <string name="loading_data">...Loading...</string>
+    <string name="model_year">Model\'s year</string>
+    <string name="save">Save</string>
+    <string name="vehicle_model">Model</string>
 </resources>
