@@ -1,17 +1,10 @@
 package com.santosdaniel.mymechanicagenda.view.vehicleDetails.edit
 
-import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.widget.ImageView
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.helper.IntentHelper
-import com.santosdaniel.mymechanicagenda.helper.ViewHelper
 import com.santosdaniel.mymechanicagenda.model.database.Vehicle
-import com.santosdaniel.mymechanicagenda.presenter.vehicleDetails.VehicleHelper
-import com.santosdaniel.mymechanicagenda.view.GenericActivity
 import com.santosdaniel.mymechanicagenda.view.GenericFragmentedActivity
-import com.santosdaniel.mymechanicagenda.view.IGenericStateView
 import com.santosdaniel.mymechanicagenda.view.vehicleDetails.VehicleDetailsModel
 
 /**
@@ -28,6 +21,8 @@ class EditVehicleDetailsActivity : GenericFragmentedActivity<VehicleDetailsModel
         super.setFragmentsModel(fragmentIds, model)
     }
 
+
+
     /**
      * Initializes the model that is going to use in the activity
      *
@@ -37,13 +32,13 @@ class EditVehicleDetailsActivity : GenericFragmentedActivity<VehicleDetailsModel
         if (savedInstanceState == null) {
             var model = IntentHelper.getSerializable(intent, MODEL_KEY)
             super.model = if (model == null) VehicleDetailsModel() else (model as VehicleDetailsModel)
-            if((super.model!!).vehicle == null) {
+            if ((super.model!!).vehicle == null) {
                 (super.model!!).vehicle = Vehicle()
             }
+            setTitle(super.model!!)
             setFragmentsModel(super.model!!)
         }
     }
-
 
 
     /**
@@ -58,7 +53,22 @@ class EditVehicleDetailsActivity : GenericFragmentedActivity<VehicleDetailsModel
         setToolbarWithTitle(false)
     }
 
+    /**
+     * Sets the title of the activity
+     */
+    private fun setTitle(model: VehicleDetailsModel) {
+        this.title = if ((model.vehicle == null) || (model.vehicle!!.id == null) || (model.vehicle!!.model == null)) {
+            this.resources.getString(R.string.add_vehicle)
+        } else {
+            this.resources.getString(R.string.edit_specific_vehicle, model.vehicle!!.model!!.name)
+        }
+    }
 
+    public override fun onResume() {
+        super.onResume()
+        setTitle(model!!)
+
+    }
 
 
     companion object {

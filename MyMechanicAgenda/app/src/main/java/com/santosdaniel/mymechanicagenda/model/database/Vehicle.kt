@@ -17,6 +17,14 @@ class Vehicle : GenericEntity(), Serializable {
     @get:OneToMany(methods = arrayOf(OneToMany.Method.ALL), variableName = CUSTOMERS_VARIABLE_NAME)
     var customers: List<Customer>? = null
 
+
+    /**
+     * Path to the place where the photo of the vehicle exists
+     */
+    @ForeignKeyReference(columnName = PHOTO_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
+    @ForeignKey(tableClass = Document::class)
+    var photo: Document? = null
+
     /**
      * List of document that the vehicle have associate
      */
@@ -27,7 +35,7 @@ class Vehicle : GenericEntity(), Serializable {
      * Vehicle identification number
      */
     @Column(name = VI_NUMBER_COLUMN_NAME)
-    var VINumber: String? = null
+    var vinNumber: String? = null
 
     /**
      * The brand of the vehicle
@@ -39,7 +47,7 @@ class Vehicle : GenericEntity(), Serializable {
     /**
      * The model of the vehicle to use
      */
-    @ForeignKeyReference(columnName =  MODEL_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
+    @ForeignKeyReference(columnName = MODEL_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
     @ForeignKey(tableClass = VehicleModel::class)
     var model: VehicleModel? = null
 
@@ -59,6 +67,7 @@ class Vehicle : GenericEntity(), Serializable {
     companion object {
         private const val serialVersionUID = -4913897499672647187L
         private const val CUSTOMERS_VARIABLE_NAME = "customers"
+        private const val PHOTO_COLUMN_NAME = "photoPath"
         private const val DOCUMENTS_VARIABLE_NAME = "documents"
         private const val VI_NUMBER_COLUMN_NAME = "vi_number"
         private const val BRAND_COLUMN_NAME = "brand"

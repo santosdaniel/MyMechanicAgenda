@@ -1,12 +1,14 @@
 package com.santosdaniel.mymechanicagenda.view.vehicleDetails.edit
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.santosdaniel.mymechanicagenda.R
+import com.santosdaniel.mymechanicagenda.helper.ViewHelper
 import com.santosdaniel.mymechanicagenda.view.GenericStateFragment
 import com.santosdaniel.mymechanicagenda.view.vehicleDetails.VehicleDetailsModel
 
@@ -34,6 +36,27 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
     }
 
     /**
+     * Call the camera to take picture of the vehicle
+     */
+    private fun dispatchTakePictureIntent() {
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        if (takePictureIntent.resolveActivity(context!!.packageManager) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+        }
+    }
+
+
+    /**
+     * Bind actions to the elements of the UI
+     */
+    private fun bindActions() {
+        if(this.vehiclePicture != null) {
+            this.vehiclePicture!!.setOnClickListener{ dispatchTakePictureIntent()}
+        }
+
+    }
+
+    /**
      * @param inflater           The inflater of the view
      * @param container          The container where is to inflate the fragment
      * @param savedInstanceState The state previously saved
@@ -44,15 +67,32 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
 
         val fragmentView = inflater!!.inflate(R.layout.collapsing_image_toolbar, container, false)
         bindViews(fragmentView)
+        bindActions()
         return fragmentView
     }
 
 
     /**
+     * Get the path of the photo of the vehicle
+     */
+    private fun getPhotoPath(state: VehicleDetailsModel): String? {
+        return if ((state == null) ||
+                (state.vehicle == null) ||
+                (state.vehicle!!.photo == null) ||
+                (state.vehicle!!.photo!!.photos == null) ||
+                (state.vehicle!!.photo!!.photos!!.isEmpty())
+                       )
+            null
+        else
+            state.vehicle!!.photo!!.photos!!.first().path
+    }
+
+    /**
      * Load the image of the customer
      */
     private fun loadPicture(state: VehicleDetailsModel) {
-        Log.d(TAG, state.toString())
+        val photoPath = getPhotoPath(state)
+        ViewHelper.loadImageOrDefault(activity!!, photoPath, R.mipmap.photo_camera, vehiclePicture)
     }
 
     /**
@@ -84,5 +124,6 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
     companion object {
         val TAG = "EditVehiclePicFragment"
         val VEHICLE_DATA_KEY = "vehicleData"
+        val REQUEST_IMAGE_CAPTURE = 1
     }
 }
