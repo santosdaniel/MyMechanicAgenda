@@ -3,13 +3,13 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_contact_details"
+    android:id="@+id/activity_vehicle_details_edit"
     style="@style/main_coordinate_layout_style"
     tools:context=".view.contactList.ContactListActivity">
 
     <fragment
         android:id="@+id/picture_fragment"
-        android:name="com.santosdaniel.mymechanicagenda.view.customerDetails.CustomerPictureFragment"
+        android:name="com.santosdaniel.mymechanicagenda.view.vehicleDetails.edit.EditVehiclePictureFragment"
         style="@style/main_app_bar_layout_style"
         tools:layout="@layout/collapsing_image_toolbar" />
 

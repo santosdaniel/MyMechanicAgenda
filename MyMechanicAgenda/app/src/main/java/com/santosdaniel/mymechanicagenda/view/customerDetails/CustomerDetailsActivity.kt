@@ -7,14 +7,14 @@ import android.support.v4.app.Fragment
 
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.helper.IntentHelper
-import com.santosdaniel.mymechanicagenda.view.GenericActivity
+import com.santosdaniel.mymechanicagenda.view.GenericFragmentedActivity
 import com.santosdaniel.mymechanicagenda.view.IGenericStateView
 import com.santosdaniel.mymechanicagenda.view.vehicleDetails.edit.EditVehicleDetailsActivity
 
 /**
  * Activity to present the contact with a list of vehicles
  */
-class CustomerDetailsActivity : GenericActivity<CustomerDetailsModel>() {
+class CustomerDetailsActivity : GenericFragmentedActivity<CustomerDetailsModel>() {
 
 
     /**

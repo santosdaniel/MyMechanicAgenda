@@ -1,6 +1,7 @@
 package com.santosdaniel.mymechanicagenda.view.vehicleDetails.edit
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,7 +52,7 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
      * Load the image of the customer
      */
     private fun loadPicture(state: VehicleDetailsModel) {
-        //TODO use the information inside vehicle to load the picture of the vehicle
+        Log.d(TAG, state.toString())
     }
 
     /**
@@ -81,7 +82,7 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
     }
 
     companion object {
-        val TAG = "CustomerPictureFragment"
+        val TAG = "EditVehiclePicFragment"
         val VEHICLE_DATA_KEY = "vehicleData"
     }
 }

@@ -12,7 +12,7 @@ class VehicleDetailsModel : Serializable {
     /**
      * Reference to the vehicle to use in the activity
      */
-    val vehicle: Vehicle? = null
+    var vehicle: Vehicle? = null
 
     companion object {
 

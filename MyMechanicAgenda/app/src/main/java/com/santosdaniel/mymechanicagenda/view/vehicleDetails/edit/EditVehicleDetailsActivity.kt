@@ -10,22 +10,22 @@ import com.santosdaniel.mymechanicagenda.helper.ViewHelper
 import com.santosdaniel.mymechanicagenda.model.database.Vehicle
 import com.santosdaniel.mymechanicagenda.presenter.vehicleDetails.VehicleHelper
 import com.santosdaniel.mymechanicagenda.view.GenericActivity
+import com.santosdaniel.mymechanicagenda.view.GenericFragmentedActivity
 import com.santosdaniel.mymechanicagenda.view.IGenericStateView
+import com.santosdaniel.mymechanicagenda.view.vehicleDetails.VehicleDetailsModel
 
 /**
  * Activity to edit a vehicle
  */
-class EditVehicleDetailsActivity : GenericActivity<Vehicle>() {
+class EditVehicleDetailsActivity : GenericFragmentedActivity<VehicleDetailsModel>() {
 
 
     /**
      * Set the model in the fragments that make part of the activity
      */
-    private fun setFragmentsModel(model: Vehicle) {
-        val fullContentDetails = supportFragmentManager.findFragmentById(R.id.full_content_details_fragment)
-        if (fullContentDetails is IGenericStateView<*>) {
-            (fullContentDetails as IGenericStateView<Vehicle>).setState(model)
-        }
+    private fun setFragmentsModel(model: VehicleDetailsModel) {
+        val fragmentIds = arrayOf(R.id.picture_fragment, R.id.full_content_details_fragment, R.id.save_content_fragment)
+        super.setFragmentsModel(fragmentIds, model)
     }
 
     /**
@@ -35,8 +35,12 @@ class EditVehicleDetailsActivity : GenericActivity<Vehicle>() {
      */
     private fun setModel(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
-            val model = IntentHelper.getSerializable(intent, MODEL_KEY)
-            super.model = if (model == null) Vehicle() else (model as Vehicle)
+            var model = IntentHelper.getSerializable(intent, MODEL_KEY)
+            super.model = if (model == null) VehicleDetailsModel() else (model as VehicleDetailsModel)
+            if((super.model!!).vehicle == null) {
+                (super.model!!).vehicle = Vehicle()
+            }
+            setFragmentsModel(super.model!!)
         }
     }
 
