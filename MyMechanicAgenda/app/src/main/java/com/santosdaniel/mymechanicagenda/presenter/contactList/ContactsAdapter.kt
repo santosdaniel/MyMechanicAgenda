@@ -5,7 +5,6 @@ import android.content.Intent
 import android.database.Cursor
 import android.provider.ContactsContract.Contacts
 import android.support.v7.widget.RecyclerView
-import android.text.TextUtils
 import android.view.View
 import android.widget.ProgressBar
 import com.santosdaniel.mymechanicagenda.helper.IntentHelper

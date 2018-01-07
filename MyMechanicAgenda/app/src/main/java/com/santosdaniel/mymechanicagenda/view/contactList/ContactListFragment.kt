@@ -59,7 +59,7 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val fragmentView = inflater!!.inflate(R.layout.generic_list_content, container, false)
+        val fragmentView = inflater.inflate(R.layout.generic_list_content, container, false)
         bindViews(fragmentView)
         return fragmentView
     }
@@ -144,8 +144,10 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
      * @see .requestPermissions
      */
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
-                                            grantResults: IntArray) =
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+                                            grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        //TODO
+    }
 
     companion object {
 

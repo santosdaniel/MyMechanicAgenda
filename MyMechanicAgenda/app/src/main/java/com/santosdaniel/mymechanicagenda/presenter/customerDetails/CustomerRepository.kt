@@ -55,7 +55,7 @@ class CustomerRepository : GenericRepository<Customer>() {
      *
      * @return The costumer with that lookup identifier
      */
-    fun loadByLookId(lookupId: String, @NonNull callback : QueryTransaction.QueryResultSingleCallback<Customer>) {
+    fun loadByLookId(lookupId: String, @NonNull callback: QueryTransaction.QueryResultSingleCallback<Customer>) {
         try {
             SQLite.select()
                     .from(Customer::class)

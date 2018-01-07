@@ -14,7 +14,7 @@ class DocumentPhoto : GenericEntity(), Serializable {
     /**
      * The document which the photo belongs
      */
-    @ForeignKeyReference(columnName =  DOCUMENT_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
+    @ForeignKeyReference(columnName = DOCUMENT_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
     @ForeignKey(tableClass = Document::class)
     var document: Document? = null
 

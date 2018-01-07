@@ -5,16 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.ImageView
-import android.widget.NumberPicker
 import android.widget.TextView
-
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.view.GenericStateFragment
 import com.santosdaniel.mymechanicagenda.view.vehicleDetails.VehicleDetailsModel
-
 import java.text.DateFormat
-import java.util.Date
+import java.util.*
 
 /**
  * Fragment that contains the details of the vehicle to edit
@@ -27,7 +23,6 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
     private var brand: TextView? = null
     private var vehicleModel: EditText? = null
     private var year: EditText? = null
-
 
 
     /**
@@ -80,14 +75,17 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
      * Load the VIN number of the vehicle
      */
     private fun loadVinNumber(state: VehicleDetailsModel) {}
+
     /**
      * Load the brand of the vehicle
      */
     private fun loadBrand(state: VehicleDetailsModel) {}
+
     /**
      * Load the model of the vehicle
      */
     private fun loadVehicleModel(state: VehicleDetailsModel) {}
+
     /**
      * Load the year of the vehicle
      */
@@ -105,7 +103,6 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
         loadVehicleModel(state)
         loadYearModel(state)
     }
-
 
 
     /**

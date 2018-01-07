@@ -28,7 +28,7 @@ object IntentHelper {
             } else {
                 //Start of activity with shared element transition
                 val transitionName = activityOrigin.resources.getString(R.string.toolbar_transition)
-                if(sharedView == null) {
+                if (sharedView == null) {
                     activityOrigin.startActivity(intent)
                 } else {
                     val transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(activityOrigin, sharedView, transitionName)

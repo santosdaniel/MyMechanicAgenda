@@ -50,8 +50,8 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
      * Bind actions to the elements of the UI
      */
     private fun bindActions() {
-        if(this.vehiclePicture != null) {
-            this.vehiclePicture!!.setOnClickListener{ dispatchTakePictureIntent()}
+        if (this.vehiclePicture != null) {
+            this.vehiclePicture!!.setOnClickListener { dispatchTakePictureIntent() }
         }
 
     }

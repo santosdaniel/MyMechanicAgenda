@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-
+import android.widget.Button
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.view.GenericStateFragment
 import com.santosdaniel.mymechanicagenda.view.vehicleDetails.VehicleDetailsModel
-
 import java.text.DateFormat
-import java.util.Date
+import java.util.*
 
 /**
  * Fragment that contains the details of the vehicle to edit
@@ -38,7 +36,7 @@ class EditVehicleSaveFragment : GenericStateFragment<VehicleDetailsModel>() {
      * Set the actions that is going to make when the user clicks int the elements of the UI
      */
     private fun setViewActions() {
-        this.saveBtn!!.setOnClickListener{ _ -> submitVehicle()}
+        this.saveBtn!!.setOnClickListener { _ -> submitVehicle() }
     }
 
     /**

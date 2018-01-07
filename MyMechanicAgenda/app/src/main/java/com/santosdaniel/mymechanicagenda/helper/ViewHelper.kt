@@ -40,7 +40,7 @@ object ViewHelper {
      * @property imageView imageView where is to load the image
      */
     fun loadImageOrDefault(activity: Activity, imageUri: String?, defaultDrawableId: Int, imageView: ImageView?) {
-        if(imageView != null) {
+        if (imageView != null) {
             pLoadImageOrDefault(activity, imageUri, defaultDrawableId, imageView)
         }
     }

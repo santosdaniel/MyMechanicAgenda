@@ -1,7 +1,6 @@
 package com.santosdaniel.mymechanicagenda.presenter.vehicleDetails
 
 import android.content.Context
-import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.helper.ContainerHelper
 import com.santosdaniel.mymechanicagenda.helper.StringHelper
 import com.santosdaniel.mymechanicagenda.model.database.*
@@ -17,11 +16,11 @@ object VehicleHelper {
      *
      * return A string with brand and model of the vehicle
      */
-    fun brandAndModel(vehicle: Vehicle, context : Context): String {
+    fun brandAndModel(vehicle: Vehicle, context: Context): String {
         var sb = StringBuilder()
         // The brand
         if (vehicle.brand != null) {
-            val brand : BrandEnum = vehicle.brand!!
+            val brand: BrandEnum = vehicle.brand!!
             val brandStr = brand.brandName
             sb.append(brandStr)
         }
@@ -32,7 +31,7 @@ object VehicleHelper {
         //Mode of the vehicle
         if (vehicle.model != null) {
             val model = vehicle.model!!
-            if(StringHelper.isNotNullOrEmpty(model.name)) {
+            if (StringHelper.isNotNullOrEmpty(model.name)) {
                 sb.append(model.name)
             }
         }
@@ -45,17 +44,17 @@ object VehicleHelper {
      * return the string to the path where the photo of the vehicle exists
      */
     fun photoUri(vehicle: Vehicle): String {
-        return if(ContainerHelper.isEmpty(vehicle.documents)) {
+        return if (ContainerHelper.isEmpty(vehicle.documents)) {
             StringHelper.EMPTY_STRING
         } else {
-            val documents : List<Document> = vehicle.documents!!
-            val docPhoto : Document? = documents.firstOrNull { ((it.type != DocumentTypeEnum.PHOTO)) }
+            val documents: List<Document> = vehicle.documents!!
+            val docPhoto: Document? = documents.firstOrNull { ((it.type != DocumentTypeEnum.PHOTO)) }
             if ((docPhoto == null) || (ContainerHelper.isEmpty(docPhoto.photos))) {
                 StringHelper.EMPTY_STRING
             } else {
-                val photos : List<DocumentPhoto> = (docPhoto!!).photos!!
-                val photo : DocumentPhoto? = photos.firstOrNull()
-                if((photo == null) || (StringHelper.isNotNullOrEmpty(photo.path))) {
+                val photos: List<DocumentPhoto> = (docPhoto!!).photos!!
+                val photo: DocumentPhoto? = photos.firstOrNull()
+                if ((photo == null) || (StringHelper.isNotNullOrEmpty(photo.path))) {
                     StringHelper.EMPTY_STRING
                 } else {
                     photo.path!!

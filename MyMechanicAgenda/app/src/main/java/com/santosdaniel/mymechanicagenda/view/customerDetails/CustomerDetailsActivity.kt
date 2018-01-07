@@ -29,7 +29,7 @@ class CustomerDetailsActivity : GenericFragmentedActivity<CustomerDetailsModel>(
      * @param fragment  the fragment where is to set the model
      */
     private fun setFragmentModel(model: CustomerDetailsModel, fragment: Fragment) {
-        if(fragment is IGenericStateView<*>) {
+        if (fragment is IGenericStateView<*>) {
             (fragment as IGenericStateView<CustomerDetailsModel>).setState(model)
         }
     }
@@ -91,7 +91,7 @@ class CustomerDetailsActivity : GenericFragmentedActivity<CustomerDetailsModel>(
      */
     public override fun onResume() {
         super.onResume()
-        if(this.model != null) {
+        if (this.model != null) {
             val mModel = model as CustomerDetailsModel
             this.title = mModel.title
         }
