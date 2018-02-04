@@ -149,7 +149,7 @@ abstract class GenericActivity<T> : AppCompatActivity() {
      */
     override fun onAttachFragment(fragment: Fragment?) {
         super.onAttachFragment(fragment)
-        if (fragment != null) {
+        if ((this.fragmentList != null) && (fragment != null)) {
             this.fragmentList!!.add(WeakReference(fragment))
         }
     }

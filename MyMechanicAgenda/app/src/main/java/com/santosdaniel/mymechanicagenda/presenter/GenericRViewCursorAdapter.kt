@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.ProgressBar
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.helper.ContainerHelper
-import com.santosdaniel.mymechanicagenda.helper.ViewHelper
+import com.santosdaniel.mymechanicagenda.view.generic.ViewHelper
 import com.santosdaniel.mymechanicagenda.view.GenericListItem
 
 /**

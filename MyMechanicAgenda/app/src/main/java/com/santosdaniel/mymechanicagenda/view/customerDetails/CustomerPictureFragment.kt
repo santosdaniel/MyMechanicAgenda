@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.helper.StringHelper
-import com.santosdaniel.mymechanicagenda.helper.ViewHelper
 import com.santosdaniel.mymechanicagenda.model.database.Customer
 import com.santosdaniel.mymechanicagenda.view.IGenericStateView
+import com.santosdaniel.mymechanicagenda.view.generic.ViewHelper
 import java.io.Serializable
 
 /**

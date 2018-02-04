@@ -33,10 +33,9 @@
             style="@style/data_field_component"
             android:text="@string/brand" />
 
-        <TextView
-            android:id="@+id/brandValue"
+        <ImageButton android:id="@+id/brandValueImg"
             style="@style/data_field_component"
-            android:text="@string/loading_data" />
+            android:src="@mipmap/ic_search" />
     </TableRow>
 
     <!-- model field -->

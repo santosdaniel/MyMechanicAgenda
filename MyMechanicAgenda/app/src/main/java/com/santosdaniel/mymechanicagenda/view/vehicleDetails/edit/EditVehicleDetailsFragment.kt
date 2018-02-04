@@ -1,12 +1,14 @@
 package com.santosdaniel.mymechanicagenda.view.vehicleDetails.edit
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.TextView
+import android.widget.ImageButton
 import com.santosdaniel.mymechanicagenda.R
+import com.santosdaniel.mymechanicagenda.helper.StringHelper
 import com.santosdaniel.mymechanicagenda.view.GenericStateFragment
 import com.santosdaniel.mymechanicagenda.view.vehicleDetails.VehicleDetailsModel
 import java.text.DateFormat
@@ -20,7 +22,7 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
 
     /*List of UI variables*/
     private var vinNumber: EditText? = null
-    private var brand: TextView? = null
+    private var brandValueImg: ImageButton? = null
     private var vehicleModel: EditText? = null
     private var year: EditText? = null
 
@@ -33,7 +35,7 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
     private fun bindViews(fragmentView: View) {
         //Makes the bind of the fragment
         this.vinNumber = fragmentView.findViewById(R.id.vinNumberValue)
-        this.brand = fragmentView.findViewById(R.id.vinNumberValue)
+        this.brandValueImg = fragmentView.findViewById(R.id.brandValueImg)
         this.vehicleModel = fragmentView.findViewById(R.id.vinNumberValue)
         this.year = fragmentView.findViewById(R.id.vinNumberValue)
     }
@@ -52,6 +54,17 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
             false
         })
         */
+        brandValueImg?.setOnClickListener(View.OnClickListener {
+            val ft = fragmentManager!!.beginTransaction()
+            val prev = fragmentManager!!.findFragmentByTag(DIALOG_TAG)
+            if (prev == null) {
+                ft.addToBackStack(null)
+
+                // Create and show the dialog.
+                val newFragment = BrandPickerDialog.newInstance(context!!)
+                newFragment.show(ft, DIALOG_TAG)
+            }
+        })
     }
 
     /**
@@ -63,7 +76,7 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val fragmentView = inflater!!.inflate(R.layout.edit_vehicle_details_fragment, container, false)
+        val fragmentView = inflater.inflate(R.layout.edit_vehicle_details_fragment, container, false)
         bindViews(fragmentView)
         setViewActions()
 
@@ -74,22 +87,50 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
     /**
      * Load the VIN number of the vehicle
      */
-    private fun loadVinNumber(state: VehicleDetailsModel) {}
+    private fun loadVinNumber(state: VehicleDetailsModel) {
+        val vehicle = state.vehicle
+        var vinText = StringHelper.EMPTY_STRING
+        if (vehicle != null) {
+            if (StringHelper.isNotNullOrEmpty(vehicle.vinNumber)) {
+                vinText = vehicle.vinNumber!!
+            }
+        }
+        if (vinNumber != null) {
+            vinNumber!!.text = Editable.Factory.getInstance().newEditable(vinText)
+        }
+    }
 
     /**
      * Load the brand of the vehicle
      */
-    private fun loadBrand(state: VehicleDetailsModel) {}
+    private fun loadBrand(state: VehicleDetailsModel) {
+        val vehicle = state.vehicle
+        if (vehicle?.model?.brand == null) {
+            brandValueImg?.setImageResource(R.mipmap.ic_search)
+        } else {
+            brandValueImg?.setImageResource(vehicle.model!!.brand!!.icon)
+        }
+    }
 
     /**
      * Load the model of the vehicle
      */
-    private fun loadVehicleModel(state: VehicleDetailsModel) {}
+    private fun loadVehicleModel(state: VehicleDetailsModel) {
+        val vehicle = state.vehicle
+        if (vehicle != null) {
+
+        }
+    }
 
     /**
      * Load the year of the vehicle
      */
-    private fun loadYearModel(state: VehicleDetailsModel) {}
+    private fun loadYearModel(state: VehicleDetailsModel) {
+        val vehicle = state.vehicle
+        if (vehicle != null) {
+
+        }
+    }
 
     /**
      * Set the state of the view
@@ -108,7 +149,8 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
     /**
      * Called when the activity is resuming
      */
-    public override fun onResume() {
+    @Suppress("RedundantOverride")
+    override fun onResume() {
         super.onResume()
         /*
         if (this.model != null) {
@@ -126,5 +168,9 @@ class EditVehicleDetailsFragment : GenericStateFragment<VehicleDetailsModel>() {
         */
         val df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM)
         val comment = "Added on " + df.format(Date())
+    }
+
+    companion object {
+        const val DIALOG_TAG = "dialog"
     }
 }

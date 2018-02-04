@@ -9,7 +9,7 @@ import android.widget.ImageView
 import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.helper.StringHelper
-import com.santosdaniel.mymechanicagenda.helper.ViewHelper
+import com.santosdaniel.mymechanicagenda.view.generic.ViewHelper
 import com.santosdaniel.mymechanicagenda.model.database.Customer
 import com.santosdaniel.mymechanicagenda.presenter.customerDetails.CustomerRepository
 import com.santosdaniel.mymechanicagenda.presenter.customerDetails.VehiclesAdapter

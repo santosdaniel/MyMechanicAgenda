@@ -54,7 +54,7 @@ class Document : GenericEntity(), Serializable {
      * List of vehicles that the costumer have associate
      */
     @get:OneToMany(methods = arrayOf(OneToMany.Method.ALL), variableName = PHOTOS_VARIABLE_NAME)
-    var photos: List<DocumentPhoto>? = null
+    var photos: MutableList<DocumentPhoto>? = null
 
     /**
      * Define the constants used by the main entity
