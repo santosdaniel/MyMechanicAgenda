@@ -89,7 +89,7 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val fragmentView = inflater!!.inflate(R.layout.collapsing_image_toolbar, container, false)
+        val fragmentView = inflater.inflate(R.layout.collapsing_image_toolbar, container, false)
         bindViews(fragmentView)
         bindActions()
         return fragmentView

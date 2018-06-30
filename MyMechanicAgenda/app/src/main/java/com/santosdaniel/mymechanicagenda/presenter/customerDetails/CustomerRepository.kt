@@ -70,6 +70,6 @@ class CustomerRepository : GenericRepository<Customer>() {
 
     companion object {
 
-        private val TAG = "CustomerRepository"
+        private const val TAG = "CustomerRepository"
     }
 }

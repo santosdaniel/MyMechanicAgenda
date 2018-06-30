@@ -3,7 +3,6 @@ package com.santosdaniel.mymechanicagenda.view.generic
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ProgressBar
-import com.santosdaniel.mymechanicagenda.R
 
 /**
  * provide a set of properties used by the views where recycle views are used
@@ -46,7 +45,7 @@ class GenericRecycleViewProvider<T : RecyclerView.Adapter<*>> {
 
     fun setLayoutManager(linearLayoutManager: RecyclerView.LayoutManager) {
         if(lstResults != null) {
-            lstResults!!.layoutManager = lstLayoutManager
+            lstResults!!.layoutManager = linearLayoutManager
         }
     }
 }

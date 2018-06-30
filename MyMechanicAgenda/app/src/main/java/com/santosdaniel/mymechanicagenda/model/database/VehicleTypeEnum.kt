@@ -1,6 +1,6 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
-import com.santosdaniel.mymechanicagenda.R;
+import com.santosdaniel.mymechanicagenda.R
 
 /**
  * Enumeration with of type of vehicles available

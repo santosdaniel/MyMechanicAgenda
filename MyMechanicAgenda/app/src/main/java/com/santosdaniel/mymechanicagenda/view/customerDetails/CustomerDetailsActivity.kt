@@ -28,7 +28,7 @@ class CustomerDetailsActivity : GenericFragmentedActivity<CustomerDetailsModel>(
      * @param model     the model to set in the fragment
      * @param fragment  the fragment where is to set the model
      */
-    private fun setFragmentModel(model: CustomerDetailsModel, fragment: Fragment) {
+    private fun setFragmentModel(model: CustomerDetailsModel, fragment: Fragment?) {
         if (fragment is IGenericStateView<*>) {
             (fragment as IGenericStateView<CustomerDetailsModel>).setState(model)
         }

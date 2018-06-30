@@ -86,7 +86,7 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
      * @param args Any arguments supplied by the caller.
      * @return Return a new Loader instance that is ready to start loading.
      */
-    override fun onCreateLoader(id: Int, args: Bundle): Loader<Cursor>? {
+    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         this.lstAdapter!!.setIsLoading(true)
         return if (id == QueryEnum.ListContacts.ordinal) {
             return if (PermissionsRequestHelper.requestPermission(activity!!, Manifest.permission.READ_CONTACTS, PermissionEnum.ReadContacts.ordinal)) {
@@ -94,11 +94,13 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
             } else {
                 //Does not has enough permissions to get the contacts from the user
                 setCursorInAdapter(null)
-                null
+                //TODO does not has permissions
+                ContactsCursorLoader(context!!, args)
             }
         } else {
-            Log.e(CONTACT_LIST_FRAGMENT_TAG, "Unexpected id: " + id)
-            null
+            Log.e(CONTACT_LIST_FRAGMENT_TAG, "Unexpected id: $id")
+            //TODO id is not query
+            ContactsCursorLoader(context!!, args)
         }
     }
 

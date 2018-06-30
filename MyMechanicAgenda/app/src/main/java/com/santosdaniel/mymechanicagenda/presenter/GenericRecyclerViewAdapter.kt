@@ -88,7 +88,7 @@ protected constructor(protected val activity: Activity,
     abstract fun stopLoading()
 
     companion object {
-        val NO_ELEMENTS = 0
+        const val NO_ELEMENTS = 0
     }
 
 }

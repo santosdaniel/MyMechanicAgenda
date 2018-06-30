@@ -72,7 +72,7 @@ protected constructor(activity: Activity, recyclerView: RecyclerView, progressBa
      * @return The number of items that have
      */
     override fun getItemCount(): Int =
-            if (ContainerHelper.isEmpty(cursor)) GenericRecyclerViewAdapter.Companion.NO_ELEMENTS else cursor!!.count
+            if (ContainerHelper.isEmpty(cursor)) GenericRecyclerViewAdapter.NO_ELEMENTS else cursor!!.count
 
     /**
      * Find the item that is supported by a certain view

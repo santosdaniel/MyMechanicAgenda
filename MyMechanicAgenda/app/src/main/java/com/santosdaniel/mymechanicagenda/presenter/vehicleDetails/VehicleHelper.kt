@@ -52,7 +52,7 @@ object VehicleHelper {
             if ((docPhoto == null) || (ContainerHelper.isEmpty(docPhoto.photos))) {
                 StringHelper.EMPTY_STRING
             } else {
-                val photos: List<DocumentPhoto> = (docPhoto!!).photos!!
+                val photos: List<DocumentPhoto> = (docPhoto).photos!!
                 val photo: DocumentPhoto? = photos.firstOrNull()
                 if ((photo == null) || (StringHelper.isNotNullOrEmpty(photo.path))) {
                     StringHelper.EMPTY_STRING

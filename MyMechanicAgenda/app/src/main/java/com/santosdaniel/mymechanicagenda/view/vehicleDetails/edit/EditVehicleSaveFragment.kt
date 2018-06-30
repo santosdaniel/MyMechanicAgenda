@@ -48,7 +48,7 @@ class EditVehicleSaveFragment : GenericStateFragment<VehicleDetailsModel>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val fragmentView = inflater!!.inflate(R.layout.edit_vehicle_details_save_fragment, container, false)
+        val fragmentView = inflater.inflate(R.layout.edit_vehicle_details_save_fragment, container, false)
         bindViews(fragmentView)
         setViewActions()
 
@@ -58,7 +58,7 @@ class EditVehicleSaveFragment : GenericStateFragment<VehicleDetailsModel>() {
     /**
      * Called when the activity is resuming
      */
-    public override fun onResume() {
+    override fun onResume() {
         super.onResume()
         /*
         if (this.model != null) {

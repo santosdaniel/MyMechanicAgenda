@@ -16,7 +16,7 @@ class ContactsCursorLoader
  *
  * @param context Reference to the context where the data is going to be loaded
  */
-(context: Context, bundle: Bundle) : CursorLoader(context,
+(context: Context, bundle: Bundle?) : CursorLoader(context,
         Contacts.CONTENT_URI,
         PROJECTION, getSelectionString(bundle),
         getSelectionArgs(bundle),
@@ -24,7 +24,7 @@ class ContactsCursorLoader
 ) {
     companion object {
         //Key of the name (when passed in the bundle
-        val NAME_ATTR = "name"
+        const val NAME_ATTR = "name"
 
 
         //Define a constant that contains the columns you want to return from your query
@@ -59,6 +59,6 @@ class ContactsCursorLoader
         /**
          * Makes the contacts to be sorted by name
          */
-        private val SORT_ORDER = Contacts.DISPLAY_NAME_PRIMARY + " ASC"
+        private const val SORT_ORDER = Contacts.DISPLAY_NAME_PRIMARY + " ASC"
     }
 }

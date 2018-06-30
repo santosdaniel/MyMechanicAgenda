@@ -63,7 +63,7 @@ class CustomerVehiclesFragment : GenericRecycleViewFragment<VehiclesAdapter>(), 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val fragmentView = inflater!!.inflate(R.layout.generic_progress_list_fragment, container, false)
+        val fragmentView = inflater.inflate(R.layout.generic_progress_list_fragment, container, false)
         bindViews(fragmentView)
 
         this.customerRepository = CustomerRepository()
