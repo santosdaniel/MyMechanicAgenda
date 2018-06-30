@@ -52,7 +52,7 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
             this.vehiclePicture!!.setOnClickListener {
                 try {
                     val pictureFile = TakePictureHelper.createPictureFile(activity!!, VEHICLE_PICTURE_PREFIX)
-                    createPicture(pictureFile)
+                    addNewPicture(pictureFile)
                     TakePictureHelper.dispatchTakePictureIntent(activity!!, pictureFile)
                 } catch (ex: IOException) {
                     Log.d("TakePicture", "Impossible to create the picture file", ex)
@@ -61,10 +61,13 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
         }
     }
 
-    private fun createPicture(pictureFile: File) {
+    /**
+     * Add a new picture to the list of pictures handle by the fragment
+     */
+    private fun addNewPicture(pictureFile: File) {
         if ((super._state != null) && (super._state!!.vehicle != null)) {
             //Creates one new document, if needs it
-            if(super._state!!.vehicle!!.photo == null) {
+            if (super._state!!.vehicle!!.photo == null) {
                 val document = Document()
                 document.photos = ArrayList()
                 super._state!!.vehicle!!.photo = document
@@ -141,9 +144,35 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
         super.loadStateFromBundle(savedInstanceState, VEHICLE_DATA_KEY)
     }
 
+    private fun deletePicture(documentPhoto: DocumentPhoto): Boolean {
+        if(documentPhoto.path != null) {
+            File(documentPhoto.path)
+        }
+        return true
+    }
+
+    /*
+     * Delete pictures that are not need it anymore
+     */
+    private fun deletePictures(_state: VehicleDetailsModel?) {
+        if ((_state == null) ||
+                (_state.vehicle == null) ||
+                (_state.vehicle!!.photo == null) ||
+                (_state.vehicle!!.photo!!.photos == null) ||
+                (_state.vehicle!!.photo!!.photos!!.isEmpty())
+                ) {
+            return
+        } else {
+            val vehicle = _state.vehicle!!
+            val photos = vehicle.photo!!.photos!!
+            photos.forEach {  }
+        }
+    }
+
     override fun onResume() {
         super.onResume()
-        if(super._state != null) {
+        if (super._state != null) {
+            deletePictures(super._state)
             loadPicture(super._state!!)
         }
     }
