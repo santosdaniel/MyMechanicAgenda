@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		328D347A20E7FE180004309C /* ContactListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328D347920E7FE180004309C /* ContactListDataSource.swift */; };
 		32AF49A820E7C6B200EBC956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49A720E7C6B200EBC956 /* AppDelegate.swift */; };
 		32AF49AA20E7C6B200EBC956 /* ContactListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49A920E7C6B200EBC956 /* ContactListController.swift */; };
 		32AF49AD20E7C6B200EBC956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AF49AB20E7C6B200EBC956 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		328D347920E7FE180004309C /* ContactListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListDataSource.swift; sourceTree = "<group>"; };
 		32AF49A420E7C6B200EBC956 /* MyMechanicAgendaIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMechanicAgendaIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32AF49A720E7C6B200EBC956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32AF49A920E7C6B200EBC956 /* ContactListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		328D347820E7FDD10004309C /* contactList */ = {
+			isa = PBXGroup;
+			children = (
+				328D347920E7FE180004309C /* ContactListDataSource.swift */,
+			);
+			path = contactList;
+			sourceTree = "<group>";
+		};
 		32AF499B20E7C6B200EBC956 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 		32AF49BF20E7C8A600EBC956 /* presenter */ = {
 			isa = PBXGroup;
 			children = (
+				328D347820E7FDD10004309C /* contactList */,
 			);
 			path = presenter;
 			sourceTree = "<group>";
@@ -199,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				328D347A20E7FE180004309C /* ContactListDataSource.swift in Sources */,
 				32AF49AA20E7C6B200EBC956 /* ContactListController.swift in Sources */,
 				32AF49A820E7C6B200EBC956 /* AppDelegate.swift in Sources */,
 			);
