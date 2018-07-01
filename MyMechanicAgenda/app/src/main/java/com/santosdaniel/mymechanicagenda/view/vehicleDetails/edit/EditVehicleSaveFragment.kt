@@ -76,7 +76,7 @@ class EditVehicleSaveFragment : GenericStateFragment<VehicleDetailsModel>() {
      * @param state The state to set
      */
     override fun setState(state: VehicleDetailsModel) {
-        super._state = state
+        super.lState = state
     }
 
     private fun submitVehicle() {

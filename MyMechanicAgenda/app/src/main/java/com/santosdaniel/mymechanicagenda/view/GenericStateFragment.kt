@@ -12,7 +12,7 @@ abstract class GenericStateFragment<T> : Fragment(), IGenericStateView<T> {
     /**
      * Reference to the model that the fragment acts upon
      */
-    protected var _state: T? = null
+    protected var lState: T? = null
 
 
     /**
@@ -23,8 +23,8 @@ abstract class GenericStateFragment<T> : Fragment(), IGenericStateView<T> {
      */
     protected fun onSaveInstanceState(outState: Bundle, bundleKey: String) {
         super.onSaveInstanceState(outState)
-        if ((outState != null) && (this._state != null) && (!outState.containsKey(bundleKey))) {
-            outState.putSerializable(bundleKey, this._state as Serializable)
+        if ((outState != null) && (this.lState != null) && (!outState.containsKey(bundleKey))) {
+            outState.putSerializable(bundleKey, this.lState as Serializable)
         }
     }
 
@@ -32,7 +32,7 @@ abstract class GenericStateFragment<T> : Fragment(), IGenericStateView<T> {
     /**
      * Set the state of the element
      */
-    override abstract fun setState(state: T)
+    abstract override fun setState(state: T)
 
     /**
      * Called when the activity is created and the fragment is recreated
@@ -44,9 +44,9 @@ abstract class GenericStateFragment<T> : Fragment(), IGenericStateView<T> {
      */
     protected fun loadStateFromBundle(savedInstanceState: Bundle?, bundleKey: String) {
         if (savedInstanceState != null) {
-            this._state = savedInstanceState.getSerializable(bundleKey) as T?
-            if (this._state != null) {
-                this.setState(this._state!!)
+            this.lState = savedInstanceState.getSerializable(bundleKey) as T?
+            if (this.lState != null) {
+                this.setState(this.lState!!)
             }
         }
     }

@@ -65,14 +65,14 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
      * Add a new picture to the list of pictures handle by the fragment
      */
     private fun addNewPicture(pictureFile: File) {
-        if ((super._state != null) && (super._state!!.vehicle != null)) {
+        if ((super.lState != null) && (super.lState!!.vehicle != null)) {
             //Creates one new document, if needs it
-            if (super._state!!.vehicle!!.photo == null) {
+            if (super.lState!!.vehicle!!.photo == null) {
                 val document = Document()
                 document.photos = ArrayList()
-                super._state!!.vehicle!!.photo = document
+                super.lState!!.vehicle!!.photo = document
             }
-            val document: Document = super._state!!.vehicle!!.photo!!
+            val document: Document = super.lState!!.vehicle!!.photo!!
             val newPhoto = DocumentPhoto()
             newPhoto.document = document
             newPhoto.path = pictureFile.absolutePath
@@ -125,7 +125,7 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
      * @param state The state to set
      */
     override fun setState(state: VehicleDetailsModel) {
-        super._state = state
+        super.lState = state
     }
 
 
@@ -171,9 +171,9 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
 
     override fun onResume() {
         super.onResume()
-        if (super._state != null) {
-            deletePictures(super._state)
-            loadPicture(super._state!!)
+        if (super.lState != null) {
+            deletePictures(super.lState)
+            loadPicture(super.lState!!)
         }
     }
 
