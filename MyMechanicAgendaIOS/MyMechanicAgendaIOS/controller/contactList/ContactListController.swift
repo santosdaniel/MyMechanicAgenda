@@ -2,10 +2,10 @@ import UIKit
 
 class ContactListController: UITableViewController {
     
-    private var lstResults: ContactListDataSource!
+    private var lstResults: ContactsDataSource!
     
     private func initializeComponents() {
-        lstResults = ContactListDataSource()
+        lstResults = ContactsDataSource()
     }
     
     override func viewDidLoad() {
