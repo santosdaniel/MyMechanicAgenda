@@ -2,7 +2,14 @@ import UIKit
 import Contacts
 
 /// Provide a list of contacts
-public class ContactsDataSource {
+public class ContactsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
+    
+    public static let GENERIC_LIST_ITEM_XIB = "GenericListItem"
+    public static let GENERIC_LIST_ITEM_ID = "genericListItemId"
+    private static let CONTACT_KEYS: [CNKeyDescriptor] = [
+        CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+        CNContactImageDataAvailableKey,
+        CNContactThumbnailImageDataKey] as! [CNKeyDescriptor]
     
     private var data: [CNContact] = [];
     
@@ -10,14 +17,8 @@ public class ContactsDataSource {
         
     }
     
-    init() {
+    override init() {
         let contactStore = CNContactStore()
-        let keysToFetch = [
-            CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
-            CNContactEmailAddressesKey,
-            CNContactPhoneNumbersKey,
-            CNContactImageDataAvailableKey,
-            CNContactThumbnailImageDataKey] as! [CNKeyDescriptor]
         
         // Get all the containers
         var allContainers: [CNContainer]
@@ -34,7 +35,7 @@ public class ContactsDataSource {
             let fetchPredicate = CNContact.predicateForContactsInContainer(withIdentifier: container.identifier)
             
             do {
-                let containerResults = try contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: keysToFetch)
+                let containerResults = try contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: ContactsDataSource.CONTACT_KEYS)
                 data.append(contentsOf: containerResults)
             } catch {
                 print("Error fetching results for container")
@@ -50,15 +51,28 @@ public class ContactsDataSource {
         return self.data.count
     }
     
+    private func setUICell(_ contact: CNContact, _ cell: GenericListItem) {
+        cell.title?.text = CNContactFormatter.string(from: contact, style: .fullName)
+        
+        
+        cell.desc?.text = "fdd"
+        // Set the contact image.
+        if let thumbnailData = contact.thumbnailImageData {
+            cell.thumbnail.image = UIImage(data: thumbnailData)
+        } else {
+            cell.thumbnail.image = nil
+        }
+    }
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell  = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell  = tableView.dequeueReusableCell(withIdentifier: ContactsDataSource.GENERIC_LIST_ITEM_ID, for: indexPath) as! GenericListItem
         
         //Load data
         let contact = data[indexPath.row]
         
-        //Set ui
-        cell.textLabel?.text = contact.familyName
-        cell.detailTextLabel?.text = contact.nickname
+        setUICell(contact, cell)
+
+        
         
         return cell
     }

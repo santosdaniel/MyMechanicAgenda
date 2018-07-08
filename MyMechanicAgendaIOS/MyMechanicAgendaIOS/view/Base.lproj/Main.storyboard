@@ -43,14 +43,13 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Utg-qL-YwN" id="w91-78-cC7"/>
-                            <outlet property="delegate" destination="Utg-qL-YwN" id="rqT-Us-mqJ"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Contacts" id="nQG-lB-I3J">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="M3P-UC-Gua"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tblContacts" destination="WUU-EZ-pet" id="0ys-7a-QMt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QO4-J4-mru" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

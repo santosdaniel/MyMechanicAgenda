@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="idGenericListItem" rowHeight="104" id="pMc-2a-SOa" customClass="GenericListItem" customModule="MyMechanicAgendaIOS" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="genericListItemId" rowHeight="104" id="pMc-2a-SOa" customClass="GenericListItem" customModule="MyMechanicAgendaIOS" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pMc-2a-SOa" id="VjA-T7-Tpf">
@@ -57,6 +57,11 @@
                     <constraint firstAttribute="bottom" secondItem="51e-yX-1fS" secondAttribute="bottom" constant="1" id="xNA-yA-Je9"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="desc" destination="NFi-lH-mTT" id="5bB-Pc-bcV"/>
+                <outlet property="thumbnail" destination="51e-yX-1fS" id="gSq-2r-WJs"/>
+                <outlet property="title" destination="2PQ-yM-H2b" id="Pi3-Yt-EoZ"/>
+            </connections>
             <point key="canvasLocation" x="25.5" y="82"/>
         </tableViewCell>
     </objects>

@@ -1,15 +1,21 @@
 import UIKit
 
-class ContactListController: UITableViewController {
-    
+class ContactListController: UIViewController {
+
+    @IBOutlet weak var tblContacts: UITableView!
     private var lstResults: ContactsDataSource!
     
-    private func initializeComponents() {
+
+    private func configureTableView() {
         lstResults = ContactsDataSource()
+        tblContacts.delegate = lstResults
+        tblContacts.dataSource = lstResults
+        let uiNib = UINib(nibName: ContactsDataSource.GENERIC_LIST_ITEM_XIB, bundle: nil);
+        tblContacts.register(uiNib, forCellReuseIdentifier: ContactsDataSource.GENERIC_LIST_ITEM_ID)
     }
     
     override func viewDidLoad() {
-                self.initializeComponents();
+                self.configureTableView();
         super.viewDidLoad()
     }
 
@@ -18,12 +24,4 @@ class ContactListController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.lstResults.tableView(tableView, numberOfRowsInSection: section)
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return self.lstResults.tableView(tableView, cellForRowAt: indexPath)
-    }
 }
-
