@@ -6,28 +6,52 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Contacts-->
-        <scene sceneID="PeN-vG-12g">
+        <scene sceneID="90d-nS-bwq">
             <objects>
-                <tableViewController id="Utg-qL-YwN" customClass="ContactListController" customModule="MyMechanicAgendaIOS" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="WUU-EZ-pet">
+                <viewController id="6yy-ga-Exz" customClass="ContactListController" customModule="MyMechanicAgendaIOS" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MkV-mh-7Ue">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="w9r-1l-ORY">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6yy-ga-Exz" id="ej1-hY-yWD"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AUs-nH-tHd">
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Contacts" id="nQG-lB-I3J">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="M3P-UC-Gua"/>
+                        <constraints>
+                            <constraint firstItem="w9r-1l-ORY" firstAttribute="trailing" secondItem="hu7-sp-XZr" secondAttribute="trailing" id="3m3-qn-zev"/>
+                            <constraint firstItem="AUs-nH-tHd" firstAttribute="trailing" secondItem="hu7-sp-XZr" secondAttribute="trailing" id="84G-UG-5Wg"/>
+                            <constraint firstItem="w9r-1l-ORY" firstAttribute="leading" secondItem="hu7-sp-XZr" secondAttribute="leading" id="LWf-7v-RHx"/>
+                            <constraint firstItem="AUs-nH-tHd" firstAttribute="bottom" secondItem="hu7-sp-XZr" secondAttribute="bottom" id="l3j-DM-lHv"/>
+                            <constraint firstItem="AUs-nH-tHd" firstAttribute="leading" secondItem="hu7-sp-XZr" secondAttribute="leading" id="s6d-Ij-ZcI"/>
+                            <constraint firstItem="w9r-1l-ORY" firstAttribute="top" secondItem="hu7-sp-XZr" secondAttribute="top" id="sbA-ZY-YvI"/>
+                            <constraint firstItem="AUs-nH-tHd" firstAttribute="top" secondItem="w9r-1l-ORY" secondAttribute="bottom" id="whY-rG-gPf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hu7-sp-XZr"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Contacts" id="RPy-7S-hWD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wwV-03-hQT"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="tblContacts" destination="WUU-EZ-pet" id="0ys-7a-QMt"/>
+                        <outlet property="tblContacts" destination="AUs-nH-tHd" id="KiA-wH-rxG"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QO4-J4-mru" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BOu-p5-gg8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-199" y="-22"/>
+            <point key="canvasLocation" x="-348" y="-22.03898050974513"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Csg-AE-dKl">
@@ -38,7 +62,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Utg-qL-YwN" kind="relationship" relationship="rootViewController" id="WXW-TN-MOi"/>
+                        <segue destination="6yy-ga-Exz" kind="relationship" relationship="rootViewController" id="7or-za-kjl"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ipe-5S-Z9u" userLabel="First Responder" sceneMemberID="firstResponder"/>

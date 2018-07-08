@@ -1,6 +1,6 @@
 import UIKit
 
-class ContactListController: UIViewController {
+class ContactListController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var tblContacts: UITableView!
     private var lstResults: ContactsDataSource!
@@ -12,6 +12,10 @@ class ContactListController: UIViewController {
         tblContacts.dataSource = lstResults
         let uiNib = UINib(nibName: ContactsDataSource.GENERIC_LIST_ITEM_XIB, bundle: nil);
         tblContacts.register(uiNib, forCellReuseIdentifier: ContactsDataSource.GENERIC_LIST_ITEM_ID)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("\(searchText)")
     }
     
     override func viewDidLoad() {
