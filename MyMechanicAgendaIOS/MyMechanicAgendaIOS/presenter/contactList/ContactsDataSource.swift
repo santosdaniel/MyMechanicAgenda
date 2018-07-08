@@ -6,6 +6,10 @@ public class ContactsDataSource {
     
     private var data: [CNContact] = [];
     
+    private func configureTableView() {
+        
+    }
+    
     init() {
         let contactStore = CNContactStore()
         let keysToFetch = [

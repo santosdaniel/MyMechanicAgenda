@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		323AE4EE20F2147A00A9471D /* GenericListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 323AE4ED20F2147A00A9471D /* GenericListItem.xib */; };
+		323AE4F020F2156400A9471D /* GenericListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323AE4EF20F2156400A9471D /* GenericListItem.swift */; };
 		328D347A20E7FE180004309C /* ContactsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328D347920E7FE180004309C /* ContactsDataSource.swift */; };
 		32AF49A820E7C6B200EBC956 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49A720E7C6B200EBC956 /* AppDelegate.swift */; };
 		32AF49AA20E7C6B200EBC956 /* ContactListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AF49A920E7C6B200EBC956 /* ContactListController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		323AE4ED20F2147A00A9471D /* GenericListItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenericListItem.xib; sourceTree = "<group>"; };
+		323AE4EF20F2156400A9471D /* GenericListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListItem.swift; sourceTree = "<group>"; };
 		328D347920E7FE180004309C /* ContactsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDataSource.swift; sourceTree = "<group>"; };
 		32AF49A420E7C6B200EBC956 /* MyMechanicAgendaIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMechanicAgendaIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32AF49A720E7C6B200EBC956 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,7 +75,6 @@
 				32AF49B920E7C74000EBC956 /* model */,
 				32AF49A720E7C6B200EBC956 /* AppDelegate.swift */,
 				32AF49AE20E7C6B300EBC956 /* Assets.xcassets */,
-				32AF49B020E7C6B300EBC956 /* LaunchScreen.storyboard */,
 				32AF49B320E7C6B300EBC956 /* Info.plist */,
 			);
 			path = MyMechanicAgendaIOS;
@@ -118,7 +121,10 @@
 		32AF49BE20E7C7F500EBC956 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				32AF49B020E7C6B300EBC956 /* LaunchScreen.storyboard */,
 				32AF49AB20E7C6B200EBC956 /* Main.storyboard */,
+				323AE4ED20F2147A00A9471D /* GenericListItem.xib */,
+				323AE4EF20F2156400A9471D /* GenericListItem.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -197,6 +203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				323AE4EE20F2147A00A9471D /* GenericListItem.xib in Resources */,
 				32AF49B220E7C6B300EBC956 /* LaunchScreen.storyboard in Resources */,
 				32AF49AF20E7C6B300EBC956 /* Assets.xcassets in Resources */,
 				32AF49AD20E7C6B200EBC956 /* Main.storyboard in Resources */,
@@ -210,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				323AE4F020F2156400A9471D /* GenericListItem.swift in Sources */,
 				328D347A20E7FE180004309C /* ContactsDataSource.swift in Sources */,
 				32AF49AA20E7C6B200EBC956 /* ContactListController.swift in Sources */,
 				32AF49A820E7C6B200EBC956 /* AppDelegate.swift in Sources */,
