@@ -13,9 +13,6 @@ public class ContactsDataSource: NSObject, UITableViewDelegate, UITableViewDataS
     
     private var data: [CNContact] = [];
     
-    private func configureTableView() {
-        
-    }
     
     override init() {
         let contactStore = CNContactStore()
@@ -51,12 +48,15 @@ public class ContactsDataSource: NSObject, UITableViewDelegate, UITableViewDataS
         return self.data.count
     }
     
+    
     private func setUICell(_ contact: CNContact, _ cell: GenericListItem) {
         cell.title?.text = CNContactFormatter.string(from: contact, style: .fullName)
         
         
         cell.desc?.text = "fdd"
+        
         // Set the contact image.
+        UIHelper.roundImage(cell.thumbnail)
         if let thumbnailData = contact.thumbnailImageData {
             cell.thumbnail.image = UIImage(data: thumbnailData)
         } else {
