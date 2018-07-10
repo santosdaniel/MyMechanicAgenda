@@ -4,6 +4,9 @@ import Contacts
 /// Provide a list of contacts
 public class ContactsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
     
+    private var tblContacts: UITableView!
+    private var loading: UIActivityIndicatorView!
+    
     public static let GENERIC_LIST_ITEM_XIB = "GenericListItem"
     public static let GENERIC_LIST_ITEM_ID = "genericListItemId"
     private static let CONTACT_KEYS: [CNKeyDescriptor] = [
@@ -13,8 +16,16 @@ public class ContactsDataSource: NSObject, UITableViewDelegate, UITableViewDataS
     
     private var data: [CNContact] = [];
     
-    
-    override init() {
+    init(_ tblContacts: UITableView!, _ loading: UIActivityIndicatorView) {
+        super.init()
+        self.tblContacts = tblContacts;
+        self.tblContacts.delegate = self
+        self.tblContacts.dataSource = self
+        self.loading = loading
+        self.loading.startAnimating();
+        
+        
+        //Loading contacts
         let contactStore = CNContactStore()
         
         // Get all the containers
@@ -34,6 +45,7 @@ public class ContactsDataSource: NSObject, UITableViewDelegate, UITableViewDataS
             do {
                 let containerResults = try contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: ContactsDataSource.CONTACT_KEYS)
                 data.append(contentsOf: containerResults)
+                self.loading.isHidden = true
             } catch {
                 print("Error fetching results for container")
             }

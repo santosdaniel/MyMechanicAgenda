@@ -3,13 +3,13 @@ import UIKit
 class ContactListController: UIViewController, UISearchBarDelegate {
 
     @IBOutlet weak var tblContacts: UITableView!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     private var lstResults: ContactsDataSource!
+
     
 
     private func configureTableView() {
-        lstResults = ContactsDataSource()
-        tblContacts.delegate = lstResults
-        tblContacts.dataSource = lstResults
+        lstResults = ContactsDataSource(tblContacts, loading)
         let uiNib = UINib(nibName: ContactsDataSource.GENERIC_LIST_ITEM_XIB, bundle: nil);
         tblContacts.register(uiNib, forCellReuseIdentifier: ContactsDataSource.GENERIC_LIST_ITEM_ID)
     }

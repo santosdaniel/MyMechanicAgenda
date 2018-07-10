@@ -29,13 +29,20 @@
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="amr-5M-vK5">
+                                <rect key="frame" x="100" y="100" width="175" height="467"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="w9r-1l-ORY" firstAttribute="trailing" secondItem="hu7-sp-XZr" secondAttribute="trailing" id="3m3-qn-zev"/>
                             <constraint firstItem="AUs-nH-tHd" firstAttribute="trailing" secondItem="hu7-sp-XZr" secondAttribute="trailing" id="84G-UG-5Wg"/>
+                            <constraint firstItem="amr-5M-vK5" firstAttribute="top" secondItem="MkV-mh-7Ue" secondAttribute="top" constant="100" identifier="loadingTopContraint" id="86j-aF-kbA"/>
+                            <constraint firstAttribute="trailing" secondItem="amr-5M-vK5" secondAttribute="trailing" constant="100" identifier="loadingRightContraint" id="DNf-RZ-Cu1"/>
                             <constraint firstItem="w9r-1l-ORY" firstAttribute="leading" secondItem="hu7-sp-XZr" secondAttribute="leading" id="LWf-7v-RHx"/>
+                            <constraint firstItem="amr-5M-vK5" firstAttribute="leading" secondItem="hu7-sp-XZr" secondAttribute="leading" constant="100" identifier="loadingLeftContraint" id="Qb0-FG-bOE"/>
                             <constraint firstItem="AUs-nH-tHd" firstAttribute="bottom" secondItem="hu7-sp-XZr" secondAttribute="bottom" id="l3j-DM-lHv"/>
+                            <constraint firstAttribute="bottom" secondItem="amr-5M-vK5" secondAttribute="bottom" constant="100" identifier="loadingBottomContraint" id="o8d-hc-8AG"/>
                             <constraint firstItem="AUs-nH-tHd" firstAttribute="leading" secondItem="hu7-sp-XZr" secondAttribute="leading" id="s6d-Ij-ZcI"/>
                             <constraint firstItem="w9r-1l-ORY" firstAttribute="top" secondItem="hu7-sp-XZr" secondAttribute="top" id="sbA-ZY-YvI"/>
                             <constraint firstItem="AUs-nH-tHd" firstAttribute="top" secondItem="w9r-1l-ORY" secondAttribute="bottom" id="whY-rG-gPf"/>
@@ -46,6 +53,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wwV-03-hQT"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="loading" destination="amr-5M-vK5" id="tWG-3C-YGE"/>
                         <outlet property="tblContacts" destination="AUs-nH-tHd" id="KiA-wH-rxG"/>
                     </connections>
                 </viewController>
