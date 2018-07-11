@@ -6,6 +6,7 @@ public class ContactsDataSource: NSObject, UITableViewDelegate, UITableViewDataS
     
     private var tblContacts: UITableView!
     private var loading: UIActivityIndicatorView!
+    private var context: UIViewController!
     
     public static let GENERIC_LIST_ITEM_XIB = "GenericListItem"
     public static let GENERIC_LIST_ITEM_ID = "genericListItemId"
@@ -16,13 +17,14 @@ public class ContactsDataSource: NSObject, UITableViewDelegate, UITableViewDataS
     
     private var data: [CNContact] = [];
     
-    init(_ tblContacts: UITableView!, _ loading: UIActivityIndicatorView) {
+    init(_ tblContacts: UITableView!, _ loading: UIActivityIndicatorView, _ context: UIViewController) {
         super.init()
         self.tblContacts = tblContacts;
         self.tblContacts.delegate = self
         self.tblContacts.dataSource = self
         self.loading = loading
         self.loading.startAnimating();
+        self.context = context;
         
         
         //Loading contacts
@@ -85,9 +87,10 @@ public class ContactsDataSource: NSObject, UITableViewDelegate, UITableViewDataS
         setUICell(contact, cell)
 
         
-        
         return cell
     }
     
-    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        context.performSegue(withIdentifier: "showCustomerDetails", sender: self)
+    }
 }

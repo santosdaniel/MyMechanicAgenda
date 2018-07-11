@@ -16,6 +16,7 @@
 		32AF49AD20E7C6B200EBC956 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AF49AB20E7C6B200EBC956 /* Main.storyboard */; };
 		32AF49AF20E7C6B300EBC956 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32AF49AE20E7C6B300EBC956 /* Assets.xcassets */; };
 		32AF49B220E7C6B300EBC956 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AF49B020E7C6B300EBC956 /* LaunchScreen.storyboard */; };
+		32CE381920F683FD00986D31 /* CustomerDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE381820F683FD00986D31 /* CustomerDetailsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		32AF49AE20E7C6B300EBC956 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32AF49B120E7C6B300EBC956 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32AF49B320E7C6B300EBC956 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32CE381820F683FD00986D31 /* CustomerDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDetailsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,9 @@
 		32AF49BD20E7C7C500EBC956 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				32CE381720F6834000986D31 /* reparationDetails */,
+				32CE381620F6832B00986D31 /* vehicleDetails */,
+				32CE381520F682FE00986D31 /* customerDetails */,
 				32AF49C020E7C97800EBC956 /* contactList */,
 			);
 			path = controller;
@@ -146,6 +151,28 @@
 				32AF49A920E7C6B200EBC956 /* ContactListController.swift */,
 			);
 			path = contactList;
+			sourceTree = "<group>";
+		};
+		32CE381520F682FE00986D31 /* customerDetails */ = {
+			isa = PBXGroup;
+			children = (
+				32CE381820F683FD00986D31 /* CustomerDetailsController.swift */,
+			);
+			path = customerDetails;
+			sourceTree = "<group>";
+		};
+		32CE381620F6832B00986D31 /* vehicleDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = vehicleDetails;
+			sourceTree = "<group>";
+		};
+		32CE381720F6834000986D31 /* reparationDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = reparationDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32CE381920F683FD00986D31 /* CustomerDetailsController.swift in Sources */,
 				323AE4F020F2156400A9471D /* GenericListItem.swift in Sources */,
 				328D347A20E7FE180004309C /* ContactsDataSource.swift in Sources */,
 				32AF49AA20E7C6B200EBC956 /* ContactListController.swift in Sources */,

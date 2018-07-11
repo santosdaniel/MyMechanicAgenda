@@ -32,6 +32,17 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="amr-5M-vK5">
                                 <rect key="frame" x="100" y="100" width="175" height="467"/>
                             </activityIndicatorView>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" translatesAutoresizingMaskIntoConstraints="NO" id="OMK-5V-kiJ" customClass="GenericListItem" customModule="MyMechanicAgendaIOS">
+                                <rect key="frame" x="0.0" y="120" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OMK-5V-kiJ" id="t6L-Yl-wUV">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="noR-fQ-5iV" kind="show" identifier="showCustomerDetails" id="QLs-X2-ZZn"/>
+                                </connections>
+                            </tableViewCell>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -50,7 +61,11 @@
                         <viewLayoutGuide key="safeArea" id="hu7-sp-XZr"/>
                     </view>
                     <navigationItem key="navigationItem" title="Contacts" id="RPy-7S-hWD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wwV-03-hQT"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wwV-03-hQT">
+                            <connections>
+                                <segue destination="byE-KM-8DP" kind="show" id="aBm-UC-izS"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="loading" destination="amr-5M-vK5" id="tWG-3C-YGE"/>
@@ -60,6 +75,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOu-p5-gg8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-348" y="-22.03898050974513"/>
+        </scene>
+        <!--Customer Details Controller-->
+        <scene sceneID="8wZ-Fx-ad3">
+            <objects>
+                <viewController id="noR-fQ-5iV" customClass="CustomerDetailsController" customModule="MyMechanicAgendaIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sgo-H3-2EV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpj-Zt-gwc">
+                                <rect key="frame" x="110" y="274" width="97" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="LE4-vr-q68"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TWa-PX-Rhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="610" y="-2"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="7fR-xU-81Z">
+            <objects>
+                <viewController id="byE-KM-8DP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SGa-Rz-vxv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create new contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPF-vh-ARf">
+                                <rect key="frame" x="158" y="282" width="150" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hsx-oS-pHN"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Udd-lW-GwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="524" y="-759"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Csg-AE-dKl">
