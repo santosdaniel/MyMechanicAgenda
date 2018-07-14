@@ -62,6 +62,8 @@ public class ContactsDataSource: GenericDataSource, UITableViewDelegate, UITable
         //Loading contacts
         let contactStore = CNContactStore()
         
+        self.setIsLoading(true)
+        
         // Get all the containers
         var allContainers: [CNContainer]
         do {
@@ -74,12 +76,13 @@ public class ContactsDataSource: GenericDataSource, UITableViewDelegate, UITable
         
         // Iterate all containers and append their contacts to our results array
         for container in allContainers {
-            let fetchPredicate = CNContact.predicateForContactsInContainer(withIdentifier: container.identifier)
+            let predicate = name.isEmpty ? CNContact.predicateForContactsInContainer(withIdentifier: container.identifier) : CNContact.predicateForContacts(matchingName: name)
             
             do {
-                let containerResults = try contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: ContactsDataSource.CONTACT_KEYS)
+                let containerResults = try contactStore.unifiedContacts(matching: predicate, keysToFetch: ContactsDataSource.CONTACT_KEYS)
+                data.removeAll()
                 data.append(contentsOf: containerResults)
-                //self.loading.isHidden = true
+                self.setIsLoading(false)
             } catch {
                 print("Error fetching results for container")
             }

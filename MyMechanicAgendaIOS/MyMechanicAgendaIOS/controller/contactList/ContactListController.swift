@@ -16,7 +16,8 @@ class ContactListController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.lstResults.fetchContacts("")
+        self.lstResults.fetchContacts(searchText)
+        tblContacts.reloadData()
     }
     
     private func initViews() {
