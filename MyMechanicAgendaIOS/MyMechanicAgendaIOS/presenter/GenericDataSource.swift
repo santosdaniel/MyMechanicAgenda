@@ -7,8 +7,8 @@ public class GenericDataSource: NSObject {
     public static let NO_ELEMENTS: Int = 0
     private static let IMPLEMENTATION_NEED_ID: String = "Subclasses need to implement the `\(#function)` method."
     
-    private var controller: UIViewController
-    private var tableView: UITableView
+    internal var controller: UIViewController
+    internal var tableView: UITableView
     private var progressBar: UIActivityIndicatorView
     
     

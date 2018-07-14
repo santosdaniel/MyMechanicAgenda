@@ -69,6 +69,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="loading" destination="amr-5M-vK5" id="tWG-3C-YGE"/>
+                        <outlet property="searchBar" destination="w9r-1l-ORY" id="N7D-AI-4JX"/>
                         <outlet property="tblContacts" destination="AUs-nH-tHd" id="KiA-wH-rxG"/>
                     </connections>
                 </viewController>

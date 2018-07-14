@@ -15,7 +15,6 @@ public class ContactsDataSource: GenericDataSource, UITableViewDelegate, UITable
     
     private var data: [CNContact] = [];
     
-
     public func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
@@ -54,7 +53,7 @@ public class ContactsDataSource: GenericDataSource, UITableViewDelegate, UITable
     
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // context.performSegue(withIdentifier: CustomerDetailsController.SEGUE_IDENTIFIER, sender: self)
+        self.controller.performSegue(withIdentifier: CustomerDetailsController.SEGUE_IDENTIFIER, sender: self)
     }
     
     public func fetchContacts(_ name: String)
@@ -76,7 +75,7 @@ public class ContactsDataSource: GenericDataSource, UITableViewDelegate, UITable
         
         // Iterate all containers and append their contacts to our results array
         for container in allContainers {
-            let predicate = name.isEmpty ? CNContact.predicateForContactsInContainer(withIdentifier: container.identifier) : CNContact.predicateForContacts(matchingName: name)
+            let predicate = StringHelper.isNullOrEmpty(name) ? CNContact.predicateForContactsInContainer(withIdentifier: container.identifier) : CNContact.predicateForContacts(matchingName: name)
             
             do {
                 let containerResults = try contactStore.unifiedContacts(matching: predicate, keysToFetch: ContactsDataSource.CONTACT_KEYS)
