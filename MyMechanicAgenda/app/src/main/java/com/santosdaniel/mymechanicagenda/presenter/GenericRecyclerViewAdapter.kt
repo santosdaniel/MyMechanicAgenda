@@ -8,7 +8,7 @@ import android.view.ViewGroup
 
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.helper.UIHelper
-import com.santosdaniel.mymechanicagenda.view.GenericListItem
+import com.santosdaniel.mymechanicagenda.view.viewModel.GenericListItem
 
 /**
  * Adapter with generic stuff that should be common to all the recycle view adapters
@@ -49,7 +49,7 @@ protected constructor(protected val activity: Activity,
      * Indicates that the recycle view is loading its content
      * (The adapter is going to show or hide the the views in order to give feedback to the user
      *
-     * @param isLoading False that indicates if it is loading the content or not
+     * @param isLoading Flag that indicates if it is loading the content or not
      */
     fun setIsLoading(isLoading: Boolean) = if (isLoading) {
         UIHelper.setVisibility(View.VISIBLE, this.progressBar)

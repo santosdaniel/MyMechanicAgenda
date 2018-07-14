@@ -2,6 +2,9 @@ import UIKit
 
 class CustomerDetailsController: UIViewController, UISearchBarDelegate {
     
+    /// Identifier of the segue used to launch this controller
+    public static let SEGUE_IDENTIFIER: String = "showCustomerDetails"
+    
     @IBOutlet weak var tblContacts: UITableView!
     @IBOutlet weak var loading: UIActivityIndicatorView!
     private var lstResults: ContactsDataSource!

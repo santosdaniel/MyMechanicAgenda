@@ -1,4 +1,4 @@
-package com.santosdaniel.mymechanicagenda.view
+package com.santosdaniel.mymechanicagenda.view.viewModel
 
 /**
  * Represents all the information to show an item in the recycle view

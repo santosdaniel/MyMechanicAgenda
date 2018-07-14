@@ -1,12 +1,10 @@
 import UIKit
 import Contacts
 
+
 /// Provide a list of contacts
-public class ContactsDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
-    
-    private var tblContacts: UITableView!
-    private var loading: UIActivityIndicatorView!
-    private var context: UIViewController!
+public class ContactsDataSource: GenericDataSource, UITableViewDelegate, UITableViewDataSource {
+
     
     public static let GENERIC_LIST_ITEM_XIB = "GenericListItem"
     public static let GENERIC_LIST_ITEM_ID = "genericListItemId"
@@ -17,43 +15,7 @@ public class ContactsDataSource: NSObject, UITableViewDelegate, UITableViewDataS
     
     private var data: [CNContact] = [];
     
-    init(_ tblContacts: UITableView!, _ loading: UIActivityIndicatorView, _ context: UIViewController) {
-        super.init()
-        self.tblContacts = tblContacts;
-        self.tblContacts.delegate = self
-        self.tblContacts.dataSource = self
-        self.loading = loading
-        self.loading.startAnimating();
-        self.context = context;
-        
-        
-        //Loading contacts
-        let contactStore = CNContactStore()
-        
-        // Get all the containers
-        var allContainers: [CNContainer]
-        do {
-            allContainers = try contactStore.containers(matching: nil)
-        } catch {
-            print("Error fetching containers")
-            allContainers = []
-        }
-        
-        
-        // Iterate all containers and append their contacts to our results array
-        for container in allContainers {
-            let fetchPredicate = CNContact.predicateForContactsInContainer(withIdentifier: container.identifier)
-            
-            do {
-                let containerResults = try contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: ContactsDataSource.CONTACT_KEYS)
-                data.append(contentsOf: containerResults)
-                self.loading.isHidden = true
-            } catch {
-                print("Error fetching results for container")
-            }
-        }
-    }
-    
+
     public func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
     }
@@ -90,7 +52,37 @@ public class ContactsDataSource: NSObject, UITableViewDelegate, UITableViewDataS
         return cell
     }
     
+
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        context.performSegue(withIdentifier: "showCustomerDetails", sender: self)
+        // context.performSegue(withIdentifier: CustomerDetailsController.SEGUE_IDENTIFIER, sender: self)
+    }
+    
+    public func fetchContacts(_ name: String)
+    {
+        //Loading contacts
+        let contactStore = CNContactStore()
+        
+        // Get all the containers
+        var allContainers: [CNContainer]
+        do {
+            allContainers = try contactStore.containers(matching: nil)
+        } catch {
+            print("Error fetching containers")
+            allContainers = []
+        }
+        
+        
+        // Iterate all containers and append their contacts to our results array
+        for container in allContainers {
+            let fetchPredicate = CNContact.predicateForContactsInContainer(withIdentifier: container.identifier)
+            
+            do {
+                let containerResults = try contactStore.unifiedContacts(matching: fetchPredicate, keysToFetch: ContactsDataSource.CONTACT_KEYS)
+                data.append(contentsOf: containerResults)
+                //self.loading.isHidden = true
+            } catch {
+                print("Error fetching results for container")
+            }
+        }
     }
 }

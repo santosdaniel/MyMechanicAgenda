@@ -8,7 +8,7 @@ import android.widget.ProgressBar
 
 import com.santosdaniel.mymechanicagenda.helper.ContainerHelper
 import com.santosdaniel.mymechanicagenda.presenter.network.NetworkRequestsSingleton
-import com.santosdaniel.mymechanicagenda.view.GenericListItem
+import com.santosdaniel.mymechanicagenda.view.viewModel.GenericListItem
 
 /**
  * Adapter with generic stuff that should be common to all the recycle view adapters

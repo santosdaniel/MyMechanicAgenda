@@ -6,7 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 
 import com.santosdaniel.mymechanicagenda.R
-import com.santosdaniel.mymechanicagenda.view.GenericListItem
+import com.santosdaniel.mymechanicagenda.view.viewModel.GenericListItem
 
 /**
  * View holder to the recycle view
