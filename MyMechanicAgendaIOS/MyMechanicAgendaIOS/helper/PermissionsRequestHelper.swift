@@ -25,8 +25,8 @@ public class PermissionsRequestHelper {
                                 
                                 DispatchQueue.main.async //serial queue
                                     {
-                                        let title = "Does not has premissions"
-                                        let description = "\(accessError!.localizedDescription)\n\nPlease allow the app to access your contacts through the Settings."
+                                        let title = NSLocalizedString("Missing premissions", comment: "Title of the dialog to indicate the user that needs premissions to the contacts")
+                                        let description = "Please allow the app to access your contacts through the Settings."
                                         DialogMessageHelper.showMessage(title, description)
                                 }
                         }
