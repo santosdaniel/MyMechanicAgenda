@@ -53,7 +53,7 @@ class ContactsCursorLoader
                 if (bundle == null || TextUtils.isEmpty(bundle.getString(NAME_ATTR))) {
                     null
                 } else {
-                    arrayOf("%" + bundle.getString(NAME_ATTR) + "%")
+                    arrayOf("%${bundle.getString(NAME_ATTR)}%")
                 }
 
         /**

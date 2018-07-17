@@ -4,7 +4,7 @@ import Contacts
 
 /// Provide a list of contacts
 public class ContactsDataSource: GenericDataSource, UITableViewDelegate, UITableViewDataSource {
-
+    
     
     public static let GENERIC_LIST_ITEM_XIB = "GenericListItem"
     public static let GENERIC_LIST_ITEM_ID = "genericListItemId"
@@ -46,45 +46,50 @@ public class ContactsDataSource: GenericDataSource, UITableViewDelegate, UITable
         let contact = data[indexPath.row]
         
         setUICell(contact, cell)
-
+        
         
         return cell
     }
     
-
+    
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.controller.performSegue(withIdentifier: CustomerDetailsController.SEGUE_IDENTIFIER, sender: self)
     }
     
     public func fetchContacts(_ name: String)
     {
-        //Loading contacts
-        let contactStore = CNContactStore()
-        
-        self.setIsLoading(true)
-        
-        // Get all the containers
-        var allContainers: [CNContainer]
-        do {
-            allContainers = try contactStore.containers(matching: nil)
-        } catch {
-            print("Error fetching containers")
-            allContainers = []
-        }
-        
-        
-        // Iterate all containers and append their contacts to our results array
-        for container in allContainers {
-            let predicate = StringHelper.isNullOrEmpty(name) ? CNContact.predicateForContactsInContainer(withIdentifier: container.identifier) : CNContact.predicateForContacts(matchingName: name)
-            
-            do {
-                let containerResults = try contactStore.unifiedContacts(matching: predicate, keysToFetch: ContactsDataSource.CONTACT_KEYS)
-                data.removeAll()
-                data.append(contentsOf: containerResults)
-                self.setIsLoading(false)
-            } catch {
-                print("Error fetching results for container")
+        PermissionsRequestHelper.requestPermission(completionHandler: { (accessGranted) -> Void in
+            if accessGranted {
+                //Loading contacts
+                let contactStore = CNContactStore()
+                
+                self.setIsLoading(true)
+                
+                // Get all the containers
+                var allContainers: [CNContainer]
+                do {
+                    allContainers = try contactStore.containers(matching: nil)
+                } catch {
+                    print("Error fetching containers")
+                    allContainers = []
+                }
+                
+                
+                // Iterate all containers and append their contacts to our results array
+                for container in allContainers {
+                    let predicate = StringHelper.isNullOrEmpty(name) ? CNContact.predicateForContactsInContainer(withIdentifier: container.identifier) : CNContact.predicateForContacts(matchingName: name)
+                    
+                    do {
+                        let containerResults = try contactStore.unifiedContacts(matching: predicate, keysToFetch: ContactsDataSource.CONTACT_KEYS)
+                        self.data.removeAll()
+                        self.data.append(contentsOf: containerResults)
+                        self.setIsLoading(false)
+                    } catch {
+                        print("Error fetching results for container")
+                    }
+                }
             }
         }
+        )
     }
 }

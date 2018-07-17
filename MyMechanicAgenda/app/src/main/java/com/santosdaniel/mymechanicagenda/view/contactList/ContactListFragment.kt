@@ -3,6 +3,7 @@ package com.santosdaniel.mymechanicagenda.view.contactList
 import android.Manifest
 import android.database.Cursor
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.support.v4.app.LoaderManager
 import android.support.v4.content.Loader
 import android.support.v7.widget.LinearLayoutManager
@@ -21,6 +22,7 @@ import com.santosdaniel.mymechanicagenda.helper.PermissionsRequestHelper
 import com.santosdaniel.mymechanicagenda.presenter.contactList.ContactsAdapter
 import com.santosdaniel.mymechanicagenda.presenter.contactList.ContactsCursorLoader
 import com.santosdaniel.mymechanicagenda.view.GenericRecycleViewFragment
+import java.lang.ref.WeakReference
 
 /**
  * A placeholder fragment containing a simple view.
@@ -89,7 +91,8 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
         this.lstAdapter!!.setIsLoading(true)
         return if (id == QueryEnum.ListContacts.ordinal) {
-            return if (PermissionsRequestHelper.requestPermission(activity!!, Manifest.permission.READ_CONTACTS, PermissionEnum.ReadContacts.ordinal)) {
+            val refActivity = WeakReference<FragmentActivity>(activity)
+            return if (PermissionsRequestHelper.requestPermission(refActivity, Manifest.permission.READ_CONTACTS, PermissionEnum.ReadContacts.ordinal)) {
                 ContactsCursorLoader(context!!, args)
             } else {
                 //Does not has enough permissions to get the contacts from the user
@@ -109,7 +112,7 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
      *
      * @cursor The cursor to set
      */
-    private fun setCursorInAdapter(cursor: Cursor?) {
+    protected fun setCursorInAdapter(cursor: Cursor?) {
         if (ContainerHelper.isNotNull(this.lstAdapter)) {
             this.lstAdapter?.setDataSet(cursor)
             this.lstAdapter?.setIsLoading(false)

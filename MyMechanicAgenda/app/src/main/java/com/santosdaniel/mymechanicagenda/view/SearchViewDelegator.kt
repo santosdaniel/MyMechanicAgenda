@@ -51,14 +51,14 @@ class SearchViewDelegator
                                 loaderManager.restartLoader(QueryEnum.ListContacts.ordinal, args, callback)
                             }
                         } catch (e: Exception) {
-                            Log.e(TAG, "Something went wrong: " + e.message)
+                            Log.e(TAG, "Something went wrong: ${e.message}")
                             return true
                         }
 
                     }
                 }
             } catch (e: Exception) {
-                Log.e(TAG, "Something went wrong: " + e.message)
+                Log.e(TAG, "Something went wrong: ${e.message}")
                 return true
             }
 
