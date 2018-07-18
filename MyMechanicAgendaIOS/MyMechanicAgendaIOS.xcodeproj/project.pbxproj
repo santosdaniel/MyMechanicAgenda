@@ -12,6 +12,7 @@
 		323AE4EE20F2147A00A9471D /* GenericListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 323AE4ED20F2147A00A9471D /* GenericListItem.xib */; };
 		323AE4F020F2156400A9471D /* GenericListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323AE4EF20F2156400A9471D /* GenericListItem.swift */; };
 		323F925220FA3C7100CA08B0 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F925120FA3C7100CA08B0 /* StringHelper.swift */; };
+		3256E35A20FFD59E004E2AA1 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3256E35920FFD59E004E2AA1 /* OpenCVWrapper.mm */; };
 		326222A820FB805100E293BF /* PermissionsRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326222A720FB805100E293BF /* PermissionsRequestHelper.swift */; };
 		328D347A20E7FE180004309C /* ContactsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328D347920E7FE180004309C /* ContactsDataSource.swift */; };
 		32968D4420F9D29C00E1B2AD /* GenericDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32968D4320F9D29C00E1B2AD /* GenericDataSource.swift */; };
@@ -31,6 +32,10 @@
 		323AE4ED20F2147A00A9471D /* GenericListItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenericListItem.xib; sourceTree = "<group>"; };
 		323AE4EF20F2156400A9471D /* GenericListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListItem.swift; sourceTree = "<group>"; };
 		323F925120FA3C7100CA08B0 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
+		3256E35720FFD59E004E2AA1 /* MyMechanicAgendaIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyMechanicAgendaIOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		3256E35820FFD59E004E2AA1 /* OpenCVWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
+		3256E35920FFD59E004E2AA1 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
+		3256E35B20FFD612004E2AA1 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		326222A720FB805100E293BF /* PermissionsRequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsRequestHelper.swift; sourceTree = "<group>"; };
 		328D347920E7FE180004309C /* ContactsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDataSource.swift; sourceTree = "<group>"; };
 		32968D4320F9D29C00E1B2AD /* GenericDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataSource.swift; sourceTree = "<group>"; };
@@ -61,6 +66,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3256E35620FFD578004E2AA1 /* OpenCVWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				3256E35820FFD59E004E2AA1 /* OpenCVWrapper.h */,
+				3256E35920FFD59E004E2AA1 /* OpenCVWrapper.mm */,
+				3256E35720FFD59E004E2AA1 /* MyMechanicAgendaIOS-Bridging-Header.h */,
+				3256E35B20FFD612004E2AA1 /* PrefixHeader.pch */,
+			);
+			path = OpenCVWrapper;
+			sourceTree = "<group>";
+		};
 		328D347820E7FDD10004309C /* contactList */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +144,7 @@
 		32AF49BC20E7C79200EBC956 /* helper */ = {
 			isa = PBXGroup;
 			children = (
+				3256E35620FFD578004E2AA1 /* OpenCVWrapper */,
 				3227E0B320F3DF03007C9F91 /* UIHelper.swift */,
 				323F925120FA3C7100CA08B0 /* StringHelper.swift */,
 				326222A720FB805100E293BF /* PermissionsRequestHelper.swift */,
@@ -256,6 +273,7 @@
 				TargetAttributes = {
 					32AF49A320E7C6B200EBC956 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -327,6 +345,7 @@
 				320F84F220FE6FD0000001E6 /* DialogMessageHelper.swift in Sources */,
 				32968D4420F9D29C00E1B2AD /* GenericDataSource.swift in Sources */,
 				3227E0B420F3DF03007C9F91 /* UIHelper.swift in Sources */,
+				3256E35A20FFD59E004E2AA1 /* OpenCVWrapper.mm in Sources */,
 				32AF49A820E7C6B200EBC956 /* AppDelegate.swift in Sources */,
 				326222A820FB805100E293BF /* PermissionsRequestHelper.swift in Sources */,
 			);
@@ -484,16 +503,21 @@
 			baseConfigurationReference = 5DE0C56D92D50EBCE3B74C51 /* Pods-MyMechanicAgendaIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F8LSF3KS7G;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyMechanicAgendaIOS/helper/OpenCVWrapper/PrefixHeader.pch";
 				INFOPLIST_FILE = MyMechanicAgendaIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.santosdaniel.MyMechanicAgendaIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyMechanicAgendaIOS/helper/OpenCVWrapper/MyMechanicAgendaIOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -504,16 +528,20 @@
 			baseConfigurationReference = D0C3EBB648DAC5EA6A070A8A /* Pods-MyMechanicAgendaIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F8LSF3KS7G;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyMechanicAgendaIOS/helper/OpenCVWrapper/PrefixHeader.pch";
 				INFOPLIST_FILE = MyMechanicAgendaIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.santosdaniel.MyMechanicAgendaIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyMechanicAgendaIOS/helper/OpenCVWrapper/MyMechanicAgendaIOS-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

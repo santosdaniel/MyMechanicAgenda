@@ -1,0 +1,17 @@
+//
+//  PrefixHeader.pch
+//  MyMechanicAgendaIOS
+//
+//  Created by Daniel ferreira on 18/07/2018.
+//  Copyright © 2018 Daniel's team. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#ifdef __cplusplus
+#include <opencv2/opencv.hpp>
+#endif
+
+
+#endif /* PrefixHeader_pch */
