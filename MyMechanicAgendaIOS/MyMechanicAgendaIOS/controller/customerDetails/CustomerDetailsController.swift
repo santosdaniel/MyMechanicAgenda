@@ -7,6 +7,10 @@ class CustomerDetailsController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var tblContacts: UITableView!
     @IBOutlet weak var loading: UIActivityIndicatorView!
+    @IBOutlet weak var contactImage: UIImageView!
+    @IBOutlet weak var processImage: UIButton!
+    @IBOutlet weak var resultImage: UIImageView!
+
     private var lstResults: ContactsDataSource!
     
     
@@ -29,8 +33,20 @@ class CustomerDetailsController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         self.initViews()
+       
+        let originalImage = UIImage(named: "carte")
+        
+        self.contactImage.image =  originalImage
         super.viewDidLoad()
     }
+    
+    @IBAction
+    func processImageAction(sender: UIButton){
+        let openCV = OpenCVWrapper()
+        let originalImage = UIImage(named: "carte")
+        self.resultImage.image = openCV.convert(toGrey: originalImage)
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -32,10 +32,9 @@
 		323AE4ED20F2147A00A9471D /* GenericListItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenericListItem.xib; sourceTree = "<group>"; };
 		323AE4EF20F2156400A9471D /* GenericListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListItem.swift; sourceTree = "<group>"; };
 		323F925120FA3C7100CA08B0 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
-		3256E35720FFD59E004E2AA1 /* MyMechanicAgendaIOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyMechanicAgendaIOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		3256E35720FFD59E004E2AA1 /* OpenCV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenCV-Bridging-Header.h"; sourceTree = "<group>"; };
 		3256E35820FFD59E004E2AA1 /* OpenCVWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
 		3256E35920FFD59E004E2AA1 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
-		3256E35B20FFD612004E2AA1 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		326222A720FB805100E293BF /* PermissionsRequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsRequestHelper.swift; sourceTree = "<group>"; };
 		328D347920E7FE180004309C /* ContactsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDataSource.swift; sourceTree = "<group>"; };
 		32968D4320F9D29C00E1B2AD /* GenericDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataSource.swift; sourceTree = "<group>"; };
@@ -71,8 +70,7 @@
 			children = (
 				3256E35820FFD59E004E2AA1 /* OpenCVWrapper.h */,
 				3256E35920FFD59E004E2AA1 /* OpenCVWrapper.mm */,
-				3256E35720FFD59E004E2AA1 /* MyMechanicAgendaIOS-Bridging-Header.h */,
-				3256E35B20FFD612004E2AA1 /* PrefixHeader.pch */,
+				3256E35720FFD59E004E2AA1 /* OpenCV-Bridging-Header.h */,
 			);
 			path = OpenCVWrapper;
 			sourceTree = "<group>";
@@ -506,7 +504,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F8LSF3KS7G;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/MyMechanicAgendaIOS/helper/OpenCVWrapper/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = MyMechanicAgendaIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -516,7 +514,7 @@
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.santosdaniel.MyMechanicAgendaIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MyMechanicAgendaIOS/helper/OpenCVWrapper/MyMechanicAgendaIOS-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyMechanicAgendaIOS/helper/OpenCVWrapper/OpenCV-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -531,7 +529,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F8LSF3KS7G;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/MyMechanicAgendaIOS/helper/OpenCVWrapper/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = MyMechanicAgendaIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -541,7 +539,7 @@
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.santosdaniel.MyMechanicAgendaIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MyMechanicAgendaIOS/helper/OpenCVWrapper/MyMechanicAgendaIOS-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyMechanicAgendaIOS/helper/OpenCVWrapper/OpenCV-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
