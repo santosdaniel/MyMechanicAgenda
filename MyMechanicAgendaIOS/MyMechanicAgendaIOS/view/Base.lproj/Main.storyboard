@@ -94,10 +94,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QUH-t5-oS5">
-                                <rect key="frame" x="112" y="368.5" width="150" height="150"/>
+                                <rect key="frame" x="37" y="368.5" width="300" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="4Or-Mx-W8A"/>
-                                    <constraint firstAttribute="width" constant="150" id="6az-Bb-Dy8"/>
+                                    <constraint firstAttribute="height" constant="300" id="4Or-Mx-W8A"/>
+                                    <constraint firstAttribute="width" constant="300" id="6az-Bb-Dy8"/>
                                 </constraints>
                             </imageView>
                         </subviews>

@@ -34,7 +34,7 @@ class CustomerDetailsController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         self.initViews()
        
-        let originalImage = UIImage(named: "carte")
+        let originalImage = UIImage(named: "documents")
         
         self.contactImage.image =  originalImage
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class CustomerDetailsController: UIViewController, UISearchBarDelegate {
     @IBAction
     func processImageAction(sender: UIButton){
         let openCV = OpenCVWrapper()
-        let originalImage = UIImage(named: "carte")
+        let originalImage = UIImage(named: "documents")
         self.resultImage.image = openCV.convert(toGrey: originalImage)
     }
 
