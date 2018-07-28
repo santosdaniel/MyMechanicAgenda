@@ -4,6 +4,7 @@ class CustomerDetailsController: UIViewController, UISearchBarDelegate {
     
     /// Identifier of the segue used to launch this controller
     public static let SEGUE_IDENTIFIER: String = "showCustomerDetails"
+    private let IMAGE_NAME: String = "documents";
     
     @IBOutlet weak var tblContacts: UITableView!
     @IBOutlet weak var loading: UIActivityIndicatorView!
@@ -34,7 +35,7 @@ class CustomerDetailsController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         self.initViews()
        
-        let originalImage = UIImage(named: "documents")
+        let originalImage = UIImage(named: IMAGE_NAME)
         
         self.contactImage.image =  originalImage
         super.viewDidLoad()
@@ -43,7 +44,7 @@ class CustomerDetailsController: UIViewController, UISearchBarDelegate {
     @IBAction
     func processImageAction(sender: UIButton){
         let openCV = OpenCVWrapper()
-        let originalImage = UIImage(named: "documents")
+        let originalImage = UIImage(named: IMAGE_NAME)
         self.resultImage.image = openCV.convert(toGrey: originalImage)
     }
 

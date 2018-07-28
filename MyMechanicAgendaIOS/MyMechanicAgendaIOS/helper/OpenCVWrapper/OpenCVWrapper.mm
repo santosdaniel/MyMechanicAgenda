@@ -115,24 +115,28 @@ RNG rng(12345);
     vector<Vec4i> hierarchy;
     cv::findContours(edges,  contours, hierarchy, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE);
     
-    vector<vector<cv::Point>> filtered;
+    vector<vector<cv::Point>> biggerRectangles;
+    double biggerArea = -1.0f;
     for( size_t i = 0; i< contours.size(); i++ )
     {
         vector<cv::Point> contourn = contours[i];
-        vector<cv::Point> detected;
-        //approximate the contour
         double peri = cv::arcLength(contourn, true);
-        cv::approxPolyDP(contourn, detected, 0.02 * peri, true);
-        if (detected.size() == 4) {
-            filtered.push_back(contourn);
+        if((peri > biggerArea)) {
+            vector<cv::Point> detected;
+            cv::approxPolyDP(contourn, detected, 0.02 * peri, true);
+            if (detected.size() == 4) {
+                biggerRectangles.clear();
+                biggerRectangles.push_back(contourn);
+                biggerArea = peri;
+            }
         }
     }
     
     //     Mat drawing = Mat::zeros( gaussianBlur.size(), CV_8UC3 );
-    for( size_t i = 0; i< filtered.size(); i++ )
-    {
-        Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
-        cv::drawContours( originalMat, filtered, (int)i, color, 2, 8, hierarchy, 0, cv::Point() );
+    if(biggerArea > 0) {
+        int random = rng.uniform(0,255);
+        Scalar color = Scalar( 255, 0, 0 );
+        cv::drawContours( originalMat, biggerRectangles, (int)0, color, 2, 8, hierarchy, 0, cv::Point() );
     }
     
     // convert modified matrix back to UIImage
