@@ -96,51 +96,95 @@ RNG rng(12345);
     return finalImage;
 }
 
--(UIImage*) convertToGrey:(UIImage*)original {
-    cv::Mat originalMat = [self cvMatFromUIImage:original];
-    
-    // Convert the image from RGB to GrayScale
+
+/**
+ Convert the image from RGB to GrayScale
+
+ @param original The original image to process
+ @return the openCV mat of the image in grey
+ */
+-(cv::Mat) _convertToGrey:(cv::Mat)originalMat {
     cv::Mat gray;
     cv::cvtColor(originalMat, gray, CV_RGBA2GRAY);
+    return gray;
+}
+
+-(UIImage*) convertToGrey:(UIImage*)original {
+    cv::Mat originalMat = [self cvMatFromUIImage:original];
+    cv::Mat gray = [self _convertToGrey: originalMat];
     
     // Apply the gaussian blur to the above image
     cv::Mat gaussianBlur;
     cv::GaussianBlur(gray, gaussianBlur, cv::Size(5,5), 0);
+    
     // Apply the Canny edge detection
     cv::Mat edges;
-    cv::Canny(gaussianBlur, edges, 100, 200);
+    //first threshold for the hysteresis procedure.
+    int threshold1 = 100;
+    //second threshold for the hysteresis procedure.
+    int threshold2 = 200;
+
+    cv::Canny(gaussianBlur, edges, threshold1 , threshold2 );
     
     //Finding countorns
     vector<vector<cv::Point>> contours;
     vector<Vec4i> hierarchy;
     cv::findContours(edges,  contours, hierarchy, CV_RETR_LIST, CV_CHAIN_APPROX_SIMPLE);
     
+    vector<cv::Point> detected;
     vector<vector<cv::Point>> biggerRectangles;
     double biggerArea = -1.0f;
     for( size_t i = 0; i< contours.size(); i++ )
     {
         vector<cv::Point> contourn = contours[i];
-        double peri = cv::arcLength(contourn, true);
-        if((peri > biggerArea)) {
-            vector<cv::Point> detected;
-            cv::approxPolyDP(contourn, detected, 0.02 * peri, true);
+        bool closed = true;
+        //Contour area
+        double area = cv::contourArea(contourn);
+        if((area > biggerArea)) {
+            //Compute the perimeter
+            double perimeter = cv::arcLength(contourn, closed);
+            //It approximates a contour shape to another shape with less number of vertices depending upon the precision we specify
+            cv::approxPolyDP(contourn, detected, 0.02 * perimeter, closed);
             if (detected.size() == 4) {
                 biggerRectangles.clear();
-                biggerRectangles.push_back(contourn);
-                biggerArea = peri;
+                biggerRectangles.push_back(detected);
+                biggerArea = area;
             }
         }
     }
     
+    cv::Mat output;
     //     Mat drawing = Mat::zeros( gaussianBlur.size(), CV_8UC3 );
     if(biggerArea > 0) {
-        int random = rng.uniform(0,255);
-        Scalar color = Scalar( 255, 0, 0 );
-        cv::drawContours( originalMat, biggerRectangles, (int)0, color, 2, 8, hierarchy, 0, cv::Point() );
+        
+        // Input Quadilateral or Image plane coordinates
+        Point2f inputQuad[4];
+        // Output Quadilateral or World plane coordinates
+        Point2f outputQuad[4];
+        
+        // The 4 points that select quadilateral on the input , from top-left in clockwise order
+        // These four pts are the sides of the rect box used as input
+        for(int i = 0;i < detected.size(); i++) {
+            cv::Point point = detected[i];
+            inputQuad[i] = Point2f( point.x, point.y );
+        }
+    
+        // The 4 points where the mapping is to be done , from top-left in clockwise order
+        int width = originalMat.cols;
+        int height = originalMat.rows;
+        outputQuad[0] = Point2f( 0,0 );
+        outputQuad[1] = Point2f( width,0);
+        outputQuad[2] = Point2f( width,height);
+        outputQuad[3] = Point2f( 0,height  );
+        
+        cv::Mat perpective = cv::getPerspectiveTransform(inputQuad, outputQuad);
+        
+        
+        warpPerspective(gray, output, perpective, output.size());
     }
     
     // convert modified matrix back to UIImage
-    return [self UIImageFromCVMat:originalMat];
+    return [self UIImageFromCVMat:output];
 }
 
 

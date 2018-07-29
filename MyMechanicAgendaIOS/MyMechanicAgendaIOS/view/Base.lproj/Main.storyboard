@@ -94,10 +94,9 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QUH-t5-oS5">
-                                <rect key="frame" x="37" y="368.5" width="300" height="300"/>
+                                <rect key="frame" x="10" y="368.5" width="355" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="4Or-Mx-W8A"/>
-                                    <constraint firstAttribute="width" constant="300" id="6az-Bb-Dy8"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -109,6 +108,8 @@
                             <constraint firstItem="QUH-t5-oS5" firstAttribute="centerX" secondItem="sgo-H3-2EV" secondAttribute="centerX" id="Wti-ah-M8Z"/>
                             <constraint firstItem="ZAc-eC-ObT" firstAttribute="centerX" secondItem="sgo-H3-2EV" secondAttribute="centerX" id="Wve-4U-tkb"/>
                             <constraint firstItem="ZAc-eC-ObT" firstAttribute="top" secondItem="LE4-vr-q68" secondAttribute="top" constant="10" id="dEN-UR-aP6"/>
+                            <constraint firstItem="QUH-t5-oS5" firstAttribute="leading" secondItem="LE4-vr-q68" secondAttribute="leading" constant="10" id="dKA-JV-qrj"/>
+                            <constraint firstItem="LE4-vr-q68" firstAttribute="trailing" secondItem="QUH-t5-oS5" secondAttribute="trailing" constant="10" id="kmw-Y3-6Cy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LE4-vr-q68"/>
                     </view>
