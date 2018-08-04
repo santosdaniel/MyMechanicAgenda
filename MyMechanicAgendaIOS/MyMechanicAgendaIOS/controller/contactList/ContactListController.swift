@@ -23,6 +23,11 @@ class ContactListController: UIViewController, UISearchBarDelegate {
         tblContacts.reloadData()
     }
     
+    @IBAction
+    func dismissKeyboard(sender: AnyObject) {
+        self.searchBar.resignFirstResponder()
+    }
+    
     private func initViews() {
         self.configureTableView()
     }

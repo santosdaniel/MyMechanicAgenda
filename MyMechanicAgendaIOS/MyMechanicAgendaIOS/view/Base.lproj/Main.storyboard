@@ -28,9 +28,13 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AUs-nH-tHd">
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="TF7-ga-xjL" appends="YES" id="58d-uo-lY2"/>
+                                </connections>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="amr-5M-vK5">
                                 <rect key="frame" x="100" y="100" width="175" height="467"/>
+                                <gestureRecognizers/>
                             </activityIndicatorView>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" translatesAutoresizingMaskIntoConstraints="NO" id="OMK-5V-kiJ" customClass="GenericListItem" customModule="MyMechanicAgendaIOS">
                                 <rect key="frame" x="0.0" y="120" width="375" height="44"/>
@@ -45,6 +49,7 @@
                             </tableViewCell>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="w9r-1l-ORY" firstAttribute="trailing" secondItem="hu7-sp-XZr" secondAttribute="trailing" id="3m3-qn-zev"/>
                             <constraint firstItem="AUs-nH-tHd" firstAttribute="trailing" secondItem="hu7-sp-XZr" secondAttribute="trailing" id="84G-UG-5Wg"/>
@@ -68,6 +73,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOu-p5-gg8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="TF7-ga-xjL">
+                    <connections>
+                        <action selector="dismissKeyboardWithSender:" destination="6yy-ga-Exz" id="CR4-si-LAe"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-348" y="-22.03898050974513"/>
         </scene>
