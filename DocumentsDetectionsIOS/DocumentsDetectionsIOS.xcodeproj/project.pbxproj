@@ -9,20 +9,24 @@
 /* Begin PBXBuildFile section */
 		2A25D2E862717D2059568578 /* Pods_DocumentsDetectionsIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C825504423C492FE05860FB2 /* Pods_DocumentsDetectionsIOS.framework */; };
 		32155ABF2115675B004B7ED1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32155ABE2115675B004B7ED1 /* AppDelegate.swift */; };
-		32155AC12115675B004B7ED1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32155AC02115675B004B7ED1 /* ViewController.swift */; };
+		32155AC12115675B004B7ED1 /* CustomerDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32155AC02115675B004B7ED1 /* CustomerDetailsController.swift */; };
 		32155AC42115675B004B7ED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32155AC22115675B004B7ED1 /* Main.storyboard */; };
 		32155AC62115675C004B7ED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32155AC52115675C004B7ED1 /* Assets.xcassets */; };
 		32155AC92115675C004B7ED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32155AC72115675C004B7ED1 /* LaunchScreen.storyboard */; };
+		32155AD821156E61004B7ED1 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 32155AD721156E61004B7ED1 /* OpenCVWrapper.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		32155ABB2115675B004B7ED1 /* DocumentsDetectionsIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DocumentsDetectionsIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32155ABE2115675B004B7ED1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		32155AC02115675B004B7ED1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		32155AC02115675B004B7ED1 /* CustomerDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDetailsController.swift; sourceTree = "<group>"; };
 		32155AC32115675B004B7ED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32155AC52115675C004B7ED1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32155AC82115675C004B7ED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32155ACA2115675C004B7ED1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32155AD521156E61004B7ED1 /* OpenCVWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
+		32155AD621156E61004B7ED1 /* OpenCV-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OpenCV-Bridging-Header.h"; sourceTree = "<group>"; };
+		32155AD721156E61004B7ED1 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
 		56BBBCE5674575601B2E4CD5 /* Pods-DocumentsDetectionsIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsDetectionsIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-DocumentsDetectionsIOS/Pods-DocumentsDetectionsIOS.release.xcconfig"; sourceTree = "<group>"; };
 		7800688E9E4DCCB58C523177 /* Pods-DocumentsDetectionsIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DocumentsDetectionsIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DocumentsDetectionsIOS/Pods-DocumentsDetectionsIOS.debug.xcconfig"; sourceTree = "<group>"; };
 		C825504423C492FE05860FB2 /* Pods_DocumentsDetectionsIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DocumentsDetectionsIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,14 +65,57 @@
 		32155ABD2115675B004B7ED1 /* DocumentsDetectionsIOS */ = {
 			isa = PBXGroup;
 			children = (
+				3261581B2115BE1400F1BED6 /* view */,
+				3261581A2115BE0200F1BED6 /* controller */,
+				32155AD021156DB8004B7ED1 /* helper */,
 				32155ABE2115675B004B7ED1 /* AppDelegate.swift */,
-				32155AC02115675B004B7ED1 /* ViewController.swift */,
-				32155AC22115675B004B7ED1 /* Main.storyboard */,
 				32155AC52115675C004B7ED1 /* Assets.xcassets */,
 				32155AC72115675C004B7ED1 /* LaunchScreen.storyboard */,
 				32155ACA2115675C004B7ED1 /* Info.plist */,
 			);
 			path = DocumentsDetectionsIOS;
+			sourceTree = "<group>";
+		};
+		32155AD021156DB8004B7ED1 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				32155AD321156E21004B7ED1 /* OpenCVWrapper */,
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
+		32155AD321156E21004B7ED1 /* OpenCVWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				32155AD621156E61004B7ED1 /* OpenCV-Bridging-Header.h */,
+				32155AD521156E61004B7ED1 /* OpenCVWrapper.h */,
+				32155AD721156E61004B7ED1 /* OpenCVWrapper.mm */,
+			);
+			path = OpenCVWrapper;
+			sourceTree = "<group>";
+		};
+		326158192115BD4800F1BED6 /* customerDetails */ = {
+			isa = PBXGroup;
+			children = (
+				32155AC02115675B004B7ED1 /* CustomerDetailsController.swift */,
+			);
+			path = customerDetails;
+			sourceTree = "<group>";
+		};
+		3261581A2115BE0200F1BED6 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				326158192115BD4800F1BED6 /* customerDetails */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		3261581B2115BE1400F1BED6 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				32155AC22115675B004B7ED1 /* Main.storyboard */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		697749FD97F6ED7AC5C0E035 /* Pods */ = {
@@ -121,6 +168,7 @@
 				TargetAttributes = {
 					32155ABA2115675B004B7ED1 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -181,8 +229,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32155AC12115675B004B7ED1 /* ViewController.swift in Sources */,
+				32155AC12115675B004B7ED1 /* CustomerDetailsController.swift in Sources */,
 				32155ABF2115675B004B7ED1 /* AppDelegate.swift in Sources */,
+				32155AD821156E61004B7ED1 /* OpenCVWrapper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +376,7 @@
 			baseConfigurationReference = 7800688E9E4DCCB58C523177 /* Pods-DocumentsDetectionsIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F8LSF3KS7G;
 				INFOPLIST_FILE = DocumentsDetectionsIOS/Info.plist;
@@ -336,6 +386,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.santosdaniel.DocumentsDetectionsIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DocumentsDetectionsIOS/helper/OpenCVWrapper/OpenCV-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -346,6 +398,7 @@
 			baseConfigurationReference = 56BBBCE5674575601B2E4CD5 /* Pods-DocumentsDetectionsIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F8LSF3KS7G;
 				INFOPLIST_FILE = DocumentsDetectionsIOS/Info.plist;
@@ -355,6 +408,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.santosdaniel.DocumentsDetectionsIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DocumentsDetectionsIOS/helper/OpenCVWrapper/OpenCV-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

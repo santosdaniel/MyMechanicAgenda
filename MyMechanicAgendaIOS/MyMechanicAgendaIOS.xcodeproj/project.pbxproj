@@ -12,7 +12,6 @@
 		323AE4EE20F2147A00A9471D /* GenericListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 323AE4ED20F2147A00A9471D /* GenericListItem.xib */; };
 		323AE4F020F2156400A9471D /* GenericListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323AE4EF20F2156400A9471D /* GenericListItem.swift */; };
 		323F925220FA3C7100CA08B0 /* StringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F925120FA3C7100CA08B0 /* StringHelper.swift */; };
-		3256E35A20FFD59E004E2AA1 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3256E35920FFD59E004E2AA1 /* OpenCVWrapper.mm */; };
 		326222A820FB805100E293BF /* PermissionsRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326222A720FB805100E293BF /* PermissionsRequestHelper.swift */; };
 		328D347A20E7FE180004309C /* ContactsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328D347920E7FE180004309C /* ContactsDataSource.swift */; };
 		32968D4420F9D29C00E1B2AD /* GenericDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32968D4320F9D29C00E1B2AD /* GenericDataSource.swift */; };
@@ -23,7 +22,6 @@
 		32AF49B220E7C6B300EBC956 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32AF49B020E7C6B300EBC956 /* LaunchScreen.storyboard */; };
 		32B283DD20FE800B007D77D7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32B283DF20FE800B007D77D7 /* Localizable.strings */; };
 		32CE381920F683FD00986D31 /* CustomerDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE381820F683FD00986D31 /* CustomerDetailsController.swift */; };
-		E19C7FB12809EC770DA44871 /* Pods_MyMechanicAgendaIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E31FB099B0E3A49846C47DE /* Pods_MyMechanicAgendaIOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,9 +30,6 @@
 		323AE4ED20F2147A00A9471D /* GenericListItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenericListItem.xib; sourceTree = "<group>"; };
 		323AE4EF20F2156400A9471D /* GenericListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListItem.swift; sourceTree = "<group>"; };
 		323F925120FA3C7100CA08B0 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
-		3256E35720FFD59E004E2AA1 /* OpenCV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenCV-Bridging-Header.h"; sourceTree = "<group>"; };
-		3256E35820FFD59E004E2AA1 /* OpenCVWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
-		3256E35920FFD59E004E2AA1 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
 		326222A720FB805100E293BF /* PermissionsRequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsRequestHelper.swift; sourceTree = "<group>"; };
 		328D347920E7FE180004309C /* ContactsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsDataSource.swift; sourceTree = "<group>"; };
 		32968D4320F9D29C00E1B2AD /* GenericDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDataSource.swift; sourceTree = "<group>"; };
@@ -58,23 +53,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E19C7FB12809EC770DA44871 /* Pods_MyMechanicAgendaIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3256E35620FFD578004E2AA1 /* OpenCVWrapper */ = {
-			isa = PBXGroup;
-			children = (
-				3256E35820FFD59E004E2AA1 /* OpenCVWrapper.h */,
-				3256E35920FFD59E004E2AA1 /* OpenCVWrapper.mm */,
-				3256E35720FFD59E004E2AA1 /* OpenCV-Bridging-Header.h */,
-			);
-			path = OpenCVWrapper;
-			sourceTree = "<group>";
-		};
 		328D347820E7FDD10004309C /* contactList */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +126,6 @@
 		32AF49BC20E7C79200EBC956 /* helper */ = {
 			isa = PBXGroup;
 			children = (
-				3256E35620FFD578004E2AA1 /* OpenCVWrapper */,
 				3227E0B320F3DF03007C9F91 /* UIHelper.swift */,
 				323F925120FA3C7100CA08B0 /* StringHelper.swift */,
 				326222A720FB805100E293BF /* PermissionsRequestHelper.swift */,
@@ -245,7 +228,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32AF49B620E7C6B300EBC956 /* Build configuration list for PBXNativeTarget "MyMechanicAgendaIOS" */;
 			buildPhases = (
-				9EA17FC3F9AFEB8FF4645660 /* [CP] Check Pods Manifest.lock */,
 				32AF49A020E7C6B200EBC956 /* Sources */,
 				32AF49A120E7C6B200EBC956 /* Frameworks */,
 				32AF49A220E7C6B200EBC956 /* Resources */,
@@ -309,27 +291,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		9EA17FC3F9AFEB8FF4645660 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MyMechanicAgendaIOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		32AF49A020E7C6B200EBC956 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -343,7 +304,6 @@
 				320F84F220FE6FD0000001E6 /* DialogMessageHelper.swift in Sources */,
 				32968D4420F9D29C00E1B2AD /* GenericDataSource.swift in Sources */,
 				3227E0B420F3DF03007C9F91 /* UIHelper.swift in Sources */,
-				3256E35A20FFD59E004E2AA1 /* OpenCVWrapper.mm in Sources */,
 				32AF49A820E7C6B200EBC956 /* AppDelegate.swift in Sources */,
 				326222A820FB805100E293BF /* PermissionsRequestHelper.swift in Sources */,
 			);
@@ -514,7 +474,7 @@
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.santosdaniel.MyMechanicAgendaIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MyMechanicAgendaIOS/helper/OpenCVWrapper/OpenCV-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -539,7 +499,7 @@
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.santosdaniel.MyMechanicAgendaIOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MyMechanicAgendaIOS/helper/OpenCVWrapper/OpenCV-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
