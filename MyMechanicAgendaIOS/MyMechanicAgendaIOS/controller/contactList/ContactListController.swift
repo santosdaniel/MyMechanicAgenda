@@ -9,8 +9,6 @@ class ContactListController: UIViewController, UISearchBarDelegate {
     private var lstResults: ContactsDataSource!
     
     
-    
-    
     private func configureTableView() {
         lstResults = ContactsDataSource(self, tblContacts, loading)
         self.lstResults.fetchContacts(StringHelper.EMPTY_STRING)
@@ -38,15 +36,14 @@ class ContactListController: UIViewController, UISearchBarDelegate {
                 lSearchBar.resignFirstResponder()
             }
             
-            /*
+            
             if let indexPath = tblContacts.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
-                let controller = (segue.destination as! UINavigationController).topViewController as! CustomerDetailsController
-                // controller.detailItem = object
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true
+                if (segue.destination  is CustomerDetailsController)
+                {
+                    let controller = (segue.destination as! CustomerDetailsController)
+                    self.lstResults.itemSelected(itemIndex: indexPath, controller: controller)
+                }
             }
- */
         }
     }
     

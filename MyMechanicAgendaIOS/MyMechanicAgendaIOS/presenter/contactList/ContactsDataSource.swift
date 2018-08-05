@@ -28,7 +28,7 @@ public class ContactsDataSource: GenericDataSource, UITableViewDelegate, UITable
         cell.title?.text = CNContactFormatter.string(from: contact, style: .fullName)
         
         
-        cell.desc?.text = "fdd"
+        cell.desc?.text = "!!! Ford fiesta"
         
         // Set the contact image.
         UIHelper.roundImage(cell.thumbnail)
@@ -91,5 +91,16 @@ public class ContactsDataSource: GenericDataSource, UITableViewDelegate, UITable
             }
         }
         )
+    }
+    
+    func itemSelected(itemIndex: IndexPath, controller: CustomerDetailsController)
+    {
+        let rowIndex = itemIndex.row
+        
+        if(rowIndex < data.count)
+        {
+            let contact = data[rowIndex]
+            controller.contact = contact
+        }
     }
 }

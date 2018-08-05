@@ -1,4 +1,5 @@
 import UIKit
+import Contacts
 
 class CustomerDetailsController: UIViewController, UISearchBarDelegate {
     
@@ -13,6 +14,7 @@ class CustomerDetailsController: UIViewController, UISearchBarDelegate {
 
 
     private var lstResults: ContactsDataSource!
+    public var contact: CNContact!
     
     
     

@@ -29,7 +29,7 @@
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="TF7-ga-xjL" appends="YES" id="58d-uo-lY2"/>
+                                    <outletCollection property="gestureRecognizers" destination="TF7-ga-xjL" appends="YES" id="Me3-ix-s5k"/>
                                 </connections>
                             </tableView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="amr-5M-vK5">
@@ -73,7 +73,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOu-p5-gg8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="TF7-ga-xjL">
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="TF7-ga-xjL">
                     <connections>
                         <action selector="dismissKeyboardWithSender:" destination="6yy-ga-Exz" id="CR4-si-LAe"/>
                     </connections>
