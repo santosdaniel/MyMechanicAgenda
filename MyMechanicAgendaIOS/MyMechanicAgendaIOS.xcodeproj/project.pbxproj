@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320DC9512118CB35009FDB07 /* CustomerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320DC9502118CB35009FDB07 /* CustomerRepository.swift */; };
 		320F84F220FE6FD0000001E6 /* DialogMessageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320F84F120FE6FD0000001E6 /* DialogMessageHelper.swift */; };
 		3227E0B420F3DF03007C9F91 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227E0B320F3DF03007C9F91 /* UIHelper.swift */; };
 		323AE4EE20F2147A00A9471D /* GenericListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 323AE4ED20F2147A00A9471D /* GenericListItem.xib */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		320DC9502118CB35009FDB07 /* CustomerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerRepository.swift; sourceTree = "<group>"; };
 		320F84F120FE6FD0000001E6 /* DialogMessageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogMessageHelper.swift; sourceTree = "<group>"; };
 		3227E0B320F3DF03007C9F91 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		323AE4ED20F2147A00A9471D /* GenericListItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenericListItem.xib; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				328D347920E7FE180004309C /* ContactsDataSource.swift */,
+				320DC9502118CB35009FDB07 /* CustomerRepository.swift */,
 			);
 			path = contactList;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				323AE4F020F2156400A9471D /* GenericListItem.swift in Sources */,
 				328D347A20E7FE180004309C /* ContactsDataSource.swift in Sources */,
 				32AF49AA20E7C6B200EBC956 /* ContactListController.swift in Sources */,
+				320DC9512118CB35009FDB07 /* CustomerRepository.swift in Sources */,
 				323F925220FA3C7100CA08B0 /* StringHelper.swift in Sources */,
 				320F84F220FE6FD0000001E6 /* DialogMessageHelper.swift in Sources */,
 				32968D4420F9D29C00E1B2AD /* GenericDataSource.swift in Sources */,
