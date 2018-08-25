@@ -209,6 +209,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32AF49B620E7C6B300EBC956 /* Build configuration list for PBXNativeTarget "MyMechanicAgendaIOS" */;
 			buildPhases = (
+				3241AEBB211F8D6F004AA5CC /* Run swiftlint */,
 				32AF49A020E7C6B200EBC956 /* Sources */,
 				32AF49A120E7C6B200EBC956 /* Frameworks */,
 				32AF49A220E7C6B200EBC956 /* Resources */,
@@ -271,6 +272,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3241AEBB211F8D6F004AA5CC /* Run swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run swiftlint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		32AF49A020E7C6B200EBC956 /* Sources */ = {

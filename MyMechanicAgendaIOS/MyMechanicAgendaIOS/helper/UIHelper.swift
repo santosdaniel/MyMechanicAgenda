@@ -1,5 +1,3 @@
-
-
 import UIKit
 
 public class UIHelper {
@@ -11,6 +9,3 @@ public class UIHelper {
         imageVIEW.layer.borderColor = UIColor.white.cgColor
     }
 }
-
-
-

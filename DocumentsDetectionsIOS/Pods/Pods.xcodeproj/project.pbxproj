@@ -14,6 +14,7 @@
 
 /* Begin PBXFileReference section */
 		2263BDF8B4B8A595E69154E5EDD20E13 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40709708A455600DABA81256193B9142 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		417899FA31B7DBB48199120B24A78FA6 /* Pods-DocumentsDetectionsIOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DocumentsDetectionsIOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 		44588108393BFFB17A5028550B023507 /* Pods-DocumentsDetectionsIOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-DocumentsDetectionsIOS.modulemap"; sourceTree = "<group>"; };
 		51AF189E9D77F55595B704D5EC94776E /* Pods-DocumentsDetectionsIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DocumentsDetectionsIOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -23,7 +24,6 @@
 		74E0F14A16CF2C9A4B3989AC73C535FF /* Pods-DocumentsDetectionsIOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DocumentsDetectionsIOS-resources.sh"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E1F17A6748876E6BF1494C218EC8164 /* Pods-DocumentsDetectionsIOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DocumentsDetectionsIOS-frameworks.sh"; sourceTree = "<group>"; };
-		C99D65E818282909945A7B67F1B204DD /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		CD2F8127DDF1176B58D3414D2B7D9A51 /* Pods-DocumentsDetectionsIOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DocumentsDetectionsIOS-umbrella.h"; sourceTree = "<group>"; };
 		D95076903E19DA0EECF4C81319DCE367 /* Pods-DocumentsDetectionsIOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DocumentsDetectionsIOS-acknowledgements.plist"; sourceTree = "<group>"; };
 		D9BD103435031D298C2B9D7752D3C6E2 /* Pods-DocumentsDetectionsIOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DocumentsDetectionsIOS-dummy.m"; sourceTree = "<group>"; };
@@ -75,14 +75,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4A77B0B9E2DA7C59F227CE1A17E78192 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C99D65E818282909945A7B67F1B204DD /* opencv2.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,32 +83,15 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		6D76A84FA44FA422B31D3185B4166BFB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B6C1780F88BCD4979CB9FA9001B21D9A /* OpenCV */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				6D76A84FA44FA422B31D3185B4166BFB /* Pods */,
+				E14979B9FFC3EF6B7783C1CB0662D5E6 /* Pods */,
 				471827069E2B43EA10D1715486E42643 /* Products */,
 				334BCF5CDDEB1AEF5B8B6CAFEBC22422 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		B6C1780F88BCD4979CB9FA9001B21D9A /* OpenCV */ = {
-			isa = PBXGroup;
-			children = (
-				4A77B0B9E2DA7C59F227CE1A17E78192 /* Frameworks */,
-			);
-			name = OpenCV;
-			path = OpenCV;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -125,6 +100,40 @@
 				5E0D919E635D23B70123790B8308F8EF /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D4B66A5D52ABFD26D9CC397D468A3ECB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40709708A455600DABA81256193B9142 /* opencv2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DC04AE898220789487524355CB94A0BE /* OpenCV */ = {
+			isa = PBXGroup;
+			children = (
+				D4B66A5D52ABFD26D9CC397D468A3ECB /* Frameworks */,
+			);
+			name = OpenCV;
+			path = OpenCV;
+			sourceTree = "<group>";
+		};
+		E14979B9FFC3EF6B7783C1CB0662D5E6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DC04AE898220789487524355CB94A0BE /* OpenCV */,
+				E6185098C2FFE947D655E65A20F1BE08 /* SwiftLint */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E6185098C2FFE947D655E65A20F1BE08 /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SwiftLint;
+			path = SwiftLint;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

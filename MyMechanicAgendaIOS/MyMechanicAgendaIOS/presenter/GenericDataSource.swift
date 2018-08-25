@@ -1,16 +1,17 @@
 import UIKit
 
-
 // MARK: - Data source with generic stuff that should be common to all the data sources
 public class GenericDataSource: NSObject {
     
-    public static let NO_ELEMENTS: Int = 0
-    private static let IMPLEMENTATION_NEED_ID: String = "Subclasses need to implement the `\(#function)` method."
+    public static let genericListItemXib = "GenericListItem"
+    public static let genericListItemId = "genericListItemId"
+    
+    public static let noElementsConst: Int = 0
+    private static let implementationNeedId: String = "Subclasses need to implement the `\(#function)` method."
     
     internal var controller: UIViewController
     internal var tableView: UITableView
     private var progressBar: UIActivityIndicatorView
-    
     
     /// Initializar of the GenericDataSource
     ///
@@ -24,19 +25,16 @@ public class GenericDataSource: NSObject {
         self.progressBar = progressBar
         super.init()
         if let tableViewDelegate = self as? UITableViewDelegate {
-            tableView.delegate = tableViewDelegate;
+            tableView.delegate = tableViewDelegate
         }
         if let dataSource = self as? UITableViewDataSource {
-            tableView.dataSource = dataSource;
+            tableView.dataSource = dataSource
         }
-        
     }
-    
-    
     
     /// Should be used by the controller to indicate that is able to receive content
     func startLoading() {
-        self.progressBar.startAnimating();
+        self.progressBar.startAnimating()
     }
     
     /// Indicates that the ui list view is loading its content
@@ -44,7 +42,7 @@ public class GenericDataSource: NSObject {
     /// - Parameter isLoading: Flag that indicates if it is loading the content or not
     public func setIsLoading(_ isLoading: Bool) {
         if let lTableView = tableView as UITableView?, let lProgressBar = progressBar as UIActivityIndicatorView? {
-            if (isLoading) {
+            if isLoading {
                 lTableView.isHidden = true
                 lProgressBar.startAnimating()
                 lProgressBar.isHidden = false

@@ -2,7 +2,7 @@ import UIKit
 
 class CustomerDetailsController: UIViewController {
 
-    private let IMAGE_NAME: String = "documents"
+    private let imageName: String = "documents"
 
     @IBOutlet weak var contactImage: UIImageView!
     @IBOutlet weak var processImage: UIButton!
@@ -11,20 +11,21 @@ class CustomerDetailsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let originalImage = UIImage(named: IMAGE_NAME)
+        let originalImage = UIImage(named: imageName)
         self.contactImage.image =  originalImage
 
     }
 
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    super.didReceiveMemoryWarning()
+    //Dispose of any resources that can be recreated.
     }
 
     @IBAction
     func processImageAction(sender: UIButton) {
         let openCV = OpenCVWrapper()
-        let originalImage = UIImage(named: IMAGE_NAME)
+        let originalImage = UIImage(named: imageName)
         self.resultImage.image = openCV.convert(toGrey: originalImage)
     }
+
 }

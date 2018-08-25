@@ -2,9 +2,9 @@ import Foundation
 
 /// Helper to handle strings
 public class StringHelper {
-    public static let EMPTY_STRING = ""
-    public static let SPACE = " "
-    
+    public static let emptyString = ""
+    public static let space = " "
+
     /**
      * Checks if a string is null or empty
      */
@@ -15,11 +15,11 @@ public class StringHelper {
             return true
         }
     }
-    
+
     /**
      * Check that is string is neither null or empty
      */
-    public class func isNotNullOrEmpty(_ str: String?)  -> Bool {
-        return (!isNullOrEmpty(str));
+    public class func isNotNullOrEmpty(_ str: String?) -> Bool {
+        return (!isNullOrEmpty(str))
     }
 }

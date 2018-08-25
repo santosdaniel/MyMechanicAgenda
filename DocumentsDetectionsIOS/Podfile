@@ -7,5 +7,6 @@ target 'DocumentsDetectionsIOS' do
 
   # Pods for MyMechanicAgendaIOS
 pod 'OpenCV'
+pod 'SwiftLint'
 end
 

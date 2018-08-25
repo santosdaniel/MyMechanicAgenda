@@ -1,16 +1,20 @@
 PODS:
   - OpenCV (3.4.2)
+  - SwiftLint (0.26.0)
 
 DEPENDENCIES:
   - OpenCV
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - OpenCV
+    - SwiftLint
 
 SPEC CHECKSUMS:
   OpenCV: 452909747854c92e0f59670961ed5131f5286cb5
+  SwiftLint: f6b83e8d95ee1e91e11932d843af4fdcbf3fc764
 
-PODFILE CHECKSUM: c90ce61937bf1de03a1620e3dce584e9bb7ad5fb
+PODFILE CHECKSUM: ee7829949c1aa16f127d367d24a6a2304eaa3f7b
 
 COCOAPODS: 1.5.3
