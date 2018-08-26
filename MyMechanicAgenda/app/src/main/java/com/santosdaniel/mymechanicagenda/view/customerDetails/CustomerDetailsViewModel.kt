@@ -2,10 +2,7 @@ package com.santosdaniel.mymechanicagenda.view.customerDetails
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.LiveData
-
-
-
-
+import com.santosdaniel.mymechanicagenda.presenter.customerDetails.CustomerRepository
 
 
 /**
@@ -13,9 +10,18 @@ import android.arch.lifecycle.LiveData
  */
 class CustomerDetailsViewModel : ViewModel() {
 
-    private val user: LiveData<CustomerDetailsModel>? = null
+    private var customer: LiveData<CustomerDetailsModel>? = null
+    private val customerRepository: CustomerRepository = CustomerRepository()
 
     fun getCustomerDetailsModel(): LiveData<CustomerDetailsModel>? {
-        return user
+        return customer
+    }
+
+    fun init(lookupId: String) {
+
+        /**
+         * Only fetch data if is the first time doing it
+         */
+        if (this.customer == null) this.customer = this.customerRepository.loadByLookId(lookupId)
     }
 }

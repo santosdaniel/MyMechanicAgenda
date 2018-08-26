@@ -12,6 +12,7 @@ import com.santosdaniel.mymechanicagenda.model.database.Customer
 import com.santosdaniel.mymechanicagenda.view.IGenericStateView
 import com.santosdaniel.mymechanicagenda.view.generic.ViewHelper
 import java.io.Serializable
+import android.arch.lifecycle.ViewModelProviders
 
 /**
  * Activity to present the contact with a list of vehicles
@@ -86,6 +87,8 @@ class CustomerPictureFragment : Fragment(), IGenericStateView<CustomerDetailsMod
         }
     }
 
+    private var viewModel: CustomerDetailsViewModel? = null
+
     /**
      * Called when the activity is created and the fragment is recreated
      */
@@ -103,6 +106,14 @@ class CustomerPictureFragment : Fragment(), IGenericStateView<CustomerDetailsMod
                 }
             }
         }
+
+        this.viewModel = ViewModelProviders.of(this).get(CustomerDetailsViewModel::class.java)
+        viewModel?.init("lookup")
+        /*
+        viewModel?.getCustomerDetailsModel()?.observe(this, { costumer ->
+            // update UI
+        })
+        */
     }
 
     companion object {

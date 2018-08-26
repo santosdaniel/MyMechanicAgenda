@@ -1,6 +1,7 @@
 package com.santosdaniel.mymechanicagenda.presenter.customerDetails
 
 
+import android.arch.lifecycle.LiveData
 import android.support.annotation.NonNull
 import com.raizlabs.android.dbflow.kotlinextensions.from
 import com.raizlabs.android.dbflow.sql.language.SQLite
@@ -9,6 +10,10 @@ import com.santosdaniel.mymechanicagenda.helper.LogHelper
 import com.santosdaniel.mymechanicagenda.model.database.Customer
 import com.santosdaniel.mymechanicagenda.model.database.Customer_Table
 import com.santosdaniel.mymechanicagenda.presenter.genericDatabase.GenericRepository
+import com.santosdaniel.mymechanicagenda.view.customerDetails.CustomerDetailsModel
+import android.arch.lifecycle.MutableLiveData
+
+
 
 
 /**
@@ -66,6 +71,17 @@ class CustomerRepository : GenericRepository<Customer>() {
         } catch (e: Exception) {
             LogHelper.e(TAG, e.message)
         }
+    }
+
+    fun loadByLookId(lookupId: String): LiveData<CustomerDetailsModel> {
+        val data = MutableLiveData<CustomerDetailsModel>()
+        var customerDetailsModel = CustomerDetailsModel()
+        customerDetailsModel.lookupId = lookupId
+        customerDetailsModel.title = "Test"
+        customerDetailsModel.imageUri = null
+
+        data.value = customerDetailsModel
+        return data
     }
 
     companion object {
