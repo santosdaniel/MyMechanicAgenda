@@ -15,11 +15,7 @@ protected constructor() {
     /**
      * Reference to the data access objects provider
      */
-    protected val daoProvider: DaoProvider
-
-    init {
-        this.daoProvider = DaoProvider()
-    }
+    protected val daoProvider: DaoProvider = DaoProvider()
 
     /**
      * Create a new entity

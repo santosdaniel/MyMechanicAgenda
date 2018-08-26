@@ -67,10 +67,10 @@ class CustomerDetailsActivity : GenericFragmentedActivity<CustomerDetailsModel>(
     private fun bindViews() {
         //Makes the bind of the addVehicle
         this.addVehicle = findViewById(R.id.add_vehicle)
-        this.addVehicle?.setOnClickListener({
+        this.addVehicle?.setOnClickListener {
             val intent = Intent(this, EditVehicleDetailsActivity::class.java)
             IntentHelper.startNewActivity(this, this.addVehicle!!, intent)
-        })
+        }
     }
 
     /**

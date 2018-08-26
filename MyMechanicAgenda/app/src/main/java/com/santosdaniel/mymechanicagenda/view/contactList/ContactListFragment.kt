@@ -77,6 +77,7 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
 
         // Initializes the loader
         val emptyBundle = Bundle()
+        //TODO: refactor
         loaderManager.initLoader(QueryEnum.ListContacts.ordinal, emptyBundle, this)
     }
 
