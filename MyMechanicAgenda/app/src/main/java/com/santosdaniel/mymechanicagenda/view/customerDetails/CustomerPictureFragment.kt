@@ -106,8 +106,8 @@ class CustomerPictureFragment : Fragment(), IGenericStateView<CustomerDetailsMod
     }
 
     companion object {
-        val TAG = "CustomerPictureFragment"
-        val CONTACT_DATA_KEY = "contactData"
-        val CUSTOMER_KEY = "customer"
+        const val TAG = "CustomerPictureFragment"
+        const val CONTACT_DATA_KEY = "contactData"
+        const val CUSTOMER_KEY = "customer"
     }
 }

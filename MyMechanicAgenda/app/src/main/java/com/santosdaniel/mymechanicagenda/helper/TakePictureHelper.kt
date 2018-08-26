@@ -9,7 +9,8 @@ import android.support.v4.content.FileProvider
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
+import java.util.Date
 
 
 /**
@@ -17,10 +18,10 @@ import java.util.*
  * Helper to take a picture
  */
 object TakePictureHelper {
-    val REQUEST_TAKE_PHOTO = 1
-    val FILE_PROVIDER_AUTHORITY = "com.santosdaniel.mymechanicagenda.fileProvider"
-    private val PICTURES_DIRECTORY = "pictures"
-    private val PICTURES_SUFFIX = ".jpg"
+    const val REQUEST_TAKE_PHOTO = 1
+    const val FILE_PROVIDER_AUTHORITY = "com.santosdaniel.mymechanicagenda.fileProvider"
+    private const val PICTURES_DIRECTORY = "pictures"
+    private const val PICTURES_SUFFIX = ".jpg"
 
 
     private var mCurrentPhotoPath: String? = null
@@ -28,7 +29,8 @@ object TakePictureHelper {
     @Throws(IOException::class)
     fun createPictureFile(context: Context, prefix: String): File {
         // Create an image file name
-        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val now = Date()
+        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(now)
         val imageFileName = "${prefix}_${timeStamp}_"
         val picturesDir = File(context.filesDir, PICTURES_DIRECTORY)
         picturesDir.mkdirs()

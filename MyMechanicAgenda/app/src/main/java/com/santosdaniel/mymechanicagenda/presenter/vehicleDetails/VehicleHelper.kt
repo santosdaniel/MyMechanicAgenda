@@ -17,7 +17,7 @@ object VehicleHelper {
      * return A string with brand and model of the vehicle
      */
     fun brandAndModel(vehicle: Vehicle, context: Context): String {
-        var sb = StringBuilder()
+        val sb = StringBuilder()
         // The brand
         if (vehicle.brand != null) {
             val brand: BrandEnum = vehicle.brand!!

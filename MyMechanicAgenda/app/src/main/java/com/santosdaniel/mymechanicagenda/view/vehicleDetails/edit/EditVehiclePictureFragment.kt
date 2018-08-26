@@ -193,9 +193,9 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
     }
 
     companion object {
-        val TAG = "EditVehiclePicFragment"
-        val VEHICLE_DATA_KEY = "vehicleData"
-        val THUMBNAIL_DATA_KEY = "data"
-        val VEHICLE_PICTURE_PREFIX = "vehicle"
+        const val TAG = "EditVehiclePicFragment"
+        const val VEHICLE_DATA_KEY = "vehicleData"
+        const val THUMBNAIL_DATA_KEY = "data"
+        const val VEHICLE_PICTURE_PREFIX = "vehicle"
     }
 }

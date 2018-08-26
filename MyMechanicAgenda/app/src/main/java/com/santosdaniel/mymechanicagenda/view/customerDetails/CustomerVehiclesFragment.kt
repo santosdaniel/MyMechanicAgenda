@@ -170,9 +170,9 @@ class CustomerVehiclesFragment : GenericRecycleViewFragment<VehiclesAdapter>(), 
 
     companion object {
 
-        val TAG = "CustomerVehiclesFragment"
-        val CONTACT_DATA_KEY = "contactData"
-        val CUSTOMER_KEY = "customer"
+        const val TAG = "CustomerVehiclesFragment"
+        const val CONTACT_DATA_KEY = "contactData"
+        const val CUSTOMER_KEY = "customer"
     }
 
 

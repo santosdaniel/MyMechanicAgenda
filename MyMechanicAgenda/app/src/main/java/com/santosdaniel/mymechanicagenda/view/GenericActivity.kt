@@ -209,8 +209,8 @@ abstract class GenericActivity<T> : AppCompatActivity() {
 
     companion object {
 
-        private val G_MODEL_KEY = "gActivity_model_key"
-        private val MODEL_KEY = "activity_model_key"
+        private const val G_MODEL_KEY = "gActivity_model_key"
+        private const val MODEL_KEY = "activity_model_key"
     }
 
 

@@ -9,7 +9,7 @@ import com.santosdaniel.mymechanicagenda.helper.StringHelper
 /**
  * Generic dialog to be
  */
-abstract open class GenericDialog : DialogFragment() {
+abstract class GenericDialog : DialogFragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

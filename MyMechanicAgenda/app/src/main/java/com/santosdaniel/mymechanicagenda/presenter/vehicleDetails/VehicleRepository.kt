@@ -71,6 +71,6 @@ class VehicleRepository : GenericRepository<Vehicle>() {
 
 
     companion object {
-        private val TAG = "VehicleRepository"
+        private const val TAG = "VehicleRepository"
     }
 }

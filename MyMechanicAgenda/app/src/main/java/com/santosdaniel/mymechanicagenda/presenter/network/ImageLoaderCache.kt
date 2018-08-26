@@ -43,6 +43,6 @@ internal class ImageLoaderCache : ImageLoader.ImageCache {
         /**
          * Maximum number of entries in the cache
          */
-        private val MAX_NUMBER_OF_ENTRIES = 20
+        private const val MAX_NUMBER_OF_ENTRIES = 20
     }
 }

@@ -25,7 +25,7 @@ class SearchQuitOnClickListener
 (toolbar: Toolbar, searchSection: View, searchView: SearchView, model: GenericActivityModel) : View.OnClickListener {
 
     companion object {
-        private val TAG = "SearchQuitOnClick"
+        private const val TAG = "SearchQuitOnClick"
     }
 
     private val toolbar = WeakReference(toolbar)

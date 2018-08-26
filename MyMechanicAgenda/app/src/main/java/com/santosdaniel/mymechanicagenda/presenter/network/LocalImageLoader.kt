@@ -25,7 +25,7 @@ class LocalImageLoader
 
 
     private fun load(path: String, uri: Uri, thumbnail: ImageView) {
-        var bitmap: Bitmap = MediaStore.Images.Media.getBitmap(
+        val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(
                 context.contentResolver, uri)
         thumbnail.setImageBitmap(bitmap)
         imageCache.putBitmap(path, bitmap)
@@ -38,7 +38,7 @@ class LocalImageLoader
      * @param thumbnail
      */
     fun load(imageUri: String, thumbnail: ImageView): Boolean {
-        var bitmap: Bitmap? = imageCache.getBitmap(imageUri)
+        val bitmap: Bitmap? = imageCache.getBitmap(imageUri)
         if (bitmap == null) {
             try {
                 val uri = Uri.parse(imageUri)
@@ -69,6 +69,6 @@ class LocalImageLoader
         /**
          * Maximum number of entries in the cache
          */
-        private val TAG = "LocalImageLoader"
+        private const val TAG = "LocalImageLoader"
     }
 }

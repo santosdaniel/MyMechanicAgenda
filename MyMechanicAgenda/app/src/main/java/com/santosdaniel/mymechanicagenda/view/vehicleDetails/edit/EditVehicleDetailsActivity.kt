@@ -29,7 +29,7 @@ class EditVehicleDetailsActivity : GenericFragmentedActivity<VehicleDetailsModel
      */
     private fun setModel(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
-            var model = IntentHelper.getSerializable(intent, MODEL_KEY)
+            val model = IntentHelper.getSerializable(intent, MODEL_KEY)
             super.model = if (model == null) VehicleDetailsModel() else (model as VehicleDetailsModel)
             if ((super.model!!).vehicle == null) {
                 (super.model!!).vehicle = Vehicle()
