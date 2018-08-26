@@ -1,6 +1,7 @@
 package com.santosdaniel.mymechanicagenda.view.contactList
 
 import android.Manifest
+import android.arch.lifecycle.ViewModelProviders
 import android.database.Cursor
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
@@ -22,6 +23,7 @@ import com.santosdaniel.mymechanicagenda.helper.PermissionsRequestHelper
 import com.santosdaniel.mymechanicagenda.presenter.contactList.ContactsAdapter
 import com.santosdaniel.mymechanicagenda.presenter.contactList.ContactsCursorLoader
 import com.santosdaniel.mymechanicagenda.view.GenericRecycleViewFragment
+import com.santosdaniel.mymechanicagenda.view.customerDetails.CustomerDetailsViewModel
 import java.lang.ref.WeakReference
 
 /**
@@ -32,6 +34,7 @@ import java.lang.ref.WeakReference
  */
 class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), LoaderManager.LoaderCallbacks<Cursor> {
 
+    private var viewModel: ContactListViewModel? = null
 
     /**
      * Find the views that is going to use in the fragment
@@ -76,6 +79,9 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
         lstAdapter = contactsAdapter
 
         // Initializes the loader
+        this.viewModel = ViewModelProviders.of(this).get(ContactListViewModel::class.java)
+        viewModel?.init()
+
         val emptyBundle = Bundle()
         //TODO: refactor
         loaderManager.initLoader(QueryEnum.ListContacts.ordinal, emptyBundle, this)
