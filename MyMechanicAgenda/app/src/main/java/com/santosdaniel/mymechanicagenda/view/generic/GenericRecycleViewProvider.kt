@@ -12,12 +12,12 @@ class GenericRecycleViewProvider<T : RecyclerView.Adapter<*>> {
     /**
      * Reference to the recycle view where the items will be show
      */
-    var lstResults: RecyclerView? = null
+    private var lstResults: RecyclerView? = null
 
     /**
      * Used to indicate that is trying to load the data to the recycleView
      */
-    var loadProgress: ProgressBar? = null
+    private var loadProgress: ProgressBar? = null
 
     /**
      * The adapter of the recycle view

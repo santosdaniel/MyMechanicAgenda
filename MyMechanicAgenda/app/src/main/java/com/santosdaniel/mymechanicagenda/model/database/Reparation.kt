@@ -21,7 +21,7 @@ class Reparation : GenericEntity(), Serializable {
     /**
      * List of documents associated with reparation
      */
-    @get:OneToMany(methods = arrayOf(OneToMany.Method.ALL), variableName = DOCUMENTS_VARIABLE_NAME)
+    @get:OneToMany(methods = [(OneToMany.Method.ALL)], variableName = DOCUMENTS_VARIABLE_NAME)
     var documents: List<Document>? = null
 
     /**

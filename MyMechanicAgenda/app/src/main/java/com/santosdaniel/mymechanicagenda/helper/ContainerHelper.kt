@@ -15,7 +15,7 @@ object ContainerHelper {
      * @return False the array is not empty
      * True the array is null or empty
     </T> */
-    fun <T> isEmpty(array: Array<T>?): Boolean = array == null || array.isEmpty()
+    private fun <T> isEmpty(array: Array<T>?): Boolean = array == null || array.isEmpty()
 
     /**
      * Checks if an array is not empty

@@ -6,7 +6,7 @@ def db_flow_version = "4.2.4"
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "28.0.0"
+    buildToolsVersion "28.0.2"
     defaultConfig {
         applicationId "com.santosdaniel.mymechanicagenda"
         minSdkVersion 14

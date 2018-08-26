@@ -14,7 +14,7 @@ class Vehicle : GenericEntity(), Serializable {
     /**
      * List of customers that the vehicle have associate
      */
-    @get:OneToMany(methods = arrayOf(OneToMany.Method.ALL), variableName = CUSTOMERS_VARIABLE_NAME)
+    @get:OneToMany(methods = [(OneToMany.Method.ALL)], variableName = CUSTOMERS_VARIABLE_NAME)
     var customers: List<Customer>? = null
 
 
@@ -28,7 +28,7 @@ class Vehicle : GenericEntity(), Serializable {
     /**
      * List of document that the vehicle have associate
      */
-    @get:OneToMany(methods = arrayOf(OneToMany.Method.ALL), variableName = DOCUMENTS_VARIABLE_NAME)
+    @get:OneToMany(methods = [(OneToMany.Method.ALL)], variableName = DOCUMENTS_VARIABLE_NAME)
     var documents: List<Document>? = null
 
     /**
@@ -61,7 +61,7 @@ class Vehicle : GenericEntity(), Serializable {
     /**
      * List of reparations made in the vehicle
      */
-    @get:OneToMany(methods = arrayOf(OneToMany.Method.ALL), variableName = REPARATIONS_VARIABLE_NAME)
+    @get:OneToMany(methods = [(OneToMany.Method.ALL)], variableName = REPARATIONS_VARIABLE_NAME)
     var reparations: List<Reparation>? = null
 
     companion object {
