@@ -1,5 +1,6 @@
 package com.santosdaniel.mymechanicagenda.view.customerDetails
 
+import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -89,6 +90,12 @@ class CustomerPictureFragment : Fragment(), IGenericStateView<CustomerDetailsMod
 
     private var viewModel: CustomerDetailsViewModel? = null
 
+    private val postListObserver = Observer<CustomerDetailsModel> { customer ->
+        if(customer != null) {
+            setState(customer)
+        }
+    }
+
     /**
      * Called when the activity is created and the fragment is recreated
      */
@@ -108,12 +115,10 @@ class CustomerPictureFragment : Fragment(), IGenericStateView<CustomerDetailsMod
         }
 
         this.viewModel = ViewModelProviders.of(this).get(CustomerDetailsViewModel::class.java)
-        viewModel?.init("lookup")
-        /*
-        viewModel?.getCustomerDetailsModel()?.observe(this, { costumer ->
-            // update UI
-        })
-        */
+        this.viewModel?.let { vm ->
+            vm.init("lookup")
+            vm.getCustomerDetailsModel()?.observe(this, postListObserver)
+        }
     }
 
     companion object {

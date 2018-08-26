@@ -9,53 +9,54 @@ import java.util.*
  * Represents one document of the vehicle or of the reparation
  */
 @Table(database = MyMechanicDatabase::class)
-class Document : GenericEntity(), Serializable {
+data class Document(
 
-    /**
-     * Type of document to use
-     */
-    @Column(typeConverter = DocumentTypeConverter::class)
-    var type: DocumentTypeEnum? = null
+        /**
+         * Type of document to use
+         */
+        @Column(typeConverter = DocumentTypeConverter::class)
+        var type: DocumentTypeEnum? = null,
 
-    /**
-     * The vehicle which the document belongs
-     */
-    @ForeignKeyReference(columnName = VEHICLE_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
-    @ForeignKey(tableClass = Vehicle::class)
-    var vehicle: Vehicle? = null
+        /**
+         * The vehicle which the document belongs
+         */
+        @ForeignKeyReference(columnName = VEHICLE_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
+        @ForeignKey(tableClass = Vehicle::class)
+        var vehicle: Vehicle? = null,
 
-    /**
-     * The reparation which the document belongs
-     */
-    @ForeignKeyReference(columnName = REPAIR_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
-    @ForeignKey(tableClass = Reparation::class)
-    var reparation: Reparation? = null
+        /**
+         * The reparation which the document belongs
+         */
+        @ForeignKeyReference(columnName = REPAIR_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
+        @ForeignKey(tableClass = Reparation::class)
+        var reparation: Reparation? = null,
 
-    /**
-     * Title of the document
-     */
-    @Column(name = TITLE_COLUMN_NAME)
-    var title: String? = null
+        /**
+         * Title of the document
+         */
+        @Column(name = TITLE_COLUMN_NAME)
+        var title: String? = null,
 
 
-    /**
-     * Description of document
-     */
-    @Column(name = DESCRIPTION_COLUMN_NAME)
-    var description: String? = null
+        /**
+         * Description of document
+         */
+        @Column(name = DESCRIPTION_COLUMN_NAME)
+        var description: String? = null,
 
-    /**
-     * Date of the document
-     */
-    @Column(name = DATE_COLUMN_NAME)
-    var date: Date? = null
+        /**
+         * Date of the document
+         */
+        @Column(name = DATE_COLUMN_NAME)
+        var date: Date? = null,
 
-    /**
-     * List of vehicles that the costumer have associate
-     */
-    @get:OneToMany(methods = [(OneToMany.Method.ALL)], variableName = PHOTOS_VARIABLE_NAME)
-    var photos: MutableList<DocumentPhoto>? = null
+        /**
+         * List of vehicles that the costumer have associate
+         */
+        @get:OneToMany(methods = [(OneToMany.Method.ALL)], variableName = PHOTOS_VARIABLE_NAME)
+        var photos: MutableList<DocumentPhoto>? = null
 
+) : GenericEntity(), Serializable {
     /**
      * Define the constants used by the main entity
      */

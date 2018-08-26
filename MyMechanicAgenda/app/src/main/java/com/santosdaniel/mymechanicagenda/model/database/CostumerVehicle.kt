@@ -10,40 +10,42 @@ import java.util.*
  * Association between contact and vehicle
  */
 @Table(database = MyMechanicDatabase::class)
-class CostumerVehicle : GenericEntity() {
+data class CostumerVehicle(
 
 
-    /**
-     * Identifier of the costumer which the vehicle is associated
-     */
-    @NotNull
-    @ForeignKeyReference(columnName = COSTUMER_ID_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
-    @ForeignKey(tableClass = Customer::class)
-    var customer: Customer? = null
+        /**
+         * Identifier of the costumer which the vehicle is associated
+         */
+        @NotNull
+        @ForeignKeyReference(columnName = COSTUMER_ID_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
+        @ForeignKey(tableClass = Customer::class)
+        var customer: Customer? = null,
 
-    /**
-     * Identifier of the vehicle
-     */
-    @NotNull
-    @ForeignKeyReference(columnName = VEHICLE_ID_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
-    @ForeignKey(tableClass = Vehicle::class)
-    var vehicle: Vehicle? = null
+        /**
+         * Identifier of the vehicle
+         */
+        @NotNull
+        @ForeignKeyReference(columnName = VEHICLE_ID_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
+        @ForeignKey(tableClass = Vehicle::class)
+        var vehicle: Vehicle? = null,
 
 
-    /**
-     * Date when the entity was created
-     */
-    @NotNull
-    @Column(name = FROM_COLUMN_NAME)
-    var from: Date? = null
+        /**
+         * Date when the entity was created
+         */
+        @NotNull
+        @Column(name = FROM_COLUMN_NAME)
+        var from: Date? = null,
 
-    /**
-     * Until when the association between costumer and vehicle exists
-     * (Null means that is still valid)
-     */
-    @Column(name = UNTIL_COLUMN_NAME)
-    var until: Date? = null
+        /**
+         * Until when the association between costumer and vehicle exists
+         * (Null means that is still valid)
+         */
+        @Column(name = UNTIL_COLUMN_NAME)
+        var until: Date? = null
 
+
+) : GenericEntity() {
     companion object {
 
         const val COSTUMER_ID_COLUMN_NAME = "costumer_id"

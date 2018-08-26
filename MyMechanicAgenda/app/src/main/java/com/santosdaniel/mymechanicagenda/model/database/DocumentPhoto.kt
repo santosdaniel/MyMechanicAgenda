@@ -9,22 +9,24 @@ import java.io.Serializable
  * A document can have multiple photos
  */
 @Table(database = MyMechanicDatabase::class)
-class DocumentPhoto : GenericEntity(), Serializable {
+data class DocumentPhoto(
 
-    /**
-     * The document which the photo belongs
-     */
-    @ForeignKeyReference(columnName = DOCUMENT_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
-    @ForeignKey(tableClass = Document::class)
-    var document: Document? = null
+        /**
+         * The document which the photo belongs
+         */
+        @ForeignKeyReference(columnName = DOCUMENT_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
+        @ForeignKey(tableClass = Document::class)
+        var document: Document? = null,
 
-    /**
-     * Path to the photo
-     */
-    @NotNull
-    @Column(name = PATH_COLUMN_NAME)
-    var path: String? = null
+        /**
+         * Path to the photo
+         */
+        @NotNull
+        @Column(name = PATH_COLUMN_NAME)
+        var path: String? = null
 
+
+) : GenericEntity(), Serializable {
     companion object {
         private const val serialVersionUID = -4633240669554940410L
         private const val DOCUMENT_COLUMN_NAME = "document"

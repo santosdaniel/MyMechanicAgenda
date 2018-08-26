@@ -10,22 +10,22 @@ import java.io.Serializable
  * Represents one model of a certain vehicle
  */
 @Table(database = MyMechanicDatabase::class)
-class VehicleModel : GenericEntity(), Serializable {
+data class VehicleModel(
 
-    /**
-     * The brand of the vehicle
-     *
-     */
-    @Column(name = BRAND_COLUMN_NAME, typeConverter = BrandEnumConverter::class)
-    var brand: BrandEnum? = null
+        /**
+         * The brand of the vehicle
+         *
+         */
+        @Column(name = BRAND_COLUMN_NAME, typeConverter = BrandEnumConverter::class)
+        var brand: BrandEnum? = null,
 
-    /**
-     * Name of the model
-     */
-    @Column(name = NAME_COLUMN_NAME)
-    var name: String? = null
+        /**
+         * Name of the model
+         */
+        @Column(name = NAME_COLUMN_NAME)
+        var name: String? = null
 
-
+) : GenericEntity(), Serializable {
     companion object {
         private const val serialVersionUID = 3961910546080080719L
         private const val BRAND_COLUMN_NAME = "brand"
