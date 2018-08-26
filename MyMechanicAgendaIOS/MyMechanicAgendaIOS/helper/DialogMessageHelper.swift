@@ -7,24 +7,34 @@ public class DialogMessageHelper {
     /// Get the app delegate
     ///
     /// - Returns: The app delegate
-    private class func getAppDelegate() -> AppDelegate {
-            // swiftlint:disable force_cast
-        return UIApplication.shared.delegate as! AppDelegate
+    private class func getAppDelegate() -> AppDelegate? {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            return appDelegate
+        } else {
+            return nil
+        }
     }
     
     /// Get the current list of view controller
     ///
     /// - Returns: List of view controllers
-    private class func getListOfViewControllers() -> [UIViewController] {
-        return (getAppDelegate().window?.rootViewController as! UINavigationController).viewControllers
+    private class func getListOfViewControllers() -> [UIViewController]? {
+        if let rootViewController = getAppDelegate()?.window?.rootViewController as? UINavigationController {
+            return rootViewController.viewControllers
+        } else {
+            return nil
+        }
     }
     
     /// Get the last known view controller
     ///
     /// - Returns: Returns the last known view controller
-    private class func getLastKnownController() -> UIViewController {
-        let viewControllersList: [UIViewController]  = getListOfViewControllers()
-        return viewControllersList[viewControllersList.count - 1]
+    private class func getLastKnownController() -> UIViewController? {
+        if let viewControllersList = getListOfViewControllers() {
+            return viewControllersList[viewControllersList.count - 1]
+        } else {
+            return nil
+        }
     }
     
     /// Shows one certain message in a dialog
@@ -44,8 +54,8 @@ public class DialogMessageHelper {
         }
         alertController.addAction(dismissAction)
         
-        let presentedViewController = getLastKnownController()
-        
-        presentedViewController.present(alertController, animated: true, completion: nil)
+        if let presentedViewController = getLastKnownController() {
+            presentedViewController.present(alertController, animated: true, completion: nil)
+        }
     }
 }

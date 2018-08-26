@@ -5,7 +5,6 @@
 //  Created by Daniel ferreira on 30/06/2018.
 //  Copyright © 2018 Daniel's team. All rights reserved.
 //
-// swiftlint:disable
 
 import UIKit
 
