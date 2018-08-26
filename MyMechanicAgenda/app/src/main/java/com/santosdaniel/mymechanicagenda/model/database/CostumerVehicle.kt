@@ -1,6 +1,7 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
 
+import android.arch.persistence.room.Entity
 import com.raizlabs.android.dbflow.annotation.*
 import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
 import java.util.*
@@ -9,6 +10,7 @@ import java.util.*
 /**
  * Association between contact and vehicle
  */
+@Entity(tableName = CostumerVehicle.TABLE_NAME)
 @Table(database = MyMechanicDatabase::class)
 data class CostumerVehicle(
 
@@ -47,10 +49,10 @@ data class CostumerVehicle(
 
 ) : GenericEntity() {
     companion object {
-
-        const val COSTUMER_ID_COLUMN_NAME = "costumer_id"
-        const val VEHICLE_ID_COLUMN_NAME = "vehicle_id"
-        const val FROM_COLUMN_NAME = "from"
-        const val UNTIL_COLUMN_NAME = "until"
+        const val TABLE_NAME = "CostumerVehicle"
+        private const val COSTUMER_ID_COLUMN_NAME = "costumer_id"
+        private const val VEHICLE_ID_COLUMN_NAME = "vehicle_id"
+        private const val FROM_COLUMN_NAME = "from"
+        private const val UNTIL_COLUMN_NAME = "until"
     }
 }

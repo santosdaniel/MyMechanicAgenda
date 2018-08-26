@@ -1,6 +1,7 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
 
+import android.arch.persistence.room.Entity
 import com.raizlabs.android.dbflow.annotation.*
 import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
 import java.io.Serializable
@@ -8,6 +9,7 @@ import java.io.Serializable
 /**
  * Used to represent one vehicle in the application
  */
+@Entity(tableName = Vehicle.TABLE_NAME)
 @Table(database = MyMechanicDatabase::class)
 data class Vehicle(
 
@@ -66,6 +68,7 @@ data class Vehicle(
 
 ) : GenericEntity(), Serializable {
     companion object {
+        const val TABLE_NAME = "Vehicle"
         private const val serialVersionUID = -4913897499672647187L
         private const val CUSTOMERS_VARIABLE_NAME = "customers"
         private const val PHOTO_COLUMN_NAME = "photoPath"

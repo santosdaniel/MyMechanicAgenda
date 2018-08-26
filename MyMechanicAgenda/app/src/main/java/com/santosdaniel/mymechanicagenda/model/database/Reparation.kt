@@ -1,5 +1,6 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
+import android.arch.persistence.room.Entity
 import com.raizlabs.android.dbflow.annotation.*
 import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
 import java.io.Serializable
@@ -8,6 +9,7 @@ import java.util.*
 /**
  * Represents one reparation made over a certain vehicle
  */
+@Entity(tableName = Reparation.TABLE_NAME)
 @Table(database = MyMechanicDatabase::class)
 data class Reparation(
 
@@ -51,6 +53,7 @@ data class Reparation(
 
 ) : GenericEntity(), Serializable {
     companion object {
+        const val TABLE_NAME = "Reparation"
         private const val serialVersionUID = 2598511445037380404L
         private const val VEHICLE_COLUMN_NAME = "vehicle_id"
         private const val DOCUMENTS_VARIABLE_NAME = "documents"

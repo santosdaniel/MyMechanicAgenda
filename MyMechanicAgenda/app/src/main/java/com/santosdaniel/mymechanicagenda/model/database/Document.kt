@@ -1,5 +1,6 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
+import android.arch.persistence.room.Entity
 import com.raizlabs.android.dbflow.annotation.*
 import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
 import java.io.Serializable
@@ -8,6 +9,7 @@ import java.util.*
 /**
  * Represents one document of the vehicle or of the reparation
  */
+@Entity(tableName = Document.TABLE_NAME)
 @Table(database = MyMechanicDatabase::class)
 data class Document(
 
@@ -61,6 +63,7 @@ data class Document(
      * Define the constants used by the main entity
      */
     companion object {
+        const val TABLE_NAME = "Document"
         private const val serialVersionUID = -1530458964982407070L
         private const val VEHICLE_COLUMN_NAME = "vehicle"
         private const val REPAIR_COLUMN_NAME = "reparation"
