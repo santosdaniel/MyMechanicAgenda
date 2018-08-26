@@ -19,6 +19,7 @@
         style="@style/main_sv_of_coordinate_layout_style"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <!--suppress AndroidUnknownAttribute -->
         <fragment
             android:id="@+id/full_content_details_fragment"
             android:name="com.santosdaniel.mymechanicagenda.view.vehicleDetails.edit.EditVehicleDetailsFragment"
