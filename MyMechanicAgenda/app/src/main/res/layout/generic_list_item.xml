@@ -7,7 +7,8 @@
         android:id="@+id/thumbnail"
         style="@style/item_thumbnail"
         android:padding="@dimen/list_item_thumbnail"
-        app:srcCompat="@android:drawable/ic_popup_sync" />
+        app:srcCompat="@android:drawable/ic_popup_sync"
+        android:contentDescription="@string/icon_of_item" />
 
     <TextView
         android:id="@+id/title"

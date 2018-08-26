@@ -76,4 +76,7 @@
     <string name="add_vehicle">Add vehicle</string>
     <string name="edit_specific_vehicle">Edit %1$s vehicle</string>
     <string name="select_brand">Select brand</string>
+    <string name="icon_of_item">Icon of the item</string>
+    <string name="search_brand_of_the_vehicle">Search brand of the vehicle</string>
+    <string name="quit_application">Quit application</string>
 </resources>

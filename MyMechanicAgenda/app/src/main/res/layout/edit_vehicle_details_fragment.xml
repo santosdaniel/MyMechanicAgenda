@@ -35,7 +35,8 @@
 
         <ImageButton android:id="@+id/brandValueImg"
             style="@style/data_field_component"
-            android:src="@mipmap/ic_search" />
+            android:src="@mipmap/ic_search"
+            android:contentDescription="@string/search_brand_of_the_vehicle" />
     </TableRow>
 
     <!-- model field -->

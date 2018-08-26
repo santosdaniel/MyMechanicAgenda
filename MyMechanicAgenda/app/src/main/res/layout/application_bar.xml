@@ -16,7 +16,8 @@
         <ImageView
             android:id="@+id/search_quit"
             style="@style/wrap_content_layout"
-            android:src="@mipmap/arrow_back" />
+            android:src="@mipmap/arrow_back"
+            android:contentDescription="@string/quit_application" />
 
         <android.support.v7.widget.SearchView
             android:id="@+id/search_view"
