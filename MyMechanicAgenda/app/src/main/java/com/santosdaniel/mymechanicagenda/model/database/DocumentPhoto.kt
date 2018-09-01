@@ -1,5 +1,6 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
+import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import com.raizlabs.android.dbflow.annotation.*
 import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
@@ -25,6 +26,7 @@ data class DocumentPhoto(
          */
         @NotNull
         @Column(name = PATH_COLUMN_NAME)
+        @ColumnInfo(name = PATH_COLUMN_NAME)
         var path: String? = null
 
 

@@ -1,5 +1,6 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
+import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import com.raizlabs.android.dbflow.annotation.*
 import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
@@ -30,18 +31,21 @@ data class Reparation(
          * Date when the reparation was made
          */
         @Column(name = DATE_COLUMN_NAME)
+        @ColumnInfo(name = DATE_COLUMN_NAME)
         var date: Date? = null,
 
         /**
          * Small description of the reparation made
          */
         @Column(name = DESCRIPTION_COLUMN_NAME)
+        @ColumnInfo(name = DESCRIPTION_COLUMN_NAME)
         var description: String? = null,
 
         /**
          * Small description of the reparation made
          */
         @Column(name = DURATION_VALUE_COLUMN_NAME)
+        @ColumnInfo(name = DURATION_VALUE_COLUMN_NAME)
         var durationValue: Float? = null,
 
         /**

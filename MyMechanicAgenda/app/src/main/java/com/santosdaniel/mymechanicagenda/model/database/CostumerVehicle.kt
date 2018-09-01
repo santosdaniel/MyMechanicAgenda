@@ -1,6 +1,7 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
 
+import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import com.raizlabs.android.dbflow.annotation.*
 import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
@@ -23,6 +24,7 @@ data class CostumerVehicle(
         @ForeignKey(tableClass = Customer::class)
         var customer: Customer? = null,
 
+
         /**
          * Identifier of the vehicle
          */
@@ -37,6 +39,7 @@ data class CostumerVehicle(
          */
         @NotNull
         @Column(name = FROM_COLUMN_NAME)
+        @ColumnInfo(name = FROM_COLUMN_NAME)
         var from: Date? = null,
 
         /**
@@ -44,6 +47,7 @@ data class CostumerVehicle(
          * (Null means that is still valid)
          */
         @Column(name = UNTIL_COLUMN_NAME)
+        @ColumnInfo(name = UNTIL_COLUMN_NAME)
         var until: Date? = null
 
 

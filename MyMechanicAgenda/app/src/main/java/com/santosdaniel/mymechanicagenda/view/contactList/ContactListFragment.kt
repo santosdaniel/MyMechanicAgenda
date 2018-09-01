@@ -23,7 +23,6 @@ import com.santosdaniel.mymechanicagenda.helper.PermissionsRequestHelper
 import com.santosdaniel.mymechanicagenda.presenter.contactList.ContactsAdapter
 import com.santosdaniel.mymechanicagenda.presenter.contactList.ContactsCursorLoader
 import com.santosdaniel.mymechanicagenda.view.GenericRecycleViewFragment
-import com.santosdaniel.mymechanicagenda.view.customerDetails.CustomerDetailsViewModel
 import java.lang.ref.WeakReference
 
 /**

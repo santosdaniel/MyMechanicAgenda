@@ -1,9 +1,10 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
 
+import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.PrimaryKey
 import com.raizlabs.android.dbflow.annotation.Column
 import com.raizlabs.android.dbflow.annotation.NotNull
-import com.raizlabs.android.dbflow.annotation.PrimaryKey
 import java.util.*
 
 
@@ -18,6 +19,7 @@ abstract class GenericEntity(
         /**
          * Identifier of the entity in database
          */
+        @com.raizlabs.android.dbflow.annotation.PrimaryKey
         @PrimaryKey
         @Column(name = ID_COLUMN_NAME)
         var id: Long? = null,
@@ -27,6 +29,7 @@ abstract class GenericEntity(
          */
         @NotNull
         @Column(name = CREATED_DATE_COLUMN_NAME)
+        @ColumnInfo(name = CREATED_DATE_COLUMN_NAME)
         var createdDate: Date? = null,
 
         /**
@@ -34,6 +37,7 @@ abstract class GenericEntity(
          * Ambiguous note: Created = Consider as modified too
          */
         @Column(name = MODIFIED_DATE_COLUMN_NAME)
+        @ColumnInfo(name = MODIFIED_DATE_COLUMN_NAME)
         var modifiedDate: Date? = null
 ) {
     /**

@@ -1,6 +1,7 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
 
+import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import com.raizlabs.android.dbflow.annotation.*
 import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
@@ -37,6 +38,7 @@ data class Vehicle(
          * Vehicle identification number
          */
         @Column(name = VI_NUMBER_COLUMN_NAME)
+        @ColumnInfo(name = VI_NUMBER_COLUMN_NAME)
         var vinNumber: String? = null,
 
         /**
@@ -58,6 +60,7 @@ data class Vehicle(
          * Indicates the yer of the vehicle
          */
         @Column(name = YEAR_COLUMN_NAME)
+        @ColumnInfo(name = YEAR_COLUMN_NAME)
         var year: Int? = null,
 
         /**

@@ -1,5 +1,6 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
+import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import com.raizlabs.android.dbflow.annotation.Column
 import com.raizlabs.android.dbflow.annotation.Table
@@ -25,6 +26,7 @@ data class VehicleModel(
          * Name of the model
          */
         @Column(name = NAME_COLUMN_NAME)
+        @ColumnInfo(name = NAME_COLUMN_NAME)
         var name: String? = null
 
 ) : GenericEntity(), Serializable {
