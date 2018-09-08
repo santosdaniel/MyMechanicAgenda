@@ -25,10 +25,12 @@ class LocalImageLoader
 
 
     private fun load(path: String, uri: Uri, thumbnail: ImageView) {
-        val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(
+        val bitmap: Bitmap? = MediaStore.Images.Media.getBitmap(
                 context.contentResolver, uri)
         thumbnail.setImageBitmap(bitmap)
-        imageCache.putBitmap(path, bitmap)
+        if (bitmap != null) {
+            imageCache.putBitmap(path, bitmap)
+        }
     }
 
     /**

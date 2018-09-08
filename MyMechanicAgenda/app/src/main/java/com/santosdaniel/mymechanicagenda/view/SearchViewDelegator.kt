@@ -1,16 +1,10 @@
 package com.santosdaniel.mymechanicagenda.view
 
-import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.LoaderManager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.SearchView
 import android.util.Log
-
-import com.santosdaniel.mymechanicagenda.enumerations.QueryEnum
 import com.santosdaniel.mymechanicagenda.helper.ContainerHelper
-import com.santosdaniel.mymechanicagenda.presenter.contactList.ContactsCursorLoader
-
 import java.lang.ref.WeakReference
 
 /**
@@ -38,17 +32,13 @@ class SearchViewDelegator
             try {
                 val activity = activityRef.get()
                 if (activity != null) {
-                    val loaderManager = activity.supportLoaderManager
                     for (fragmentWeakReference in (fragmentList!!)) {
-
                         try {
                             val fragment = fragmentWeakReference.get()
-                            if (fragment is LoaderManager.LoaderCallbacks<*>) {
-                                val callback = fragment as LoaderManager.LoaderCallbacks<*>
+                            if (fragment is ISearchListener) {
                                 // Starts the query
-                                val args = Bundle()
-                                args.putString(ContactsCursorLoader.NAME_ATTR, query)
-                                loaderManager.restartLoader(QueryEnum.ListContacts.ordinal, args, callback)
+                                val listener = fragment as ISearchListener
+                                listener.submitQuery(query)
                             }
                         } catch (e: Exception) {
                             Log.e(TAG, "Something went wrong: ${e.message}")

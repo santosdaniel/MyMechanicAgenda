@@ -4,6 +4,7 @@ apply plugin: 'kotlin-kapt' // required for kotlin.
 
 def db_flow_version = "4.2.4"
 def lifecycle_version = "1.1.1"
+def paging_version = "1.0.1"
 def room_version = "1.1.1"
 
 android {
@@ -49,6 +50,9 @@ dependencies {
     //Lifecycle arch
     implementation "android.arch.lifecycle:extensions:${lifecycle_version}"
     kapt "android.arch.lifecycle:compiler:${lifecycle_version}"
+
+    //Paging
+    implementation "android.arch.paging:runtime:${paging_version}"
 
     //Room
     implementation "android.arch.persistence.room:runtime:$room_version"

@@ -1,11 +1,12 @@
 package com.santosdaniel.mymechanicagenda.presenter
 
 import android.app.Activity
+import android.arch.paging.PagedListAdapter
+import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.helper.UIHelper
 import com.santosdaniel.mymechanicagenda.view.viewModel.GenericListItem
@@ -13,7 +14,7 @@ import com.santosdaniel.mymechanicagenda.view.viewModel.GenericListItem
 /**
  * Adapter with generic stuff that should be common to all the recycle view adapters
  */
-abstract class GenericRecyclerViewAdapter
+abstract class GenericRecyclerViewAdapter<EntityType>
 /**
  * Constructor to the view adapter
  *
@@ -23,8 +24,9 @@ abstract class GenericRecyclerViewAdapter
  */
 protected constructor(protected val activity: Activity,
                       protected val recyclerView: RecyclerView,
-                      private val progressBar: View
-) : RecyclerView.Adapter<ListItemViewHolder>(), View.OnClickListener {
+                      private val progressBar: View,
+                      diffCallback: DiffUtil.ItemCallback<EntityType>
+) : PagedListAdapter<EntityType, ListItemViewHolder>(diffCallback), View.OnClickListener {
 
 
     /**

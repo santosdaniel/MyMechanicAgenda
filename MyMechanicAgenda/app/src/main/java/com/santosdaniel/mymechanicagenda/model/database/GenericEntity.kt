@@ -20,7 +20,7 @@ abstract class GenericEntity(
          * Identifier of the entity in database
          */
         @com.raizlabs.android.dbflow.annotation.PrimaryKey
-        @PrimaryKey
+        @PrimaryKey(autoGenerate = true)
         @Column(name = ID_COLUMN_NAME)
         var id: Long? = null,
 

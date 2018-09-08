@@ -1,12 +1,11 @@
 package com.santosdaniel.mymechanicagenda.presenter
 
 import android.app.Activity
-import android.database.Cursor
+import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ProgressBar
 import com.santosdaniel.mymechanicagenda.R
-import com.santosdaniel.mymechanicagenda.helper.ContainerHelper
 import com.santosdaniel.mymechanicagenda.view.generic.ViewHelper
 import com.santosdaniel.mymechanicagenda.view.viewModel.GenericListItem
 
@@ -15,7 +14,7 @@ import com.santosdaniel.mymechanicagenda.view.viewModel.GenericListItem
  * that use a cursor to keep data
  */
 
-abstract class GenericRViewCursorAdapter
+abstract class GenericRViewCursorAdapter<EntityType>
 /**
  * Constructor to the view adapter
  *
@@ -23,7 +22,11 @@ abstract class GenericRViewCursorAdapter
  * @param recyclerView Reference to the recycle view to use
  * @param progressBar  Reference to the progress bar that indicates to the user that is using data
  */
-protected constructor(activity: Activity, recyclerView: RecyclerView, progressBar: ProgressBar) : GenericRecyclerViewAdapter(activity, recyclerView, progressBar) {
+protected constructor(activity: Activity,
+                      recyclerView: RecyclerView,
+                      progressBar: ProgressBar,
+                      diffCallback: DiffUtil.ItemCallback<EntityType>
+) : GenericRecyclerViewAdapter<EntityType>(activity, recyclerView, progressBar, diffCallback) {
 
     /**
      * Creates a new reference to a generic item or reuses the old one
@@ -37,10 +40,6 @@ protected constructor(activity: Activity, recyclerView: RecyclerView, progressBa
         return viewHolder.data!!
     }
 
-    /**
-     * Cursor with data for the recycle view
-     */
-    private var cursor: Cursor? = null
 
     /**
      * Replace the contents of a view (invoked by the layout manager)
@@ -49,30 +48,21 @@ protected constructor(activity: Activity, recyclerView: RecyclerView, progressBa
      * @param position The position of the the item
      */
     override fun onBindViewHolder(holder: ListItemViewHolder, position: Int) {
-        if (ContainerHelper.isNotEmpty(cursor)) {
-            val pCursor = cursor!!
-            if (position < pCursor.count) {
+        val item = getItem(position)
 
-                pCursor.moveToPosition(position)
+        if (item != null) {
+            val data = createGenericListItem(holder)
+            fillItemData(data, item)
 
-                val data = createGenericListItem(holder)
-                fillItemData(data, pCursor)
-
-                //Load the image of the contact
-                ViewHelper.loadImageOrDefault(activity, data.imageUri, R.mipmap.person, holder.thumbnail)
-                //Loads the title of the item
-                holder.title.text = data.title
-                //TODO: If has a car show the model here
-                holder.description.text = data.description
-            }
+            //Load the image of the contact
+            ViewHelper.loadImageOrDefault(activity, data.imageUri, R.mipmap.person, holder.thumbnail)
+            //Loads the title of the item
+            holder.title.text = data.title
+            //TODO: If has a car show the model here
+            holder.description.text = data.description
         }
     }
 
-    /**
-     * @return The number of items that have
-     */
-    override fun getItemCount(): Int =
-            if (ContainerHelper.isEmpty(cursor)) GenericRecyclerViewAdapter.NO_ELEMENTS else cursor!!.count
 
     /**
      * Find the item that is supported by a certain view
@@ -82,25 +72,20 @@ protected constructor(activity: Activity, recyclerView: RecyclerView, progressBa
      */
     override fun getItemByView(v: View): GenericListItem {
         val itemPosition = recyclerView.getChildLayoutPosition(v)
-        cursor!!.moveToPosition(itemPosition)
+        val item = getItem(itemPosition)
         val data = GenericListItem()
-        fillItemData(data, cursor!!)
+        if (item != null)
+            fillItemData(data, item)
         return data
     }
 
-    /**
-     * @param cursor The reference to the new cursor
-     */
-    fun setDataSet(cursor: Cursor?) {
-        this.cursor = cursor
-    }
 
     /**
      *
      * @param data          reference to the item to fill the elements
-     * @param cursor        cursor from where the data should be fetch
+     * @param itemData        cursor from where the data should be fetch
      *
      * @return The GenericListItem associated with current cursor
      */
-    abstract fun fillItemData(data: GenericListItem, cursor: Cursor)
+    abstract fun fillItemData(data: GenericListItem, itemData: EntityType)
 }

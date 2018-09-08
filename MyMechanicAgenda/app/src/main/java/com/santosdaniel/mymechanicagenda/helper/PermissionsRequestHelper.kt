@@ -5,6 +5,7 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.app.FragmentActivity
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
+import android.support.v4.app.Fragment
 
 import com.santosdaniel.mymechanicagenda.R
 import java.lang.ref.WeakReference
@@ -24,28 +25,28 @@ object PermissionsRequestHelper {
      * @param permission            Permission that is necessary
      * @param permissionRequestCode the code of the permission required
      */
-    private fun showExplanation(refActivity: WeakReference<FragmentActivity>,
+    private fun showExplanation(fragment: Fragment,
                                 title: String,
                                 message: String,
                                 permission: String,
                                 permissionRequestCode: Int) {
-        val builder = AlertDialog.Builder(refActivity.get()!!)
+        val builder = AlertDialog.Builder(fragment.context!!)
         builder.setTitle(title)
                 .setMessage(message)
-                .setPositiveButton(android.R.string.ok) { dialog, id -> pRequestPermission(refActivity, permission, permissionRequestCode) }
+                .setPositiveButton(android.R.string.ok) { dialog, id -> pRequestPermission(fragment, permission, permissionRequestCode) }
         builder.create().show()
     }
 
     /**
      * Request the permission to the user
      *
-     * @param refActivity           Reference to the activity where needs the permission
+     * @param refActivity           Reference to the fragment where needs the permission
      * @param permissionName        The name of the permission to request
      * @param permissionRequestCode The code that is going to be return to the activity when a user decides give or not permission
      */
-    private fun pRequestPermission(refActivity: WeakReference<FragmentActivity>, permissionName: String, permissionRequestCode: Int) =
-            ActivityCompat.requestPermissions(refActivity.get()!!,
-                    arrayOf(permissionName), permissionRequestCode)
+    private fun pRequestPermission(fragment: Fragment,
+                                   permissionName: String, permissionRequestCode: Int) =
+            fragment.requestPermissions(arrayOf(permissionName), permissionRequestCode)
 
     /**
      * Checks if has permission to do something and if not requests to the user
@@ -56,7 +57,7 @@ object PermissionsRequestHelper {
      * @return False ->    Was not possible to the the demand permission
      * True ->     Everything went alright
      */
-    fun requestPermission(refActivity: WeakReference<FragmentActivity>, permission: String, requestCode: Int): Boolean {
+    fun requestPermission(refActivity: WeakReference<FragmentActivity>, fragment: Fragment, permission: String, requestCode: Int): Boolean {
         val context = refActivity.get()!!.applicationContext
         val permissionCheck = ContextCompat.checkSelfPermission(context, permission)
 
@@ -66,9 +67,9 @@ object PermissionsRequestHelper {
             if (ActivityCompat.shouldShowRequestPermissionRationale(refActivity.get()!!, permission)) {
                 val title = context.getString(R.string.permission_needed)
                 val description = context.getString(R.string.reason)
-                showExplanation(refActivity, title, description, permission, requestCode)
+                showExplanation(fragment, title, description, permission, requestCode)
             } else {
-                pRequestPermission(refActivity, permission, requestCode)
+                pRequestPermission(fragment, permission, requestCode)
             }
             false
         }

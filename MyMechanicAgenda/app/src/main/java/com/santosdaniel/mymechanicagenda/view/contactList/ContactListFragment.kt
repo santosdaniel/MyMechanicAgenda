@@ -1,12 +1,10 @@
 package com.santosdaniel.mymechanicagenda.view.contactList
 
 import android.Manifest
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
-import android.database.Cursor
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
-import android.support.v4.app.LoaderManager
-import android.support.v4.content.Loader
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -14,15 +12,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.enumerations.PermissionEnum
-import com.santosdaniel.mymechanicagenda.enumerations.QueryEnum
 import com.santosdaniel.mymechanicagenda.helper.ContainerHelper
 import com.santosdaniel.mymechanicagenda.helper.PermissionsRequestHelper
 import com.santosdaniel.mymechanicagenda.presenter.contactList.ContactsAdapter
-import com.santosdaniel.mymechanicagenda.presenter.contactList.ContactsCursorLoader
 import com.santosdaniel.mymechanicagenda.view.GenericRecycleViewFragment
+import com.santosdaniel.mymechanicagenda.view.ISearchListener
 import java.lang.ref.WeakReference
 
 /**
@@ -31,7 +27,15 @@ import java.lang.ref.WeakReference
 /**
  * Default constructor to the fragment
  */
-class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), LoaderManager.LoaderCallbacks<Cursor> {
+class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), ISearchListener {
+    /**
+     * Called when the user submit a query
+     */
+    override fun submitQuery(query: String?) {
+        viewModel?.loadContacts(this.activity!!.contentResolver, query)
+
+        this.startListening()
+    }
 
     private var viewModel: ContactListViewModel? = null
 
@@ -68,6 +72,19 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
         return fragmentView
     }
 
+    private fun startListening() {
+        viewModel?.contactsList?.observe(this, Observer {
+            this.lstAdapter?.setIsLoading(false)
+            this.lstAdapter?.submitList(it)
+            //contactsEmpty.visibility = if (adapter.itemCount > 0) {
+            //    View.GONE
+            //} else {
+            //    View.VISIBLE
+            //}
+            Log.d("danie", "success$it")
+        })
+    }
+
     // Called just before the Fragment displays its UI
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         // Always call the super method first
@@ -79,70 +96,31 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
 
         // Initializes the loader
         this.viewModel = ViewModelProviders.of(this).get(ContactListViewModel::class.java)
-        viewModel?.init()
-
-        val emptyBundle = Bundle()
-        //TODO: refactor
-        loaderManager.initLoader(QueryEnum.ListContacts.ordinal, emptyBundle, this)
-    }
 
 
-    /**
-     * Instantiate and return a new Loader for the given ID.
-     *
-     * @param id   The ID whose loader is to be created.
-     * @param args Any arguments supplied by the caller.
-     * @return Return a new Loader instance that is ready to start loading.
-     */
-    override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        this.lstAdapter!!.setIsLoading(true)
-        return if (id == QueryEnum.ListContacts.ordinal) {
-            val refActivity = WeakReference<FragmentActivity>(activity)
-            return if (PermissionsRequestHelper.requestPermission(refActivity, Manifest.permission.READ_CONTACTS, PermissionEnum.ReadContacts.ordinal)) {
-                ContactsCursorLoader(context!!, args)
-            } else {
-                //Does not has enough permissions to get the contacts from the user
-                setCursorInAdapter(null)
-                //TODO does not has permissions
-                ContactsCursorLoader(context!!, args)
-            }
+        val refActivity = WeakReference<FragmentActivity>(activity)
+        return if (PermissionsRequestHelper.requestPermission(refActivity, this,
+                        Manifest.permission.READ_CONTACTS, PermissionEnum.ReadContacts.ordinal)) {
+            this.submitQuery(null)
         } else {
-            Log.e(CONTACT_LIST_FRAGMENT_TAG, "Unexpected id: $id")
-            //TODO id is not query
-            ContactsCursorLoader(context!!, args)
+            //Does not has enough permissions to get the contacts from the user
+            //TODO: does not has permissions
         }
     }
+
 
     /**
      *  Set a certain cursor int the adapter
      *
      * @cursor The cursor to set
      */
-    protected fun setCursorInAdapter(cursor: Cursor?) {
+    protected fun setCursorInAdapter() {
         if (ContainerHelper.isNotNull(this.lstAdapter)) {
-            this.lstAdapter?.setDataSet(cursor)
             this.lstAdapter?.setIsLoading(false)
             this.lstAdapter?.notifyDataSetChanged()
         }
     }
 
-    /**
-     * onLoadFinished is called automatically when a Loader has finished its load
-     *
-     * @param loader The Loader that has finished.
-     * @param data The data generated by the Loader.
-     */
-    override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor) = setCursorInAdapter(data)
-
-    /**
-     * Called when a previously created loader is being reset, and thus
-     * making its data unavailable.  The application should at this point
-     * remove any references it has to the Loader's data.
-     *
-     * @param loader The Loader that is being reset.
-     */
-    override fun onLoaderReset(loader: Loader<Cursor>) = // Delete the reference to the existing Cursor
-            setCursorInAdapter(null)
 
     /**
      * Callback for the result from requesting permissions. This method
@@ -157,11 +135,13 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), Loade
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
                                             grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        Log.d(TAG, "Test")
         //TODO
     }
 
     companion object {
 
-        private const val CONTACT_LIST_FRAGMENT_TAG = "ContactListFragment"
+        private const val TAG = "ContactListFragment"
     }
 }

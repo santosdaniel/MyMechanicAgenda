@@ -1,18 +1,32 @@
 package com.santosdaniel.mymechanicagenda.presenter.customerDetails
 
 import android.app.Activity
+import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ProgressBar
 
 import com.santosdaniel.mymechanicagenda.helper.DBHelper
 import com.santosdaniel.mymechanicagenda.model.database.Vehicle
-import com.santosdaniel.mymechanicagenda.presenter.GenericRViewListAdapter
+import com.santosdaniel.mymechanicagenda.presenter.GenericRViewCursorAdapter
+import com.santosdaniel.mymechanicagenda.view.viewModel.GenericListItem
 
 /**
  * Adapter of the list of vehicles
  */
-class VehiclesAdapter constructor(activity: Activity, recyclerView: RecyclerView, progressBar: ProgressBar) : GenericRViewListAdapter(activity, recyclerView, progressBar) {
+class VehiclesAdapter constructor(activity: Activity, recyclerView: RecyclerView, progressBar: ProgressBar)
+    : GenericRViewCursorAdapter<Vehicle>(activity, recyclerView, progressBar, VehiclesAdapter.VehiclesDiff) {
+
+    /**
+     *
+     * @param data          reference to the item to fill the elements
+     * @param itemData        cursor from where the data should be fetch
+     *
+     * @return The GenericListItem associated with current cursor
+     */
+    override fun fillItemData(data: GenericListItem, itemData: Vehicle) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     /**
      * Called when the user clicks in one item of the list
@@ -112,4 +126,16 @@ class VehiclesAdapter constructor(activity: Activity, recyclerView: RecyclerView
         return dataset.size();
     }
     */
+
+    companion object {
+        private val VehiclesDiff = object : DiffUtil.ItemCallback<Vehicle>() {
+            override fun areItemsTheSame(oldItem: Vehicle, newItem: Vehicle): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Vehicle, newItem: Vehicle): Boolean {
+                return oldItem.id == newItem.id
+            }
+        }
+    }
 }
