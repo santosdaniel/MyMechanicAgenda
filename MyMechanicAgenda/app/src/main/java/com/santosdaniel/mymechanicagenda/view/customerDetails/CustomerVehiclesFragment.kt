@@ -34,9 +34,8 @@ class CustomerVehiclesFragment : GenericRecycleViewFragment<VehiclesAdapter>(), 
      *
      * @param fragmentView Reference to the view of the fragment
      */
-    private fun bindViews(fragmentView: View) {
-        super.lstResults = fragmentView.findViewById(R.id.items_list)
-        super.loadProgress = fragmentView.findViewById(R.id.load_progress)
+    override fun bindViews(fragmentView: View) {
+        super.bindViews(fragmentView)
         this.customerPicture = fragmentView.findViewById(R.id.tool_bar_picture)
 
         if (super.lstResults != null) {

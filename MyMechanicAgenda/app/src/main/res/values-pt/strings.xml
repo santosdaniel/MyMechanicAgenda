@@ -41,4 +41,6 @@
     <string name="icon_of_item">Icon of the item</string>
     <string name="search_brand_of_the_vehicle">Search brand of the vehicle</string>
     <string name="quit_application">Quit application</string>
+    <string name="request_contacts_dialog_title">Access to contacts</string>
+    <string name="request_contacts_dialog_description">Your list of contacts is going to be used to associate vehicles and reparations</string>
 </resources>

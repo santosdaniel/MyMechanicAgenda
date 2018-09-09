@@ -3,7 +3,9 @@ package com.santosdaniel.mymechanicagenda.view
 
 import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import android.widget.ProgressBar
+import com.santosdaniel.mymechanicagenda.R
 
 
 /**
@@ -30,4 +32,9 @@ abstract class GenericRecycleViewFragment<T : RecyclerView.Adapter<*>> : Fragmen
      * Used to indicate that is trying to load the data to the recycleView
      */
     protected var loadProgress: ProgressBar? = null
+
+    protected open fun bindViews(fragmentView: View) {
+        this.lstResults = fragmentView.findViewById(R.id.items_list)
+        this.loadProgress = fragmentView.findViewById(R.id.load_progress) as ProgressBar
+    }
 }

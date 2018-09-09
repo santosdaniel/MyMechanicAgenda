@@ -3,6 +3,7 @@ package com.santosdaniel.mymechanicagenda.view.contactList
 import android.Manifest
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -12,13 +13,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import com.santosdaniel.mymechanicagenda.R
 import com.santosdaniel.mymechanicagenda.enumerations.PermissionEnum
 import com.santosdaniel.mymechanicagenda.helper.ContainerHelper
 import com.santosdaniel.mymechanicagenda.helper.PermissionsRequestHelper
+import com.santosdaniel.mymechanicagenda.helper.UIHelper
 import com.santosdaniel.mymechanicagenda.presenter.contactList.ContactsAdapter
 import com.santosdaniel.mymechanicagenda.view.GenericRecycleViewFragment
 import com.santosdaniel.mymechanicagenda.view.ISearchListener
+import com.santosdaniel.mymechanicagenda.view.generic.ViewHelper
 import java.lang.ref.WeakReference
 
 /**
@@ -28,6 +32,9 @@ import java.lang.ref.WeakReference
  * Default constructor to the fragment
  */
 class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), ISearchListener {
+
+    private var permissionsWarning: TextView? = null
+
     /**
      * Called when the user submit a query
      */
@@ -44,10 +51,10 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), ISear
      *
      * @param fragmentView Reference to the view of the fragment
      */
-    private fun bindViews(fragmentView: View) {
-        this.lstResults = fragmentView.findViewById<View>(R.id.items_list) as RecyclerView
-        this.loadProgress = fragmentView.findViewById<View>(R.id.load_progress) as ProgressBar
+    override fun bindViews(fragmentView: View) {
+        super.bindViews(fragmentView)
 
+        this.permissionsWarning = fragmentView.findViewById(R.id.permissions_warning)
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -67,7 +74,7 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), ISear
      */
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val fragmentView = inflater.inflate(R.layout.generic_list_content, container, false)
+        val fragmentView = inflater.inflate(R.layout.contact_list_fragment, container, false)
         bindViews(fragmentView)
         return fragmentView
     }
@@ -76,12 +83,6 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), ISear
         viewModel?.contactsList?.observe(this, Observer {
             this.lstAdapter?.setIsLoading(false)
             this.lstAdapter?.submitList(it)
-            //contactsEmpty.visibility = if (adapter.itemCount > 0) {
-            //    View.GONE
-            //} else {
-            //    View.VISIBLE
-            //}
-            Log.d("danie", "success$it")
         })
     }
 
@@ -99,25 +100,18 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), ISear
 
 
         val refActivity = WeakReference<FragmentActivity>(activity)
-        return if (PermissionsRequestHelper.requestPermission(refActivity, this,
-                        Manifest.permission.READ_CONTACTS, PermissionEnum.ReadContacts.ordinal)) {
+        val requestContactsDialogTitle = getString(R.string.request_contacts_dialog_title)
+        val requestContactsDialogDescription = getString(R.string.request_contacts_dialog_description)
+
+        val canReadContacts = PermissionsRequestHelper.requestPermission(
+                refActivity, this,
+                Manifest.permission.READ_CONTACTS, PermissionEnum.ReadContacts.ordinal,
+                requestContactsDialogTitle, requestContactsDialogDescription
+        )
+
+        showPermissionsWarning(!canReadContacts)
+        if (canReadContacts) {
             this.submitQuery(null)
-        } else {
-            //Does not has enough permissions to get the contacts from the user
-            //TODO: does not has permissions
-        }
-    }
-
-
-    /**
-     *  Set a certain cursor int the adapter
-     *
-     * @cursor The cursor to set
-     */
-    protected fun setCursorInAdapter() {
-        if (ContainerHelper.isNotNull(this.lstAdapter)) {
-            this.lstAdapter?.setIsLoading(false)
-            this.lstAdapter?.notifyDataSetChanged()
         }
     }
 
@@ -136,8 +130,30 @@ class ContactListFragment : GenericRecycleViewFragment<ContactsAdapter>(), ISear
                                             grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        Log.d(TAG, "Test")
-        //TODO
+        if (ContainerHelper.isNotEmpty(permissions)) {
+            for (i in permissions.indices) {
+                val permission = permissions[i]
+                val wasGrant = grantResults[i] == PackageManager.PERMISSION_GRANTED
+                when (permission) {
+                    Manifest.permission.READ_CONTACTS -> handleContactPermission(wasGrant)
+                }
+            }
+        }
+    }
+
+    private fun showPermissionsWarning(visible: Boolean) = if(visible) {
+        UIHelper.setVisibility(View.GONE, this.lstResults, this.loadProgress)
+        UIHelper.setVisibility(View.VISIBLE, this.permissionsWarning)
+    } else {
+        UIHelper.setVisibility(View.VISIBLE, this.lstResults, this.loadProgress)
+        UIHelper.setVisibility(View.GONE, this.permissionsWarning)
+    }
+
+    private fun handleContactPermission(wasGrant: Boolean) {
+        showPermissionsWarning(!wasGrant)
+        if (wasGrant) {
+            this.submitQuery(null)
+        }
     }
 
     companion object {
