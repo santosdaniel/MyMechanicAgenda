@@ -1,31 +1,37 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Entity
-import com.raizlabs.android.dbflow.annotation.*
-import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
+import android.arch.persistence.room.*
 import java.io.Serializable
 
 /**
  * Represents one photo of the document.
  * A document can have multiple photos
  */
-@Entity(tableName = DocumentPhoto.TABLE_NAME)
-@Table(database = MyMechanicDatabase::class)
+@Entity(tableName = DocumentPhoto.TABLE_NAME,
+        foreignKeys = [
+            ForeignKey(
+                    entity = Customer::class,
+                    parentColumns = arrayOf(GenericEntity.ID_COLUMN_NAME),
+                    childColumns = arrayOf(DocumentPhoto.DOCUMENT_ID_COLUMN_NAME),
+                    onDelete = ForeignKey.NO_ACTION
+            )
+        ],
+        indices = [
+            Index(value = GenericEntity.ID_COLUMN_NAME),
+            Index(value = DocumentPhoto.DOCUMENT_ID_COLUMN_NAME)
+        ])
+@SuppressWarnings(RoomWarnings.DEFAULT_CONSTRUCTOR)
 data class DocumentPhoto(
 
         /**
          * The document which the photo belongs
          */
-        @ForeignKeyReference(columnName = DOCUMENT_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
-        @ForeignKey(tableClass = Document::class)
-        var document: Document? = null,
+        @ColumnInfo(name = DOCUMENT_ID_COLUMN_NAME)
+        var document_id: Long? = null,
 
         /**
          * Path to the photo
          */
-        @NotNull
-        @Column(name = PATH_COLUMN_NAME)
         @ColumnInfo(name = PATH_COLUMN_NAME)
         var path: String? = null
 
@@ -34,7 +40,7 @@ data class DocumentPhoto(
     companion object {
         const val TABLE_NAME = "DocumentPhoto"
         private const val serialVersionUID = -4633240669554940410L
-        private const val DOCUMENT_COLUMN_NAME = "document"
+        const val DOCUMENT_ID_COLUMN_NAME = "document_ID"
         private const val PATH_COLUMN_NAME = "path"
     }
 }

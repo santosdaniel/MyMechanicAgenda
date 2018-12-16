@@ -3,17 +3,12 @@ package com.santosdaniel.mymechanicagenda.presenter.customerDetails
 
 import android.arch.lifecycle.LiveData
 import android.support.annotation.NonNull
-import com.raizlabs.android.dbflow.kotlinextensions.from
-import com.raizlabs.android.dbflow.sql.language.SQLite
-import com.raizlabs.android.dbflow.structure.database.transaction.QueryTransaction
 import com.santosdaniel.mymechanicagenda.helper.LogHelper
 import com.santosdaniel.mymechanicagenda.model.database.Customer
-import com.santosdaniel.mymechanicagenda.model.database.Customer_Table
 import com.santosdaniel.mymechanicagenda.presenter.genericDatabase.GenericRepository
 import com.santosdaniel.mymechanicagenda.view.customerDetails.CustomerDetailsModel
 import android.arch.lifecycle.MutableLiveData
-
-
+import android.content.Context
 
 
 /**
@@ -22,7 +17,7 @@ import android.arch.lifecycle.MutableLiveData
 /**
  * The constructor of the repository
  */
-class CustomerRepository : GenericRepository<Customer>() {
+class CustomerRepository(context: Context) : GenericRepository<Customer>(context) {
 
     /**
      * Create a new customer
@@ -44,12 +39,12 @@ class CustomerRepository : GenericRepository<Customer>() {
      *
      * @param customer the entity that to update
      */
-    override fun update(customer: Customer): Boolean {
+    override fun update(customer: Customer): Int {
         return try {
             daoProvider.customerDao.update(customer)
         } catch (e: Exception) {
             LogHelper.e(TAG, e.message)
-            false
+            0
         }
 
     }
@@ -62,6 +57,8 @@ class CustomerRepository : GenericRepository<Customer>() {
      */
     fun loadByLookId(lookupId: String, @NonNull callback: QueryTransaction.QueryResultSingleCallback<Customer>) {
         try {
+            daoProvider.customerDao.findByLookup(lookupId)
+
             SQLite.select()
                     .from(Customer::class)
                     .where(Customer_Table.lookup.eq(lookupId))

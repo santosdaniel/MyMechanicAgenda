@@ -1,43 +1,31 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
 
-import android.arch.persistence.room.ColumnInfo
-import android.arch.persistence.room.Entity
-import com.raizlabs.android.dbflow.annotation.*
-import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
+import android.arch.persistence.room.*
 import java.io.Serializable
 
 /**
  * Used to represent one vehicle in the application
  */
-@Entity(tableName = Vehicle.TABLE_NAME)
-@Table(database = MyMechanicDatabase::class)
+@Entity(tableName = Vehicle.TABLE_NAME,
+        foreignKeys = [
+            ForeignKey(
+                    entity = Vehicle::class,
+                    parentColumns = arrayOf(GenericEntity.ID_COLUMN_NAME),
+                    childColumns = arrayOf(Vehicle.MODEL_ID_COLUMN_NAME),
+                    onDelete = ForeignKey.NO_ACTION
+            )
+        ],
+        indices = [Index(value = GenericEntity.ID_COLUMN_NAME),
+            Index(value = Vehicle.MODEL_ID_COLUMN_NAME)
+        ])
+@SuppressWarnings(RoomWarnings.DEFAULT_CONSTRUCTOR)
 data class Vehicle(
 
-        /**
-         * List of customers that the vehicle have associate
-         */
-        @get:OneToMany(methods = [(OneToMany.Method.ALL)], variableName = CUSTOMERS_VARIABLE_NAME)
-        var customers: List<Customer>? = null,
-
-
-        /**
-         * Path to the place where the photo of the vehicle exists
-         */
-        @ForeignKeyReference(columnName = PHOTO_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
-        @ForeignKey(tableClass = Document::class)
-        var photo: Document? = null,
-
-        /**
-         * List of document that the vehicle have associate
-         */
-        @get:OneToMany(methods = [(OneToMany.Method.ALL)], variableName = DOCUMENTS_VARIABLE_NAME)
-        var documents: List<Document>? = null,
 
         /**
          * Vehicle identification number
          */
-        @Column(name = VI_NUMBER_COLUMN_NAME)
         @ColumnInfo(name = VI_NUMBER_COLUMN_NAME)
         var vinNumber: String? = null,
 
@@ -45,41 +33,30 @@ data class Vehicle(
          * The brand of the vehicle
          *
          */
-        @Column(name = BRAND_COLUMN_NAME, typeConverter = BrandEnumConverter::class)
+        @ColumnInfo(name = BRAND_COLUMN_NAME)
         var brand: BrandEnum? = null,
 
         /**
          * The model of the vehicle to use
          */
-        @ForeignKeyReference(columnName = MODEL_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
-        @ForeignKey(tableClass = VehicleModel::class)
-        var model: VehicleModel? = null,
+        @ColumnInfo(name = MODEL_ID_COLUMN_NAME)
+        var model_id: Long? = null,
 
 
         /**
          * Indicates the yer of the vehicle
          */
-        @Column(name = YEAR_COLUMN_NAME)
         @ColumnInfo(name = YEAR_COLUMN_NAME)
-        var year: Int? = null,
+        var year: Int? = null
 
-        /**
-         * List of reparations made in the vehicle
-         */
-        @get:OneToMany(methods = [(OneToMany.Method.ALL)], variableName = REPARATIONS_VARIABLE_NAME)
-        var reparations: List<Reparation>? = null
 
 ) : GenericEntity(), Serializable {
     companion object {
         const val TABLE_NAME = "Vehicle"
         private const val serialVersionUID = -4913897499672647187L
-        private const val CUSTOMERS_VARIABLE_NAME = "customers"
-        private const val PHOTO_COLUMN_NAME = "photoPath"
-        private const val DOCUMENTS_VARIABLE_NAME = "documents"
         private const val VI_NUMBER_COLUMN_NAME = "vi_number"
         private const val BRAND_COLUMN_NAME = "brand"
-        private const val MODEL_COLUMN_NAME = "model"
+        const val MODEL_ID_COLUMN_NAME = "model_id"
         private const val YEAR_COLUMN_NAME = "year"
-        private const val REPARATIONS_VARIABLE_NAME = "reparations"
     }
 }

@@ -16,7 +16,7 @@ enum class BrandEnum(val brandName: Int, val icon: Int) {
     FIAT(R.string.fiat, R.mipmap.fiat),
     FORD(R.string.ford, R.mipmap.ford),
     HONDA(R.string.honda, R.mipmap.honda),
-    HYUNDAI(R.string.hyunday, R.mipmap.hyundai),
+    HYUNDAI(R.string.hyundai, R.mipmap.hyundai),
     JAGUAR(R.string.jaguar, R.mipmap.jaguar),
     JEEP(R.string.jeep, R.mipmap.jeep),
     KIA(R.string.kia, R.mipmap.kia),

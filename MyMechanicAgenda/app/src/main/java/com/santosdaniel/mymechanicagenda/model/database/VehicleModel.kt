@@ -2,9 +2,7 @@ package com.santosdaniel.mymechanicagenda.model.database
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
-import com.raizlabs.android.dbflow.annotation.Column
-import com.raizlabs.android.dbflow.annotation.Table
-import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
+import android.arch.persistence.room.RoomWarnings
 
 import java.io.Serializable
 
@@ -12,20 +10,19 @@ import java.io.Serializable
  * Represents one model of a certain vehicle
  */
 @Entity(tableName = VehicleModel.TABLE_NAME)
-@Table(database = MyMechanicDatabase::class)
+@SuppressWarnings(RoomWarnings.DEFAULT_CONSTRUCTOR)
 data class VehicleModel(
 
         /**
          * The brand of the vehicle
          *
          */
-        @Column(name = BRAND_COLUMN_NAME, typeConverter = BrandEnumConverter::class)
+        @ColumnInfo(name = BRAND_COLUMN_NAME)
         var brand: BrandEnum? = null,
 
         /**
          * Name of the model
          */
-        @Column(name = NAME_COLUMN_NAME)
         @ColumnInfo(name = NAME_COLUMN_NAME)
         var name: String? = null
 

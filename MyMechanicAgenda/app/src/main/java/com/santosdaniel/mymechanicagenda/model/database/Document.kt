@@ -2,42 +2,58 @@ package com.santosdaniel.mymechanicagenda.model.database
 
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
-import com.raizlabs.android.dbflow.annotation.*
-import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
+import android.arch.persistence.room.ForeignKey
+import android.arch.persistence.room.Index
 import java.io.Serializable
 import java.util.*
 
 /**
  * Represents one document of the vehicle or of the reparation
  */
-@Entity(tableName = Document.TABLE_NAME)
-@Table(database = MyMechanicDatabase::class)
+@Entity(tableName = Document.TABLE_NAME,
+        foreignKeys = [
+            ForeignKey(
+                    entity = Vehicle::class,
+                    parentColumns = arrayOf(GenericEntity.ID_COLUMN_NAME),
+                    childColumns = arrayOf(Document.VEHICLE_ID_COLUMN_NAME),
+                    onDelete = ForeignKey.NO_ACTION
+            ),
+            ForeignKey(
+                    entity = Reparation::class,
+                    parentColumns = arrayOf(GenericEntity.ID_COLUMN_NAME),
+                    childColumns = arrayOf(Document.REPARATION_ID_COLUMN_NAME),
+                    onDelete = ForeignKey.NO_ACTION
+            )
+        ],
+        indices = [
+            Index(value = GenericEntity.ID_COLUMN_NAME),
+            Index(value = Document.VEHICLE_ID_COLUMN_NAME),
+            Index(value = Document.REPARATION_ID_COLUMN_NAME)
+        ]
+)
 data class Document(
 
         /**
          * Type of document to use
          */
-        @Column(typeConverter = DocumentTypeConverter::class)
-        var type: DocumentTypeEnum? = null,
+        @ColumnInfo(name = Document.TYPE_NAME)
+        var type: DocumentTypeEnum,
 
         /**
          * The vehicle which the document belongs
          */
-        @ForeignKeyReference(columnName = VEHICLE_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
-        @ForeignKey(tableClass = Vehicle::class)
-        var vehicle: Vehicle? = null,
+        @ColumnInfo(name = Document.VEHICLE_ID_COLUMN_NAME)
+        var vehicle_id: Long? = null,
 
         /**
          * The reparation which the document belongs
          */
-        @ForeignKeyReference(columnName = REPAIR_COLUMN_NAME, foreignKeyColumnName = GenericEntity.ID_COLUMN_NAME)
-        @ForeignKey(tableClass = Reparation::class)
-        var reparation: Reparation? = null,
+        @ColumnInfo(name = Document.REPARATION_ID_COLUMN_NAME)
+        var reparation_id: Long? = null,
 
         /**
          * Title of the document
          */
-        @Column(name = TITLE_COLUMN_NAME)
         @ColumnInfo(name = TITLE_COLUMN_NAME)
         var title: String? = null,
 
@@ -45,22 +61,15 @@ data class Document(
         /**
          * Description of document
          */
-        @Column(name = DESCRIPTION_COLUMN_NAME)
         @ColumnInfo(name = DESCRIPTION_COLUMN_NAME)
         var description: String? = null,
 
         /**
          * Date of the document
          */
-        @Column(name = DATE_COLUMN_NAME)
         @ColumnInfo(name = DATE_COLUMN_NAME)
-        var date: Date? = null,
+        var date: Date? = null
 
-        /**
-         * List of vehicles that the costumer have associate
-         */
-        @get:OneToMany(methods = [(OneToMany.Method.ALL)], variableName = PHOTOS_VARIABLE_NAME)
-        var photos: MutableList<DocumentPhoto>? = null
 
 ) : GenericEntity(), Serializable {
     /**
@@ -69,11 +78,11 @@ data class Document(
     companion object {
         const val TABLE_NAME = "Document"
         private const val serialVersionUID = -1530458964982407070L
-        private const val VEHICLE_COLUMN_NAME = "vehicle"
-        private const val REPAIR_COLUMN_NAME = "reparation"
+        const val VEHICLE_ID_COLUMN_NAME = "vehicle_id"
+        const val REPARATION_ID_COLUMN_NAME = "reparation_id"
         private const val TITLE_COLUMN_NAME = "title"
         private const val DESCRIPTION_COLUMN_NAME = "description"
         private const val DATE_COLUMN_NAME = "date"
-        private const val PHOTOS_VARIABLE_NAME = "photos"
+        private const val TYPE_NAME = "type"
     }
 }

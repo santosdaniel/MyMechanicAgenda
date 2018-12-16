@@ -25,7 +25,7 @@ object VehicleHelper {
             sb.append(brandStr)
         }
         // Space
-        if ((vehicle.brand != null) && (vehicle.model != null)) {
+        if ((vehicle.brand != null) && (vehicle.model_id != null)) {
             sb.append(StringHelper.SPACE)
         }
         //Mode of the vehicle

@@ -10,9 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.santosdaniel.mymechanicagenda.R
+import com.santosdaniel.mymechanicagenda.helper.ContainerHelper
 import com.santosdaniel.mymechanicagenda.helper.TakePictureHelper
 import com.santosdaniel.mymechanicagenda.model.database.Document
 import com.santosdaniel.mymechanicagenda.model.database.DocumentPhoto
+import com.santosdaniel.mymechanicagenda.model.database.DocumentTypeEnum
+import com.santosdaniel.mymechanicagenda.model.database.Vehicle
 import com.santosdaniel.mymechanicagenda.view.GenericStateFragment
 import com.santosdaniel.mymechanicagenda.view.generic.ViewHelper
 import com.santosdaniel.mymechanicagenda.view.vehicleDetails.VehicleDetailsModel
@@ -62,21 +65,38 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
     }
 
     /**
+     * Create a document for putting the photo
+     */
+    private fun createPhotoDocument(): Document {
+        val document = Document(DocumentTypeEnum.PHOTO)
+        document.photos = ArrayList()
+        return document
+    }
+
+    /**
      * Add a new picture to the list of pictures handle by the fragment
      */
     private fun addNewPicture(pictureFile: File) {
         if ((super.lState != null) && (super.lState!!.vehicle != null)) {
+            val vehicle: Vehicle = super.lState!!.vehicle!!
+
             //Creates one new document, if needs it
-            if (super.lState!!.vehicle!!.photo == null) {
-                val document = Document()
-                document.photos = ArrayList()
-                super.lState!!.vehicle!!.photo = document
+            var photo: Document? = null
+            if (vehicle.documents == null) {
+                vehicle.documents = ArrayList()
+                photo = createPhotoDocument()
+                vehicle.documents!!.add(photo)
+            } else {
+                photo = vehicle.documents!!.find { document -> document.type == DocumentTypeEnum.PHOTO }
+                if (photo == null) {
+                    photo = createPhotoDocument()
+                    vehicle.documents!!.add(photo)
+                }
             }
-            val document: Document = super.lState!!.vehicle!!.photo!!
             val newPhoto = DocumentPhoto()
-            newPhoto.document = document
+            newPhoto.document_id = photo!!.id
             newPhoto.path = pictureFile.absolutePath
-            document.photos!!.add(newPhoto)
+            photo.photos!!.add(newPhoto)
         }
     }
 
@@ -102,13 +122,20 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
     private fun getPicturePath(state: VehicleDetailsModel): String? {
         return if ((state == null) ||
                 (state.vehicle == null) ||
-                (state.vehicle!!.photo == null) ||
-                (state.vehicle!!.photo!!.photos == null) ||
-                (state.vehicle!!.photo!!.photos!!.isEmpty())
-                       )
+                ContainerHelper.isEmpty(state.vehicle!!.documents))
             null
-        else
-            state.vehicle!!.photo!!.photos!!.first().path
+        else {
+            val photoDocument = state.vehicle!!.documents!!.find { document -> document.type == DocumentTypeEnum.PHOTO }
+            if (photoDocument == null) {
+                null
+            } else {
+                if(ContainerHelper.isEmpty(photoDocument.photos)) {
+                    null
+                } else {
+                    photoDocument.photos!!.first().path
+                }
+            }
+        }
     }
 
     /**
@@ -144,35 +171,10 @@ class EditVehiclePictureFragment : GenericStateFragment<VehicleDetailsModel>() {
         super.loadStateFromBundle(savedInstanceState, VEHICLE_DATA_KEY)
     }
 
-    private fun deletePicture(documentPhoto: DocumentPhoto): Boolean {
-        if(documentPhoto.path != null) {
-            File(documentPhoto.path)
-        }
-        return true
-    }
-
-    /*
-     * Delete pictures that are not need it anymore
-     */
-    private fun deletePictures(_state: VehicleDetailsModel?) {
-        if ((_state == null) ||
-                (_state.vehicle == null) ||
-                (_state.vehicle!!.photo == null) ||
-                (_state.vehicle!!.photo!!.photos == null) ||
-                (_state.vehicle!!.photo!!.photos!!.isEmpty())
-                ) {
-            return
-        } else {
-            val vehicle = _state.vehicle!!
-            val photos = vehicle.photo!!.photos!!
-            photos.forEach {  }
-        }
-    }
 
     override fun onResume() {
         super.onResume()
         if (super.lState != null) {
-            deletePictures(super.lState)
             loadPicture(super.lState!!)
         }
     }

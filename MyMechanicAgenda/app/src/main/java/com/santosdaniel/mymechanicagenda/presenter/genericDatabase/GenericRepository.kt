@@ -1,7 +1,8 @@
 package com.santosdaniel.mymechanicagenda.presenter.genericDatabase
 
 
-import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.DaoProvider
+import android.content.Context
+import com.santosdaniel.mymechanicagenda.presenter.mechanicDatase.MyMechanicDatabase
 
 /**
  * Has the elements common to the repositories
@@ -10,12 +11,12 @@ abstract class GenericRepository<Entity>
 /**
  * Default constructor
  */
-protected constructor() {
+protected constructor(context: Context) {
 
     /**
      * Reference to the data access objects provider
      */
-    protected val daoProvider: DaoProvider = DaoProvider()
+    protected val daoProvider: MyMechanicDatabase = MyMechanicDatabase.getInstance(context)
 
     /**
      * Create a new entity
@@ -30,5 +31,5 @@ protected constructor() {
      * @param entity the entity that to update
      * @return If was possible update the entity or not
      */
-    abstract fun update(entity: Entity): Boolean
+    abstract fun update(entity: Entity): Int
 }

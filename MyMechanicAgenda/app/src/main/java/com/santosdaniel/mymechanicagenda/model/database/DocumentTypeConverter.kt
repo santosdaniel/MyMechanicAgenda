@@ -1,11 +1,11 @@
 package com.santosdaniel.mymechanicagenda.model.database
 
-import com.raizlabs.android.dbflow.converter.TypeConverter
+import android.arch.persistence.room.TypeConverter
 
 /**
  * Converts a document type in a such way that can be saved in database
  */
-class DocumentTypeConverter : TypeConverter<String, DocumentTypeEnum>() {
+class DocumentTypeConverter {
 
 
     /**
@@ -15,7 +15,8 @@ class DocumentTypeConverter : TypeConverter<String, DocumentTypeEnum>() {
      *
      * @return The value to be persisted in database
      */
-    override fun getDBValue(entityProperty: DocumentTypeEnum): String {
+    @TypeConverter
+    fun getDBValue(entityProperty: DocumentTypeEnum): String {
         return entityProperty.name
     }
 
@@ -26,7 +27,8 @@ class DocumentTypeConverter : TypeConverter<String, DocumentTypeEnum>() {
      *
      * @return The enum to use
      */
-    override fun getModelValue(databaseValue: String): DocumentTypeEnum {
+    @TypeConverter
+    fun getModelValue(databaseValue: String): DocumentTypeEnum {
         return DocumentTypeEnum.valueOf(databaseValue)
     }
 }

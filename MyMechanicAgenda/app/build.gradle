@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt' // required for kotlin.
 
-def db_flow_version = "4.2.4"
 def lifecycle_version = "1.1.1"
 def paging_version = "1.0.1"
 def room_version = "1.1.1"
@@ -37,18 +36,14 @@ dependencies {
     implementation 'com.android.support:cardview-v7:28+'
     implementation 'com.android.volley:volley:1.0.0'
 
-    // Use if Kotlin user.
-    kapt "com.github.Raizlabs.DBFlow:dbflow-processor:${db_flow_version}"
-
-    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${db_flow_version}"
-    implementation "com.github.Raizlabs.DBFlow:dbflow:${db_flow_version}"
 
     // kotlin extensions
-    implementation "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:${db_flow_version}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     //Lifecycle arch
     implementation "android.arch.lifecycle:extensions:${lifecycle_version}"
+
+    // Use if Kotlin user.
     kapt "android.arch.lifecycle:compiler:${lifecycle_version}"
 
     //Paging
